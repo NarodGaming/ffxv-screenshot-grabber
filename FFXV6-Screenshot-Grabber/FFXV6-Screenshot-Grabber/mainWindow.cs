@@ -29,7 +29,7 @@ namespace FFXV6_Screenshot_Grabber
                 }
             }
 
-            authVerLabel.Text = $"By Narod (V{Application.ProductVersion})";
+            authVerLabel.Text = $"by Narod (V{Application.ProductVersion})";
 
             if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); }
 
@@ -230,11 +230,6 @@ namespace FFXV6_Screenshot_Grabber
             {
                 realtimeObject.safeStop();
             }
-        }
-
-        private void realtimeHelpLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show("Real-time mode allows Narod's FFXV Screenshot Grabber to automatically save screenshots as the game creates them.", "Narod's FFXV Screenshot Grabber - Help");
         }
     }
 }
