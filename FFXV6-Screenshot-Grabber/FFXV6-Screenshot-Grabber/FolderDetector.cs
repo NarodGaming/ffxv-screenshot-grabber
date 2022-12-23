@@ -38,7 +38,7 @@ namespace FFXV6_Screenshot_Grabber
             return folderDialog.SelectedPath + "\\"; // all checks passed, set folder location to one specified by user
         }
 
-        public static string detectFolder() // detects screenshot folder, runs at boot or when user selects 'Detect Folder'
+        public static string detectFolder() // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
         {
             string documentsFolder = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\";
             string folderLocation = documentsFolder + "My Games\\FINAL FANTASY XV\\Steam"; // starting directory, as far as we can get without dynamic checks
@@ -60,9 +60,9 @@ namespace FFXV6_Screenshot_Grabber
             return folderLocation;
         }
 
-        public static string detectFolderLinux()
+        public static string detectFolderLinux() // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for STEAM DECK.
         {
-            string folderLocation = "/home/deck/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam";
+            string folderLocation = "/home/deck/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // this is the path of the steam deck folder, hence "deck"
             if (!Directory.Exists(folderLocation)) // if this base directory doesn't exist (it should on all Windows systems who have played the game)
             {
                 return failedAutoDirSearch("/", false); // run failed function (above)

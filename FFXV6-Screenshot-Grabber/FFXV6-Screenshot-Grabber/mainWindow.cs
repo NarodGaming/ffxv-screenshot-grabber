@@ -13,8 +13,7 @@ namespace FFXV6_Screenshot_Grabber
         string folderLocation; // variable to store folder location of screenshots
         bool isUpdateAvailable; // variable to store if update is required or not
 
-        FileSystemWatcher? realtimeWatcher; // used for "realtime" mode
-        string? realTimeFolder; // used to store the location realtime screenshots should be stored in
+        RealtimeHandler? realtimeObject; // object to handle realtime screenshots
 
         bool isWindows = true;
 
@@ -43,6 +42,36 @@ namespace FFXV6_Screenshot_Grabber
             return folderLocation + screenshotListBox.SelectedItem.ToString(); // otherwise, concat the folder location var with the listbox selected item string and return it
         }
 
+        public void addToListBox(string itemToAdd)
+        {
+            screenshotListBox.Items.Add(itemToAdd);
+            updateListBoxCounter();
+        }
+        
+        public void addToListBox(IEnumerable<String> itemsToAdd)
+        {
+            foreach (string ssFile in itemsToAdd) // for each file found in above line
+            {
+                screenshotListBox.Items.Add(ssFile); // add the filename to the listbox
+            }
+
+            updateListBoxCounter();
+        }
+
+        public void removeFromListBox(string itemToRemove)
+        {
+            if (screenshotListBox.Items.Contains(itemToRemove))
+            {
+                screenshotListBox.Items.Remove(itemToRemove);
+                updateListBoxCounter();
+            }
+        }
+
+        private void updateListBoxCounter()
+        {
+            screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
+        }
+
         private void scanScreenshots() // scans for all screenshots in folder, runs at boot, or when screenshot folder has changed
         {
             screenshotListBox.Items.Clear(); // clear all items currently in the listbox
@@ -51,38 +80,7 @@ namespace FFXV6_Screenshot_Grabber
             previewWindow.Hide(); // if the preview window is open, this will hide it (as theres no image to display right now)
 
             IEnumerable<String> ssFiles = Directory.GetFiles(folderLocation, "*.ss", SearchOption.TopDirectoryOnly).Select(nm => Path.GetFileName(nm)); // get all files ending with ".ss" only in the current directory, linq used to get just filename, not full path
-            foreach (string ssFile in ssFiles) // for each file found in above line
-            {
-                screenshotListBox.Items.Add(ssFile); // add the filename to the listbox
-            }
-
-            screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
-        }
-
-        private void realtimeScreenshotDetected(object? sender, FileSystemEventArgs? e)
-        {
-            if (e.Name.Contains(".ss") == false)
-            {
-                return;
-            }
-            screenshotListBox.Items.Add(e.Name);
-            screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
-            string newFileName = e.Name.Split(".ss")[0];
-            newFileName = newFileName + ".jpg";
-            ScreenshotWriter.writeScreenshot(e.FullPath, realTimeFolder + "\\" + newFileName);
-        }
-
-        private void realtimeScreenshotRemoved(object? sender, FileSystemEventArgs? e)
-        {
-            if (e.Name.Contains(".ss") == false)
-            {
-                return;
-            }
-            if (screenshotListBox.Items.Contains(e.Name))
-            {
-                screenshotListBox.Items.Remove(e.Name);
-                screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
-            }
+            addToListBox(ssFiles);
         }
 
         private void screenshotListBox_SelectedIndexChanged(object sender, EventArgs e) // run when the user selects a new screenshot to preview (and then potentially save)
@@ -225,17 +223,10 @@ namespace FFXV6_Screenshot_Grabber
                     realtimeCheckBox.Checked = false; // disable the checkbox as it wasn't turned on
                     return; // then return, as we can't use that folder
                 }
-                realTimeFolder = folderDialog.SelectedPath; // set the realtime folder path to the one selected by the user
-                realtimeWatcher = new FileSystemWatcher(); // create a new filesystemwatcher
-                realtimeWatcher.SynchronizingObject = this; // set the object to sync to, to be this form
-                realtimeWatcher.Path = folderLocation; // set the folder to watch, to the folder with the screenshots in
-                realtimeWatcher.Created += realtimeScreenshotDetected; // set the function to be called if a new screenshot is detected
-                realtimeWatcher.Deleted += realtimeScreenshotRemoved; // set the function to be called if that screenshot is deleted (likely by the game)
-                realtimeWatcher.EnableRaisingEvents = true; // enable the filesystemwatcher
+                realtimeObject = new(this, folderDialog.SelectedPath);
             } else
             {
-                realtimeWatcher.Dispose(); // stop the watcher
-                realTimeFolder = ""; // unset the realtime folder
+                realtimeObject.safeStop();
             }
         }
 
