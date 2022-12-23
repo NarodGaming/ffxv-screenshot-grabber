@@ -154,7 +154,7 @@
             this.authVerLabel.Name = "authVerLabel";
             this.authVerLabel.Size = new System.Drawing.Size(98, 15);
             this.authVerLabel.TabIndex = 10;
-            this.authVerLabel.Text = "by Narod (V1.0.0)";
+            this.authVerLabel.Text = "by Narod (V1.1.0)";
             // 
             // saveScreenshotDialog
             // 
