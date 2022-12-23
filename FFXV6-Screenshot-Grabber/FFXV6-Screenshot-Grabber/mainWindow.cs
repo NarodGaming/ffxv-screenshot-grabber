@@ -29,6 +29,8 @@ namespace FFXV6_Screenshot_Grabber
                 }
             }
 
+            authVerLabel.Text = $"By Narod (V{Application.ProductVersion})";
+
             if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); }
 
             scanScreenshots(); // scan for screenshots
@@ -135,7 +137,7 @@ namespace FFXV6_Screenshot_Grabber
             }
             if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
             {
-                MessageBox.Show("Unable to save screenshots as folder does not exist."); // show user message
+                MessageBox.Show("Unable to save screenshots. Folder chosen does not exist."); // show user message
                 return; // then return, as we can't save
             }
 
@@ -191,7 +193,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             if (isUpdateAvailable) // if there is an update
             {
-                DialogResult shouldGetUpdate = MessageBox.Show("An update to Narod's FFXV Screenshot Grabber is available, do you wish to download the update?", "Narod's FFXV Screenshot Grabber - Update", MessageBoxButtons.YesNo); // show dialog to user
+                DialogResult shouldGetUpdate = MessageBox.Show("An update to Narod's FFXV Screenshot Grabber is available, do you wish to download the update?", "Narod's FFXV Screenshot Grabber - Update Available", MessageBoxButtons.YesNo); // show dialog to user
                 if (shouldGetUpdate == DialogResult.Yes) // if they want to upgrade
                 {
                     Process.Start(new ProcessStartInfo() // open their default browser, with the URL to download the latest version

@@ -175,18 +175,18 @@
             // realtimeCheckBox
             // 
             this.realtimeCheckBox.AutoSize = true;
-            this.realtimeCheckBox.Location = new System.Drawing.Point(913, 3);
+            this.realtimeCheckBox.Location = new System.Drawing.Point(884, 2);
             this.realtimeCheckBox.Name = "realtimeCheckBox";
-            this.realtimeCheckBox.Size = new System.Drawing.Size(77, 19);
+            this.realtimeCheckBox.Size = new System.Drawing.Size(106, 19);
             this.realtimeCheckBox.TabIndex = 11;
-            this.realtimeCheckBox.Text = "Real-time";
+            this.realtimeCheckBox.Text = "Realtime Mode";
             this.realtimeCheckBox.UseVisualStyleBackColor = true;
             this.realtimeCheckBox.CheckedChanged += new System.EventHandler(this.realtimeCheckBox_CheckedChanged);
             // 
             // realtimeHelpLabel
             // 
             this.realtimeHelpLabel.AutoSize = true;
-            this.realtimeHelpLabel.Location = new System.Drawing.Point(895, 4);
+            this.realtimeHelpLabel.Location = new System.Drawing.Point(866, 4);
             this.realtimeHelpLabel.Name = "realtimeHelpLabel";
             this.realtimeHelpLabel.Size = new System.Drawing.Size(12, 15);
             this.realtimeHelpLabel.TabIndex = 12;
