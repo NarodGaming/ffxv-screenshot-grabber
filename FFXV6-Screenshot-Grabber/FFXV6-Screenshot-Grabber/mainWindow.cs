@@ -74,12 +74,18 @@ namespace FFXV6_Screenshot_Grabber
             screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
         }
 
-        private void scanScreenshots() // scans for all screenshots in folder, runs at boot, or when screenshot folder has changed
+        private void resetWindow()
         {
             screenshotListBox.Items.Clear(); // clear all items currently in the listbox
             if (currentImage != null) { currentImage.Dispose(); } // if there is a current image set, dispose of it
             if (previewPictureBox.BackgroundImage != null) { previewPictureBox.BackgroundImage = Properties.Resources._00001333; } // if the preview image is set, unset it
             previewWindow.Hide(); // if the preview window is open, this will hide it (as theres no image to display right now)
+            updateListBoxCounter();
+        }
+
+        private void scanScreenshots() // scans for all screenshots in folder, runs at boot, or when screenshot folder has changed
+        {
+            resetWindow();
 
             IEnumerable<String> ssFiles = Directory.GetFiles(folderLocation, "*.ss", SearchOption.TopDirectoryOnly).Select(nm => Path.GetFileName(nm)); // get all files ending with ".ss" only in the current directory, linq used to get just filename, not full path
             addToListBox(ssFiles);
@@ -227,9 +233,18 @@ namespace FFXV6_Screenshot_Grabber
                 }
                 realtimeObject = new(this, folderDialog.SelectedPath); // create the new realtime watcher object
                 screenshotListBox.Items.Clear(); // clear the items in this listbox, as realtime folder may be different to current directory
+                helpTooltip.SetToolTip(selectFolderBtn, "You must disable Realtime mode to change the folder location.");
+                helpTooltip.SetToolTip(detectFolderBtn, "You must disable Realtime mode to change the folder location.");
+                selectFolderBtn.Enabled = false;
+                detectFolderBtn.Enabled = false;
+                resetWindow();
             } else // if checkbox is unchecked
             {
                 realtimeObject.safeStop(); // safely stop the realtime watcher
+                helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
+                helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
+                selectFolderBtn.Enabled = true;
+                detectFolderBtn.Enabled = true;
                 scanScreenshots(); // scan for screenshots in the folder directory again, as realtime folder may be different from current
             }
         }
