@@ -15,7 +15,7 @@ namespace FFXV6_Screenshot_Grabber
 
         RealtimeHandler? realtimeObject; // object to handle realtime screenshots
 
-        bool isWindows = true;
+        bool isWindows = true; // holds if the system is running windows or linux, will be set to false in init if on linux
 
         public mainWindow()
         {
@@ -44,13 +44,13 @@ namespace FFXV6_Screenshot_Grabber
             return folderLocation + screenshotListBox.SelectedItem.ToString(); // otherwise, concat the folder location var with the listbox selected item string and return it
         }
 
-        public void addToListBox(string itemToAdd)
+        public void addToListBox(string itemToAdd) // add a single item to the screenshot list box
         {
             screenshotListBox.Items.Add(itemToAdd);
             updateListBoxCounter();
         }
         
-        public void addToListBox(IEnumerable<String> itemsToAdd)
+        public void addToListBox(IEnumerable<String> itemsToAdd) // add an enum of strings to the screenshot list box
         {
             foreach (string ssFile in itemsToAdd) // for each file found in above line
             {
@@ -60,7 +60,7 @@ namespace FFXV6_Screenshot_Grabber
             updateListBoxCounter();
         }
 
-        public void removeFromListBox(string itemToRemove)
+        public void removeFromListBox(string itemToRemove) // remove a specific string from the screenshot list box
         {
             if (screenshotListBox.Items.Contains(itemToRemove))
             {
@@ -69,7 +69,7 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
-        private void updateListBoxCounter()
+        private void updateListBoxCounter() // update the counter with how many items are in the screenshot list box
         {
             screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
         }
@@ -225,10 +225,12 @@ namespace FFXV6_Screenshot_Grabber
                     realtimeCheckBox.Checked = false; // disable the checkbox as it wasn't turned on
                     return; // then return, as we can't use that folder
                 }
-                realtimeObject = new(this, folderDialog.SelectedPath);
-            } else
+                realtimeObject = new(this, folderDialog.SelectedPath); // create the new realtime watcher object
+                screenshotListBox.Items.Clear(); // clear the items in this listbox, as realtime folder may be different to current directory
+            } else // if checkbox is unchecked
             {
-                realtimeObject.safeStop();
+                realtimeObject.safeStop(); // safely stop the realtime watcher
+                scanScreenshots(); // scan for screenshots in the folder directory again, as realtime folder may be different from current
             }
         }
     }
