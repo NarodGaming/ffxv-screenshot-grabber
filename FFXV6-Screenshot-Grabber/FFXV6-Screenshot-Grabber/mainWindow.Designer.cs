@@ -216,7 +216,6 @@
             this.MaximizeBox = false;
             this.Name = "mainWindow";
             this.Text = "Narod\'s FFXV Screenshot Grabber";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.previewPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

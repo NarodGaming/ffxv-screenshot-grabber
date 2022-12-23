@@ -9,18 +9,32 @@ namespace FFXV6_Screenshot_Grabber
     public partial class mainWindow : Form
     {
         imageExpander previewWindow = new imageExpander(); // create reference of imageExpander (the resizeable preview window)
-        Image currentImage; // variable to store current preview image
+        Image? currentImage; // variable to store current preview image
         string folderLocation; // variable to store folder location of screenshots
         bool isUpdateAvailable; // variable to store if update is required or not
 
-        FileSystemWatcher realtimeWatcher; // used for "realtime" mode
-        string realTimeFolder; // used to store the location realtime screenshots should be stored in
+        FileSystemWatcher? realtimeWatcher; // used for "realtime" mode
+        string? realTimeFolder; // used to store the location realtime screenshots should be stored in
 
-        bool isWindows;
+        bool isWindows = true;
 
         public mainWindow()
         {
             InitializeComponent();
+
+            foreach (string subValueKey in Registry.CurrentUser.OpenSubKey("Software").GetSubKeyNames())
+            {
+                if (subValueKey == "Wine")
+                {
+                    isWindows = false;
+                }
+            }
+
+            if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); }
+
+            scanScreenshots(); // scan for screenshots
+
+            updateChecker.RunWorkerAsync(); // run the update checker
         }
 
         private string returnFullPath() // returns full path of listbox item selected
@@ -69,24 +83,6 @@ namespace FFXV6_Screenshot_Grabber
                 screenshotListBox.Items.Remove(e.Name);
                 screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e) // run on program opening
-        {
-            isWindows = true;
-            foreach (string subValueKey in Registry.CurrentUser.OpenSubKey("Software").GetSubKeyNames())
-            {
-                if (subValueKey == "Wine")
-                {
-                    isWindows = false;
-                }
-            }
-
-            if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); }
-
-            scanScreenshots(); // scan for screenshots
-
-            updateChecker.RunWorkerAsync(); // run the update checker
         }
 
         private void screenshotListBox_SelectedIndexChanged(object sender, EventArgs e) // run when the user selects a new screenshot to preview (and then potentially save)
