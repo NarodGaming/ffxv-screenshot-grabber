@@ -216,7 +216,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             if (realtimeCheckBox.Checked == true) // if the box has been checked
             {
-                folderDialog.Description = "Please select the folder you wish to automatically save screenshots to...";
+                folderDialog.Description = "Please select the folder you wish to watch for screenshots...";
                 folderDialog.UseDescriptionForTitle = true;
                 folderDialog.SelectedPath = ""; // reset any saved folder name, as could be set during set-up or previous folder search
                 folderDialog.ShowDialog(); // show the folder selector dialog
