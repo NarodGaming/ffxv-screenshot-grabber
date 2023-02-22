@@ -68,6 +68,7 @@
             this.previewPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.previewPictureBox.TabIndex = 1;
             this.previewPictureBox.TabStop = false;
+            this.helpTooltip.SetToolTip(this.previewPictureBox, "Your image preview for the selected image will appear here.");
             this.previewPictureBox.Click += new System.EventHandler(this.previewPictureBox_Click);
             // 
             // previewLabel
@@ -90,6 +91,7 @@
             this.expandLabel.Size = new System.Drawing.Size(131, 15);
             this.expandLabel.TabIndex = 3;
             this.expandLabel.Text = "(click image to expand)";
+            this.helpTooltip.SetToolTip(this.expandLabel, "Click here to open a larger window with your screenshot.");
             // 
             // screenshotLabel
             // 
@@ -104,15 +106,17 @@
             // 
             // saveAllProgressbar
             // 
+            this.saveAllProgressbar.BackColor = System.Drawing.SystemColors.Control;
             this.saveAllProgressbar.Location = new System.Drawing.Point(164, 386);
             this.saveAllProgressbar.Name = "saveAllProgressbar";
             this.saveAllProgressbar.Size = new System.Drawing.Size(478, 23);
             this.saveAllProgressbar.Step = 1;
             this.saveAllProgressbar.TabIndex = 5;
-            this.helpTooltip.SetToolTip(this.saveAllProgressbar, "This progressbar shows the progress of the current \'Save All\' task.");
+            this.helpTooltip.SetToolTip(this.saveAllProgressbar, "This progress bar shows the progress of the current \'Save All\' task.");
             // 
             // saveOneBtn
             // 
+            this.saveOneBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.saveOneBtn.Location = new System.Drawing.Point(2, 386);
             this.saveOneBtn.Name = "saveOneBtn";
             this.saveOneBtn.Size = new System.Drawing.Size(75, 23);
@@ -124,6 +128,7 @@
             // 
             // saveAllBtn
             // 
+            this.saveAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.saveAllBtn.Location = new System.Drawing.Point(83, 386);
             this.saveAllBtn.Name = "saveAllBtn";
             this.saveAllBtn.Size = new System.Drawing.Size(75, 23);
@@ -135,6 +140,7 @@
             // 
             // selectFolderBtn
             // 
+            this.selectFolderBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.selectFolderBtn.Location = new System.Drawing.Point(648, 388);
             this.selectFolderBtn.Name = "selectFolderBtn";
             this.selectFolderBtn.Size = new System.Drawing.Size(106, 23);
@@ -146,6 +152,7 @@
             // 
             // detectFolderBtn
             // 
+            this.detectFolderBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.detectFolderBtn.Location = new System.Drawing.Point(760, 388);
             this.detectFolderBtn.Name = "detectFolderBtn";
             this.detectFolderBtn.Size = new System.Drawing.Size(106, 23);
@@ -163,7 +170,7 @@
             this.authVerLabel.Name = "authVerLabel";
             this.authVerLabel.Size = new System.Drawing.Size(98, 15);
             this.authVerLabel.TabIndex = 10;
-            this.authVerLabel.Text = "by Narod (V1.1.0)";
+            this.authVerLabel.Text = "by Narod (V1.2.0)";
             this.helpTooltip.SetToolTip(this.authVerLabel, "Narod\'s FFXV Screenshot Grabber.\r\n\r\nby Narod");
             // 
             // saveScreenshotDialog

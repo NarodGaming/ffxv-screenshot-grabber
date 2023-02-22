@@ -15,6 +15,8 @@ namespace FFXV6_Screenshot_Grabber
         public imageExpander()
         {
             InitializeComponent();
+
+            DarkMode.SetupDarkMode(this);
         }
 
         public void retrieveScreenshot(Image newImage) // public function, called when preview image on mainWindow has been updated

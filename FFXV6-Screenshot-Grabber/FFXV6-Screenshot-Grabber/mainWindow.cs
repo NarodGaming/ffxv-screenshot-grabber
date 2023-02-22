@@ -36,6 +36,8 @@ namespace FFXV6_Screenshot_Grabber
             scanScreenshots(); // scan for screenshots
 
             updateChecker.RunWorkerAsync(); // run the update checker
+
+            DarkMode.SetupDarkMode(this);
         }
 
         private string returnFullPath() // returns full path of listbox item selected
