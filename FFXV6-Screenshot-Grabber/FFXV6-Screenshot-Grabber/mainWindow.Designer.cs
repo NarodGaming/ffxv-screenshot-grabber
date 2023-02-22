@@ -120,7 +120,7 @@
             this.saveOneBtn.Location = new System.Drawing.Point(2, 386);
             this.saveOneBtn.Name = "saveOneBtn";
             this.saveOneBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveOneBtn.TabIndex = 6;
+            this.saveOneBtn.TabIndex = 1;
             this.saveOneBtn.Text = "Save One";
             this.helpTooltip.SetToolTip(this.saveOneBtn, "This button saves the current screenshot to a location of your choosing.");
             this.saveOneBtn.UseVisualStyleBackColor = true;
@@ -132,7 +132,7 @@
             this.saveAllBtn.Location = new System.Drawing.Point(83, 386);
             this.saveAllBtn.Name = "saveAllBtn";
             this.saveAllBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveAllBtn.TabIndex = 7;
+            this.saveAllBtn.TabIndex = 2;
             this.saveAllBtn.Text = "Save All";
             this.helpTooltip.SetToolTip(this.saveAllBtn, "This button saves all screenshots in the list to a chosen location.");
             this.saveAllBtn.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.selectFolderBtn.Location = new System.Drawing.Point(648, 388);
             this.selectFolderBtn.Name = "selectFolderBtn";
             this.selectFolderBtn.Size = new System.Drawing.Size(106, 23);
-            this.selectFolderBtn.TabIndex = 8;
+            this.selectFolderBtn.TabIndex = 3;
             this.selectFolderBtn.Text = "Select Folder";
             this.helpTooltip.SetToolTip(this.selectFolderBtn, "This button allows you to change the current screenshot directory.");
             this.selectFolderBtn.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             this.detectFolderBtn.Location = new System.Drawing.Point(760, 388);
             this.detectFolderBtn.Name = "detectFolderBtn";
             this.detectFolderBtn.Size = new System.Drawing.Size(106, 23);
-            this.detectFolderBtn.TabIndex = 9;
+            this.detectFolderBtn.TabIndex = 4;
             this.detectFolderBtn.Text = "Detect Folder";
             this.helpTooltip.SetToolTip(this.detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically" +
         " this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
