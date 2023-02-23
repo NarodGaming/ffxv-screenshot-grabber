@@ -11,7 +11,7 @@ namespace FFXV6_Screenshot_Grabber
         string folderLocation; // variable to store folder location of screenshots
         bool isUpdateAvailable; // variable to store if update is required or not
 
-        RealtimeHandler realtimeObject; // object to handle realtime screenshots
+        RealtimeHandler? realtimeObject; // object to handle realtime screenshots
 
         bool isWindows = true; // holds if the system is running windows or linux, will be set to false in init if on linux
 
@@ -240,7 +240,7 @@ namespace FFXV6_Screenshot_Grabber
                 resetWindow();
             } else // if checkbox is unchecked
             {
-                realtimeObject.safeStop(); // safely stop the realtime watcher
+                if (realtimeObject is not null) { realtimeObject.safeStop(); } // safely stop the realtime watcher 
                 helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
                 helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
                 selectFolderBtn.Enabled = true;
