@@ -19,7 +19,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             InitializeComponent();
 
-            foreach (string subValueKey in Registry.CurrentUser.OpenSubKey("Software").GetSubKeyNames()) // a good way of checking if we're running on Linux
+            foreach (string subValueKey in Registry.CurrentUser.OpenSubKey("Software")?.GetSubKeyNames() ?? Array.Empty<string>()) // a good way of checking if we're running on Linux
             {
                 if (subValueKey == "Wine") // if wine key exists, then we're on Linux
                 {
