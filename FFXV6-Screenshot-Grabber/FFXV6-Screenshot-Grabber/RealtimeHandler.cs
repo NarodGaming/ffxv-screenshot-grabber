@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FFXV6_Screenshot_Grabber
+﻿namespace FFXV6_Screenshot_Grabber
 {
     internal class RealtimeHandler
     {
