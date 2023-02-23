@@ -26,6 +26,7 @@
 
         private void realtimeScreenshotDetected(object? sender, FileSystemEventArgs? e) // called whenever a new file is created in the watcher directory
         {
+            if (e is null) { return; } // ensures e is not null
             if (e.Name.Contains(".ss") == false) // if the file does not contain ".ss" (a snapshot file)
             {
                 return; // return, not interested in that file
@@ -38,6 +39,7 @@
 
         private void realtimeScreenshotRemoved(object? sender, FileSystemEventArgs? e) // when a snapshot file is removed (happens when user deletes it in-game, or rejects it at end of day)
         {
+            if (e is null) { return; } // ensures e is not null
             if (e.Name.Contains(".ss") == false) // if the file does not contain ".ss" (a snapshot file)
             {
                 return; // return, not interested in that file

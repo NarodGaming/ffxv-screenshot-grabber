@@ -1,8 +1,6 @@
 using Microsoft.Win32;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 
 namespace FFXV6_Screenshot_Grabber
 {
@@ -13,7 +11,7 @@ namespace FFXV6_Screenshot_Grabber
         string folderLocation; // variable to store folder location of screenshots
         bool isUpdateAvailable; // variable to store if update is required or not
 
-        RealtimeHandler? realtimeObject; // object to handle realtime screenshots
+        RealtimeHandler realtimeObject; // object to handle realtime screenshots
 
         bool isWindows = true; // holds if the system is running windows or linux, will be set to false in init if on linux
 
