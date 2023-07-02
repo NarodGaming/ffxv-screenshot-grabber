@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components=new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
             screenshotListBox=new ListBox();
             previewPictureBox=new PictureBox();
             previewLabel=new Label();
@@ -109,9 +108,9 @@
             // saveAllProgressbar
             // 
             saveAllProgressbar.BackColor=SystemColors.Control;
-            saveAllProgressbar.Location=new Point(243, 386);
+            saveAllProgressbar.Location=new Point(266, 386);
             saveAllProgressbar.Name="saveAllProgressbar";
-            saveAllProgressbar.Size=new Size(399, 23);
+            saveAllProgressbar.Size=new Size(376, 23);
             saveAllProgressbar.Step=1;
             saveAllProgressbar.TabIndex=5;
             helpTooltip.SetToolTip(saveAllProgressbar, "This progress bar shows the progress of the current 'Save All' task.");
@@ -213,10 +212,10 @@
             saveAllTBtn.FlatStyle=FlatStyle.System;
             saveAllTBtn.Location=new Point(164, 386);
             saveAllTBtn.Name="saveAllTBtn";
-            saveAllTBtn.Size=new Size(75, 23);
+            saveAllTBtn.Size=new Size(96, 23);
             saveAllTBtn.TabIndex=12;
-            saveAllTBtn.Text="Save All (T)";
-            helpTooltip.SetToolTip(saveAllTBtn, resources.GetString("saveAllTBtn.ToolTip"));
+            saveAllTBtn.Text="Save All Turbo";
+            helpTooltip.SetToolTip(saveAllTBtn, "This button saves all screenshots in the list to a chosen location.\r\n\r\nIt does this in \"Turbo\" mode, which speeds up the conversion\r\nsignificantly (depends on PC speed, can be up to ~100x).");
             saveAllTBtn.UseVisualStyleBackColor=true;
             saveAllTBtn.Click+=saveAllTBtn_Click;
             // 

@@ -14,13 +14,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>Narod's FFXV Screenshot Grabber</AssemblyName>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <Authors>NarodGaming</Authors>
     <Description>A simple yet feature-rich application for fetching FFXV screenshots from a .ss format in to a .jpg</Description>
     <Copyright>NarodGaming 2023</Copyright>
     <PackageProjectUrl>https://github.com/NarodGaming/ffxv-screenshot-grabber</PackageProjectUrl>
-    <AssemblyVersion>1.2.0</AssemblyVersion>
-    <FileVersion>1.2.0</FileVersion>
+    <AssemblyVersion>1.3.0</AssemblyVersion>
+    <FileVersion>1.3.0</FileVersion>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <NeutralLanguage>en-GB</NeutralLanguage>
   </PropertyGroup>

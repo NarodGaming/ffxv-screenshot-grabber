@@ -69,12 +69,4 @@
   <metadata name="updateChecker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>294, 20</value>
   </metadata>
-  <data name="saveAllTBtn.ToolTip" xml:space="preserve">
-    <value>This button saves all screenshots in the list to a chosen location.
-
-It does this in "Turbo" mode, which should speed up the conversion
-significantly (depends on your PC speed, but ~10x faster). This
-option is in Beta and may not work that well.
-</value>
-  </data>
 </root>
