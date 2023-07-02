@@ -49,7 +49,7 @@ namespace FFXV6_Screenshot_Grabber
             screenshotListBox.Items.Add(itemToAdd);
             updateListBoxCounter();
         }
-        
+
         public void addToListBox(IEnumerable<String> itemsToAdd) // add an enum of strings to the screenshot list box
         {
             foreach (string ssFile in itemsToAdd) // for each file found in above line
@@ -93,7 +93,7 @@ namespace FFXV6_Screenshot_Grabber
 
         private void screenshotListBox_SelectedIndexChanged(object sender, EventArgs e) // run when the user selects a new screenshot to preview (and then potentially save)
         {
-            if(screenshotListBox.SelectedIndex == -1) // if the selected item has been unset
+            if (screenshotListBox.SelectedIndex == -1) // if the selected item has been unset
             {
                 return; // then theres nothing to show, return
             }
@@ -104,7 +104,7 @@ namespace FFXV6_Screenshot_Grabber
 
         private void previewPictureBox_Click(object sender, EventArgs e) // run when the user clicks the preview image (to 'expand' it)
         {
-            if(screenshotListBox.SelectedIndex == -1) // if the preview image is not set
+            if (screenshotListBox.SelectedIndex == -1) // if the preview image is not set
             {
                 return; // then theres nothing to show, return
             }
@@ -151,7 +151,7 @@ namespace FFXV6_Screenshot_Grabber
 
             string newPath = folderDialog.SelectedPath + "\\"; // set the path to save the files to, as per the users wishes
             saveAllProgressbar.Maximum = screenshotListBox.Items.Count; // set the maximum value of the progressbar to the number of screenshots to save. minimum is always 0 and step is 1.
-            
+
 
             foreach (string listBoxItem in screenshotListBox.Items) // for each listbox item (screenshot) in listbox (total screenshots)
             {
@@ -163,6 +163,35 @@ namespace FFXV6_Screenshot_Grabber
             }
 
             screenshotListBox.Enabled = true; // before finishing function, re-enable the listbox
+        }
+
+        private void saveAllTBtn_Click(object sender, EventArgs e)
+        {
+            saveAllProgressbar.Style = ProgressBarStyle.Marquee;
+            folderDialog.SelectedPath = "";
+            if (screenshotListBox.Items.Count == 0)
+            {
+                return;
+            }
+            folderDialog.ShowDialog(); // show the dialog to select folder to save out to
+            if (folderDialog.SelectedPath == null || folderDialog.SelectedPath == "") // if the folder name was not set (aka user cancelled dialog)
+            {
+                return; // then the user has changed their mind, return
+            }
+            if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
+            {
+                MessageBox.Show("Unable to save screenshots. Folder chosen does not exist."); // show user message
+                return; // then return, as we can't save
+            }
+
+            screenshotListBox.Enabled = false; // disable the listbox so no new images can be selected, as this could cause issues.
+            string newPath = folderDialog.SelectedPath + "\\"; // set the path to save the files to, as per the users wishes
+
+            TurboHandler turboObject = new();
+            turboObject.configureTurbo(screenshotListBox.Items.Cast<String>().ToList(), folderLocation, newPath);
+
+            saveAllProgressbar.Style = ProgressBarStyle.Blocks;
+            screenshotListBox.Enabled = true;
         }
 
         private void selectFolderBtn_Click(object sender, EventArgs e) // opens a folder selector, runs when user clicks 'Select Folder'
@@ -238,7 +267,8 @@ namespace FFXV6_Screenshot_Grabber
                 selectFolderBtn.Enabled = false;
                 detectFolderBtn.Enabled = false;
                 resetWindow();
-            } else // if checkbox is unchecked
+            }
+            else // if checkbox is unchecked
             {
                 if (realtimeObject is not null) { realtimeObject.safeStop(); } // safely stop the realtime watcher 
                 helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");

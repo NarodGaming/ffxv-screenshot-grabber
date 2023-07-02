@@ -28,211 +28,223 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.screenshotListBox = new System.Windows.Forms.ListBox();
-            this.previewPictureBox = new System.Windows.Forms.PictureBox();
-            this.previewLabel = new System.Windows.Forms.Label();
-            this.expandLabel = new System.Windows.Forms.Label();
-            this.screenshotLabel = new System.Windows.Forms.Label();
-            this.saveAllProgressbar = new System.Windows.Forms.ProgressBar();
-            this.saveOneBtn = new System.Windows.Forms.Button();
-            this.saveAllBtn = new System.Windows.Forms.Button();
-            this.selectFolderBtn = new System.Windows.Forms.Button();
-            this.detectFolderBtn = new System.Windows.Forms.Button();
-            this.authVerLabel = new System.Windows.Forms.Label();
-            this.saveScreenshotDialog = new System.Windows.Forms.SaveFileDialog();
-            this.folderDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.updateChecker = new System.ComponentModel.BackgroundWorker();
-            this.realtimeCheckBox = new System.Windows.Forms.CheckBox();
-            this.helpTooltip = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.previewPictureBox)).BeginInit();
-            this.SuspendLayout();
+            components=new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
+            screenshotListBox=new ListBox();
+            previewPictureBox=new PictureBox();
+            previewLabel=new Label();
+            expandLabel=new Label();
+            screenshotLabel=new Label();
+            saveAllProgressbar=new ProgressBar();
+            saveOneBtn=new Button();
+            saveAllBtn=new Button();
+            selectFolderBtn=new Button();
+            detectFolderBtn=new Button();
+            authVerLabel=new Label();
+            saveScreenshotDialog=new SaveFileDialog();
+            folderDialog=new FolderBrowserDialog();
+            updateChecker=new System.ComponentModel.BackgroundWorker();
+            realtimeCheckBox=new CheckBox();
+            helpTooltip=new ToolTip(components);
+            saveAllTBtn=new Button();
+            ((System.ComponentModel.ISupportInitialize)previewPictureBox).BeginInit();
+            SuspendLayout();
             // 
             // screenshotListBox
             // 
-            this.screenshotListBox.FormattingEnabled = true;
-            this.screenshotListBox.ItemHeight = 15;
-            this.screenshotListBox.Location = new System.Drawing.Point(648, 22);
-            this.screenshotListBox.Name = "screenshotListBox";
-            this.screenshotListBox.Size = new System.Drawing.Size(322, 364);
-            this.screenshotListBox.TabIndex = 0;
-            this.screenshotListBox.SelectedIndexChanged += new System.EventHandler(this.screenshotListBox_SelectedIndexChanged);
+            screenshotListBox.FormattingEnabled=true;
+            screenshotListBox.ItemHeight=15;
+            screenshotListBox.Location=new Point(648, 22);
+            screenshotListBox.Name="screenshotListBox";
+            screenshotListBox.Size=new Size(322, 364);
+            screenshotListBox.TabIndex=0;
+            screenshotListBox.SelectedIndexChanged+=screenshotListBox_SelectedIndexChanged;
             // 
             // previewPictureBox
             // 
-            this.previewPictureBox.BackgroundImage = global::FFXV6_Screenshot_Grabber.Properties.Resources._00001333;
-            this.previewPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.previewPictureBox.Location = new System.Drawing.Point(2, 22);
-            this.previewPictureBox.Name = "previewPictureBox";
-            this.previewPictureBox.Size = new System.Drawing.Size(640, 360);
-            this.previewPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.previewPictureBox.TabIndex = 1;
-            this.previewPictureBox.TabStop = false;
-            this.helpTooltip.SetToolTip(this.previewPictureBox, "Your image preview for the selected image will appear here.");
-            this.previewPictureBox.Click += new System.EventHandler(this.previewPictureBox_Click);
+            previewPictureBox.BackgroundImage=Properties.Resources._00001333;
+            previewPictureBox.BackgroundImageLayout=ImageLayout.Zoom;
+            previewPictureBox.Location=new Point(2, 22);
+            previewPictureBox.Name="previewPictureBox";
+            previewPictureBox.Size=new Size(640, 360);
+            previewPictureBox.SizeMode=PictureBoxSizeMode.Zoom;
+            previewPictureBox.TabIndex=1;
+            previewPictureBox.TabStop=false;
+            helpTooltip.SetToolTip(previewPictureBox, "Your image preview for the selected image will appear here.");
+            previewPictureBox.Click+=previewPictureBox_Click;
             // 
             // previewLabel
             // 
-            this.previewLabel.AutoSize = true;
-            this.previewLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.previewLabel.Location = new System.Drawing.Point(2, 4);
-            this.previewLabel.Name = "previewLabel";
-            this.previewLabel.Size = new System.Drawing.Size(48, 15);
-            this.previewLabel.TabIndex = 2;
-            this.previewLabel.Text = "Preview";
+            previewLabel.AutoSize=true;
+            previewLabel.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            previewLabel.Location=new Point(2, 4);
+            previewLabel.Name="previewLabel";
+            previewLabel.Size=new Size(48, 15);
+            previewLabel.TabIndex=2;
+            previewLabel.Text="Preview";
             // 
             // expandLabel
             // 
-            this.expandLabel.AutoSize = true;
-            this.expandLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.expandLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.expandLabel.Location = new System.Drawing.Point(511, 4);
-            this.expandLabel.Name = "expandLabel";
-            this.expandLabel.Size = new System.Drawing.Size(131, 15);
-            this.expandLabel.TabIndex = 3;
-            this.expandLabel.Text = "(click image to expand)";
-            this.helpTooltip.SetToolTip(this.expandLabel, "Click here to open a larger window with your screenshot.");
+            expandLabel.AutoSize=true;
+            expandLabel.BackColor=SystemColors.Control;
+            expandLabel.ForeColor=SystemColors.ControlDarkDark;
+            expandLabel.Location=new Point(511, 4);
+            expandLabel.Name="expandLabel";
+            expandLabel.Size=new Size(131, 15);
+            expandLabel.TabIndex=3;
+            expandLabel.Text="(click image to expand)";
+            helpTooltip.SetToolTip(expandLabel, "Click here to open a larger window with your screenshot.");
             // 
             // screenshotLabel
             // 
-            this.screenshotLabel.AutoSize = true;
-            this.screenshotLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.screenshotLabel.Location = new System.Drawing.Point(648, 4);
-            this.screenshotLabel.Name = "screenshotLabel";
-            this.screenshotLabel.Size = new System.Drawing.Size(119, 15);
-            this.screenshotLabel.TabIndex = 4;
-            this.screenshotLabel.Text = "Screenshots: 000000";
-            this.helpTooltip.SetToolTip(this.screenshotLabel, "This is the number of screenshots shown in the list below.");
+            screenshotLabel.AutoSize=true;
+            screenshotLabel.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            screenshotLabel.Location=new Point(648, 4);
+            screenshotLabel.Name="screenshotLabel";
+            screenshotLabel.Size=new Size(119, 15);
+            screenshotLabel.TabIndex=4;
+            screenshotLabel.Text="Screenshots: 000000";
+            helpTooltip.SetToolTip(screenshotLabel, "This is the number of screenshots shown in the list below.");
             // 
             // saveAllProgressbar
             // 
-            this.saveAllProgressbar.BackColor = System.Drawing.SystemColors.Control;
-            this.saveAllProgressbar.Location = new System.Drawing.Point(164, 386);
-            this.saveAllProgressbar.Name = "saveAllProgressbar";
-            this.saveAllProgressbar.Size = new System.Drawing.Size(478, 23);
-            this.saveAllProgressbar.Step = 1;
-            this.saveAllProgressbar.TabIndex = 5;
-            this.helpTooltip.SetToolTip(this.saveAllProgressbar, "This progress bar shows the progress of the current \'Save All\' task.");
+            saveAllProgressbar.BackColor=SystemColors.Control;
+            saveAllProgressbar.Location=new Point(243, 386);
+            saveAllProgressbar.Name="saveAllProgressbar";
+            saveAllProgressbar.Size=new Size(399, 23);
+            saveAllProgressbar.Step=1;
+            saveAllProgressbar.TabIndex=5;
+            helpTooltip.SetToolTip(saveAllProgressbar, "This progress bar shows the progress of the current 'Save All' task.");
             // 
             // saveOneBtn
             // 
-            this.saveOneBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.saveOneBtn.Location = new System.Drawing.Point(2, 386);
-            this.saveOneBtn.Name = "saveOneBtn";
-            this.saveOneBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveOneBtn.TabIndex = 1;
-            this.saveOneBtn.Text = "Save One";
-            this.helpTooltip.SetToolTip(this.saveOneBtn, "This button saves the current screenshot to a location of your choosing.");
-            this.saveOneBtn.UseVisualStyleBackColor = true;
-            this.saveOneBtn.Click += new System.EventHandler(this.saveOneBtn_Click);
+            saveOneBtn.FlatStyle=FlatStyle.System;
+            saveOneBtn.Location=new Point(2, 386);
+            saveOneBtn.Name="saveOneBtn";
+            saveOneBtn.Size=new Size(75, 23);
+            saveOneBtn.TabIndex=1;
+            saveOneBtn.Text="Save One";
+            helpTooltip.SetToolTip(saveOneBtn, "This button saves the current screenshot to a location of your choosing.");
+            saveOneBtn.UseVisualStyleBackColor=true;
+            saveOneBtn.Click+=saveOneBtn_Click;
             // 
             // saveAllBtn
             // 
-            this.saveAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.saveAllBtn.Location = new System.Drawing.Point(83, 386);
-            this.saveAllBtn.Name = "saveAllBtn";
-            this.saveAllBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveAllBtn.TabIndex = 2;
-            this.saveAllBtn.Text = "Save All";
-            this.helpTooltip.SetToolTip(this.saveAllBtn, "This button saves all screenshots in the list to a chosen location.");
-            this.saveAllBtn.UseVisualStyleBackColor = true;
-            this.saveAllBtn.Click += new System.EventHandler(this.saveAllBtn_Click);
+            saveAllBtn.FlatStyle=FlatStyle.System;
+            saveAllBtn.Location=new Point(83, 386);
+            saveAllBtn.Name="saveAllBtn";
+            saveAllBtn.Size=new Size(75, 23);
+            saveAllBtn.TabIndex=2;
+            saveAllBtn.Text="Save All";
+            helpTooltip.SetToolTip(saveAllBtn, "This button saves all screenshots in the list to a chosen location.");
+            saveAllBtn.UseVisualStyleBackColor=true;
+            saveAllBtn.Click+=saveAllBtn_Click;
             // 
             // selectFolderBtn
             // 
-            this.selectFolderBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.selectFolderBtn.Location = new System.Drawing.Point(648, 388);
-            this.selectFolderBtn.Name = "selectFolderBtn";
-            this.selectFolderBtn.Size = new System.Drawing.Size(106, 23);
-            this.selectFolderBtn.TabIndex = 3;
-            this.selectFolderBtn.Text = "Select Folder";
-            this.helpTooltip.SetToolTip(this.selectFolderBtn, "This button allows you to change the current screenshot directory.");
-            this.selectFolderBtn.UseVisualStyleBackColor = true;
-            this.selectFolderBtn.Click += new System.EventHandler(this.selectFolderBtn_Click);
+            selectFolderBtn.FlatStyle=FlatStyle.System;
+            selectFolderBtn.Location=new Point(648, 388);
+            selectFolderBtn.Name="selectFolderBtn";
+            selectFolderBtn.Size=new Size(106, 23);
+            selectFolderBtn.TabIndex=3;
+            selectFolderBtn.Text="Select Folder";
+            helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
+            selectFolderBtn.UseVisualStyleBackColor=true;
+            selectFolderBtn.Click+=selectFolderBtn_Click;
             // 
             // detectFolderBtn
             // 
-            this.detectFolderBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.detectFolderBtn.Location = new System.Drawing.Point(760, 388);
-            this.detectFolderBtn.Name = "detectFolderBtn";
-            this.detectFolderBtn.Size = new System.Drawing.Size(106, 23);
-            this.detectFolderBtn.TabIndex = 4;
-            this.detectFolderBtn.Text = "Detect Folder";
-            this.helpTooltip.SetToolTip(this.detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically" +
-        " this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
-            this.detectFolderBtn.UseVisualStyleBackColor = true;
-            this.detectFolderBtn.Click += new System.EventHandler(this.detectFolderBtn_Click);
+            detectFolderBtn.FlatStyle=FlatStyle.System;
+            detectFolderBtn.Location=new Point(760, 388);
+            detectFolderBtn.Name="detectFolderBtn";
+            detectFolderBtn.Size=new Size(106, 23);
+            detectFolderBtn.TabIndex=4;
+            detectFolderBtn.Text="Detect Folder";
+            helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
+            detectFolderBtn.UseVisualStyleBackColor=true;
+            detectFolderBtn.Click+=detectFolderBtn_Click;
             // 
             // authVerLabel
             // 
-            this.authVerLabel.AutoSize = true;
-            this.authVerLabel.Location = new System.Drawing.Point(872, 392);
-            this.authVerLabel.Name = "authVerLabel";
-            this.authVerLabel.Size = new System.Drawing.Size(98, 15);
-            this.authVerLabel.TabIndex = 10;
-            this.authVerLabel.Text = "by Narod (V1.2.0)";
-            this.helpTooltip.SetToolTip(this.authVerLabel, "Narod\'s FFXV Screenshot Grabber.\r\n\r\nby Narod");
+            authVerLabel.AutoSize=true;
+            authVerLabel.Location=new Point(872, 392);
+            authVerLabel.Name="authVerLabel";
+            authVerLabel.Size=new Size(98, 15);
+            authVerLabel.TabIndex=10;
+            authVerLabel.Text="by Narod (V1.2.0)";
+            helpTooltip.SetToolTip(authVerLabel, "Narod's FFXV Screenshot Grabber.\r\n\r\nby Narod");
             // 
             // saveScreenshotDialog
             // 
-            this.saveScreenshotDialog.DefaultExt = "jpg";
-            this.saveScreenshotDialog.Filter = "JPG file|*.jpg";
-            this.saveScreenshotDialog.RestoreDirectory = true;
-            this.saveScreenshotDialog.Title = "Choose where to save this screenshot...";
+            saveScreenshotDialog.DefaultExt="jpg";
+            saveScreenshotDialog.Filter="JPG file|*.jpg";
+            saveScreenshotDialog.RestoreDirectory=true;
+            saveScreenshotDialog.Title="Choose where to save this screenshot...";
             // 
             // folderDialog
             // 
-            this.folderDialog.Description = "Please select a folder...";
+            folderDialog.Description="Please select a folder...";
             // 
             // updateChecker
             // 
-            this.updateChecker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.updateChecker_DoWork);
-            this.updateChecker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.updateChecker_RunWorkerCompleted);
+            updateChecker.DoWork+=updateChecker_DoWork;
+            updateChecker.RunWorkerCompleted+=updateChecker_RunWorkerCompleted;
             // 
             // realtimeCheckBox
             // 
-            this.realtimeCheckBox.AutoSize = true;
-            this.realtimeCheckBox.Cursor = System.Windows.Forms.Cursors.Help;
-            this.realtimeCheckBox.Location = new System.Drawing.Point(864, 3);
-            this.realtimeCheckBox.Name = "realtimeCheckBox";
-            this.realtimeCheckBox.Size = new System.Drawing.Size(106, 19);
-            this.realtimeCheckBox.TabIndex = 11;
-            this.realtimeCheckBox.Text = "Realtime Mode";
-            this.helpTooltip.SetToolTip(this.realtimeCheckBox, "Realtime mode allows the utility to automatically save screenshots as the game cr" +
-        "eates them.");
-            this.realtimeCheckBox.UseVisualStyleBackColor = true;
-            this.realtimeCheckBox.CheckedChanged += new System.EventHandler(this.realtimeCheckBox_CheckedChanged);
+            realtimeCheckBox.AutoSize=true;
+            realtimeCheckBox.Cursor=Cursors.Help;
+            realtimeCheckBox.Location=new Point(864, 3);
+            realtimeCheckBox.Name="realtimeCheckBox";
+            realtimeCheckBox.Size=new Size(106, 19);
+            realtimeCheckBox.TabIndex=11;
+            realtimeCheckBox.Text="Realtime Mode";
+            helpTooltip.SetToolTip(realtimeCheckBox, "Realtime mode allows the utility to automatically save screenshots as the game creates them.");
+            realtimeCheckBox.UseVisualStyleBackColor=true;
+            realtimeCheckBox.CheckedChanged+=realtimeCheckBox_CheckedChanged;
             // 
             // helpTooltip
             // 
-            this.helpTooltip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.helpTooltip.ToolTipTitle = "Help";
+            helpTooltip.ToolTipIcon=ToolTipIcon.Info;
+            helpTooltip.ToolTipTitle="Help";
+            // 
+            // saveAllTBtn
+            // 
+            saveAllTBtn.FlatStyle=FlatStyle.System;
+            saveAllTBtn.Location=new Point(164, 386);
+            saveAllTBtn.Name="saveAllTBtn";
+            saveAllTBtn.Size=new Size(75, 23);
+            saveAllTBtn.TabIndex=12;
+            saveAllTBtn.Text="Save All (T)";
+            helpTooltip.SetToolTip(saveAllTBtn, resources.GetString("saveAllTBtn.ToolTip"));
+            saveAllTBtn.UseVisualStyleBackColor=true;
+            saveAllTBtn.Click+=saveAllTBtn_Click;
             // 
             // mainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 412);
-            this.Controls.Add(this.realtimeCheckBox);
-            this.Controls.Add(this.authVerLabel);
-            this.Controls.Add(this.detectFolderBtn);
-            this.Controls.Add(this.selectFolderBtn);
-            this.Controls.Add(this.saveAllBtn);
-            this.Controls.Add(this.saveOneBtn);
-            this.Controls.Add(this.saveAllProgressbar);
-            this.Controls.Add(this.screenshotLabel);
-            this.Controls.Add(this.expandLabel);
-            this.Controls.Add(this.previewLabel);
-            this.Controls.Add(this.previewPictureBox);
-            this.Controls.Add(this.screenshotListBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "mainWindow";
-            this.Text = "Narod\'s FFXV Screenshot Grabber";
-            ((System.ComponentModel.ISupportInitialize)(this.previewPictureBox)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions=new SizeF(7F, 15F);
+            AutoScaleMode=AutoScaleMode.Font;
+            ClientSize=new Size(972, 412);
+            Controls.Add(saveAllTBtn);
+            Controls.Add(realtimeCheckBox);
+            Controls.Add(authVerLabel);
+            Controls.Add(detectFolderBtn);
+            Controls.Add(selectFolderBtn);
+            Controls.Add(saveAllBtn);
+            Controls.Add(saveOneBtn);
+            Controls.Add(saveAllProgressbar);
+            Controls.Add(screenshotLabel);
+            Controls.Add(expandLabel);
+            Controls.Add(previewLabel);
+            Controls.Add(previewPictureBox);
+            Controls.Add(screenshotListBox);
+            FormBorderStyle=FormBorderStyle.FixedSingle;
+            MaximizeBox=false;
+            Name="mainWindow";
+            Text="Narod's FFXV Screenshot Grabber";
+            ((System.ComponentModel.ISupportInitialize)previewPictureBox).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -253,5 +265,6 @@
         private System.ComponentModel.BackgroundWorker updateChecker;
         private CheckBox realtimeCheckBox;
         private ToolTip helpTooltip;
+        private Button saveAllTBtn;
     }
 }
