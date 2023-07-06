@@ -153,7 +153,6 @@ namespace FFXV6_Screenshot_Grabber
             string newPath = folderDialog.SelectedPath + "\\"; // set the path to save the files to, as per the users wishes
             saveAllProgressbar.Maximum = screenshotListBox.Items.Count; // set the maximum value of the progressbar to the number of screenshots to save. minimum is always 0 and step is 1.
 
-
             foreach (string listBoxItem in screenshotListBox.Items) // for each listbox item (screenshot) in listbox (total screenshots)
             {
                 string fileName = newPath + listBoxItem.Split(".ss")[0] + ".jpg"; // gets a full file path to save the new ss to. e.g. listbox may say '00001.ss', this would change it to 'C:\screenshotsaves\00001.jpg' (if folder specified was 'C:\screenshotsaves')
@@ -168,7 +167,6 @@ namespace FFXV6_Screenshot_Grabber
 
         private void saveAllTBtn_Click(object sender, EventArgs e)
         {
-            saveAllProgressbar.Style = ProgressBarStyle.Marquee;
             folderDialog.SelectedPath = "";
             if (screenshotListBox.Items.Count == 0)
             {
@@ -188,11 +186,17 @@ namespace FFXV6_Screenshot_Grabber
             screenshotListBox.Enabled = false; // disable the listbox so no new images can be selected, as this could cause issues.
             string newPath = folderDialog.SelectedPath + "\\"; // set the path to save the files to, as per the users wishes
 
-            TurboHandler turboObject = new();
-            turboObject.configureTurbo(screenshotListBox.Items.Cast<String>().ToList(), folderLocation, newPath);
+            saveAllProgressbar.Maximum = 100; // the workers will report percentages rather than the screenshot number they have completed
 
-            saveAllProgressbar.Style = ProgressBarStyle.Blocks;
+            TurboHandler turboObject = new();
+            turboObject.configureTurbo(screenshotListBox.Items.Cast<String>().ToList(), folderLocation, newPath, this);
+
             screenshotListBox.Enabled = true;
+        }
+
+        public void turboReportProgress(object sender, ProgressChangedEventArgs e)
+        {
+            saveAllProgressbar.Value = e.ProgressPercentage;
         }
 
         private void selectFolderBtn_Click(object sender, EventArgs e) // opens a folder selector, runs when user clicks 'Select Folder'

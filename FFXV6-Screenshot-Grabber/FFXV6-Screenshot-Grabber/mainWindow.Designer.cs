@@ -133,7 +133,7 @@
             saveAllBtn.Size=new Size(40, 25);
             saveAllBtn.TabIndex=2;
             saveAllBtn.Text="All";
-            helpTooltip.SetToolTip(saveAllBtn, "This button saves all screenshots in the list to a chosen location.");
+            helpTooltip.SetToolTip(saveAllBtn, "This button saves all screenshots in the list to a chosen location.\r\n\r\nCompared to 'Turbo' mode, it's slower but shows a preview\r\nof the images as they are saved.");
             saveAllBtn.UseVisualStyleBackColor=true;
             saveAllBtn.Click+=saveAllBtn_Click;
             // 
@@ -219,7 +219,7 @@
             saveAllTBtn.Size=new Size(73, 25);
             saveAllTBtn.TabIndex=12;
             saveAllTBtn.Text="All (Turbo)";
-            helpTooltip.SetToolTip(saveAllTBtn, "This button saves all screenshots in the list to a chosen location.\r\n\r\nIt does this in \"Turbo\" mode, which speeds up the conversion\r\nsignificantly (depends on PC speed, can be up to ~100x).");
+            helpTooltip.SetToolTip(saveAllTBtn, "This button saves all screenshots in the list to a chosen location.\r\n\r\nIt does this in \"Turbo\" mode, which is very fast but doesn't\r\nshow previews like the non-Turbo mode does.");
             saveAllTBtn.UseVisualStyleBackColor=true;
             saveAllTBtn.Click+=saveAllTBtn_Click;
             // 
