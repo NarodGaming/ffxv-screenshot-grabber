@@ -267,8 +267,8 @@ namespace FFXV6_Screenshot_Grabber
                 }
                 realtimeObject = new(this, folderDialog.SelectedPath); // create the new realtime watcher object
                 screenshotListBox.Items.Clear(); // clear the items in this listbox, as realtime folder may be different to current directory
-                helpTooltip.SetToolTip(selectFolderBtn, "You must disable Realtime mode to change the folder location.");
-                helpTooltip.SetToolTip(detectFolderBtn, "You must disable Realtime mode to change the folder location.");
+                helpTooltip.SetToolTip(selectFolderBtn, "You must disable Realtime mode to change the folder location."); // tooltips don't actually work on disabled buttons
+                helpTooltip.SetToolTip(detectFolderBtn, "You must disable Realtime mode to change the folder location."); // tooltips don't actually work on disabled buttons
                 selectFolderBtn.Enabled = false;
                 detectFolderBtn.Enabled = false;
                 resetWindow();
