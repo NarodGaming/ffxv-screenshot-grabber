@@ -52,10 +52,11 @@
             // screenshotListBox
             // 
             screenshotListBox.FormattingEnabled=true;
-            screenshotListBox.ItemHeight=15;
-            screenshotListBox.Location=new Point(648, 22);
+            screenshotListBox.ItemHeight=16;
+            screenshotListBox.Location=new Point(778, 23);
+            screenshotListBox.Margin=new Padding(4, 3, 4, 3);
             screenshotListBox.Name="screenshotListBox";
-            screenshotListBox.Size=new Size(322, 364);
+            screenshotListBox.Size=new Size(192, 436);
             screenshotListBox.TabIndex=0;
             screenshotListBox.SelectedIndexChanged+=screenshotListBox_SelectedIndexChanged;
             // 
@@ -63,9 +64,10 @@
             // 
             previewPictureBox.BackgroundImage=Properties.Resources._00001333;
             previewPictureBox.BackgroundImageLayout=ImageLayout.Zoom;
-            previewPictureBox.Location=new Point(2, 22);
+            previewPictureBox.Location=new Point(2, 23);
+            previewPictureBox.Margin=new Padding(4, 3, 4, 3);
             previewPictureBox.Name="previewPictureBox";
-            previewPictureBox.Size=new Size(640, 360);
+            previewPictureBox.Size=new Size(768, 432);
             previewPictureBox.SizeMode=PictureBoxSizeMode.Zoom;
             previewPictureBox.TabIndex=1;
             previewPictureBox.TabStop=false;
@@ -77,6 +79,7 @@
             previewLabel.AutoSize=true;
             previewLabel.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             previewLabel.Location=new Point(2, 4);
+            previewLabel.Margin=new Padding(4, 0, 4, 0);
             previewLabel.Name="previewLabel";
             previewLabel.Size=new Size(48, 15);
             previewLabel.TabIndex=2;
@@ -88,8 +91,9 @@
             expandLabel.BackColor=SystemColors.Control;
             expandLabel.ForeColor=SystemColors.ControlDarkDark;
             expandLabel.Location=new Point(511, 4);
+            expandLabel.Margin=new Padding(4, 0, 4, 0);
             expandLabel.Name="expandLabel";
-            expandLabel.Size=new Size(131, 15);
+            expandLabel.Size=new Size(130, 16);
             expandLabel.TabIndex=3;
             expandLabel.Text="(click image to expand)";
             helpTooltip.SetToolTip(expandLabel, "Click here to open a larger window with your screenshot.");
@@ -98,7 +102,8 @@
             // 
             screenshotLabel.AutoSize=true;
             screenshotLabel.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            screenshotLabel.Location=new Point(648, 4);
+            screenshotLabel.Location=new Point(733, 5);
+            screenshotLabel.Margin=new Padding(4, 0, 4, 0);
             screenshotLabel.Name="screenshotLabel";
             screenshotLabel.Size=new Size(119, 15);
             screenshotLabel.TabIndex=4;
@@ -108,9 +113,10 @@
             // saveAllProgressbar
             // 
             saveAllProgressbar.BackColor=SystemColors.Control;
-            saveAllProgressbar.Location=new Point(266, 386);
+            saveAllProgressbar.Location=new Point(252, 461);
+            saveAllProgressbar.Margin=new Padding(4, 3, 4, 3);
             saveAllProgressbar.Name="saveAllProgressbar";
-            saveAllProgressbar.Size=new Size(376, 23);
+            saveAllProgressbar.Size=new Size(376, 25);
             saveAllProgressbar.Step=1;
             saveAllProgressbar.TabIndex=5;
             helpTooltip.SetToolTip(saveAllProgressbar, "This progress bar shows the progress of the current 'Save All' task.");
@@ -118,9 +124,10 @@
             // saveOneBtn
             // 
             saveOneBtn.FlatStyle=FlatStyle.System;
-            saveOneBtn.Location=new Point(2, 386);
+            saveOneBtn.Location=new Point(2, 461);
+            saveOneBtn.Margin=new Padding(4, 3, 4, 3);
             saveOneBtn.Name="saveOneBtn";
-            saveOneBtn.Size=new Size(75, 23);
+            saveOneBtn.Size=new Size(75, 25);
             saveOneBtn.TabIndex=1;
             saveOneBtn.Text="Save One";
             helpTooltip.SetToolTip(saveOneBtn, "This button saves the current screenshot to a location of your choosing.");
@@ -130,9 +137,10 @@
             // saveAllBtn
             // 
             saveAllBtn.FlatStyle=FlatStyle.System;
-            saveAllBtn.Location=new Point(83, 386);
+            saveAllBtn.Location=new Point(78, 461);
+            saveAllBtn.Margin=new Padding(4, 3, 4, 3);
             saveAllBtn.Name="saveAllBtn";
-            saveAllBtn.Size=new Size(75, 23);
+            saveAllBtn.Size=new Size(75, 25);
             saveAllBtn.TabIndex=2;
             saveAllBtn.Text="Save All";
             helpTooltip.SetToolTip(saveAllBtn, "This button saves all screenshots in the list to a chosen location.");
@@ -142,9 +150,10 @@
             // selectFolderBtn
             // 
             selectFolderBtn.FlatStyle=FlatStyle.System;
-            selectFolderBtn.Location=new Point(648, 388);
+            selectFolderBtn.Location=new Point(632, 461);
+            selectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             selectFolderBtn.Name="selectFolderBtn";
-            selectFolderBtn.Size=new Size(106, 23);
+            selectFolderBtn.Size=new Size(106, 25);
             selectFolderBtn.TabIndex=3;
             selectFolderBtn.Text="Select Folder";
             helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
@@ -154,9 +163,10 @@
             // detectFolderBtn
             // 
             detectFolderBtn.FlatStyle=FlatStyle.System;
-            detectFolderBtn.Location=new Point(760, 388);
+            detectFolderBtn.Location=new Point(746, 461);
+            detectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             detectFolderBtn.Name="detectFolderBtn";
-            detectFolderBtn.Size=new Size(106, 23);
+            detectFolderBtn.Size=new Size(106, 25);
             detectFolderBtn.TabIndex=4;
             detectFolderBtn.Text="Detect Folder";
             helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
@@ -166,9 +176,10 @@
             // authVerLabel
             // 
             authVerLabel.AutoSize=true;
-            authVerLabel.Location=new Point(872, 392);
+            authVerLabel.Location=new Point(872, 468);
+            authVerLabel.Margin=new Padding(4, 0, 4, 0);
             authVerLabel.Name="authVerLabel";
-            authVerLabel.Size=new Size(98, 15);
+            authVerLabel.Size=new Size(97, 16);
             authVerLabel.TabIndex=10;
             authVerLabel.Text="by Narod (V1.2.0)";
             helpTooltip.SetToolTip(authVerLabel, "Narod's FFXV Screenshot Grabber.\r\n\r\nby Narod");
@@ -194,8 +205,9 @@
             realtimeCheckBox.AutoSize=true;
             realtimeCheckBox.Cursor=Cursors.Help;
             realtimeCheckBox.Location=new Point(864, 3);
+            realtimeCheckBox.Margin=new Padding(4, 3, 4, 3);
             realtimeCheckBox.Name="realtimeCheckBox";
-            realtimeCheckBox.Size=new Size(106, 19);
+            realtimeCheckBox.Size=new Size(105, 20);
             realtimeCheckBox.TabIndex=11;
             realtimeCheckBox.Text="Realtime Mode";
             helpTooltip.SetToolTip(realtimeCheckBox, "Realtime mode allows the utility to automatically save screenshots as the game creates them.");
@@ -210,9 +222,10 @@
             // saveAllTBtn
             // 
             saveAllTBtn.FlatStyle=FlatStyle.System;
-            saveAllTBtn.Location=new Point(164, 386);
+            saveAllTBtn.Location=new Point(154, 461);
+            saveAllTBtn.Margin=new Padding(4, 3, 4, 3);
             saveAllTBtn.Name="saveAllTBtn";
-            saveAllTBtn.Size=new Size(96, 23);
+            saveAllTBtn.Size=new Size(96, 25);
             saveAllTBtn.TabIndex=12;
             saveAllTBtn.Text="Save All Turbo";
             helpTooltip.SetToolTip(saveAllTBtn, "This button saves all screenshots in the list to a chosen location.\r\n\r\nIt does this in \"Turbo\" mode, which speeds up the conversion\r\nsignificantly (depends on PC speed, can be up to ~100x).");
@@ -221,9 +234,9 @@
             // 
             // mainWindow
             // 
-            AutoScaleDimensions=new SizeF(7F, 15F);
+            AutoScaleDimensions=new SizeF(7F, 16F);
             AutoScaleMode=AutoScaleMode.Font;
-            ClientSize=new Size(972, 412);
+            ClientSize=new Size(972, 489);
             Controls.Add(saveAllTBtn);
             Controls.Add(realtimeCheckBox);
             Controls.Add(authVerLabel);
@@ -237,7 +250,9 @@
             Controls.Add(previewLabel);
             Controls.Add(previewPictureBox);
             Controls.Add(screenshotListBox);
+            Font=new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle=FormBorderStyle.FixedSingle;
+            Margin=new Padding(4, 3, 4, 3);
             MaximizeBox=false;
             Name="mainWindow";
             Text="Narod's FFXV Screenshot Grabber";
