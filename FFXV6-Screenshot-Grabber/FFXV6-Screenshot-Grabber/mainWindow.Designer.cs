@@ -45,14 +45,18 @@
             realtimeCheckBox=new CheckBox();
             helpTooltip=new ToolTip(components);
             saveAllTBtn=new Button();
+            saveGroupBox=new GroupBox();
+            folderGroupBox=new GroupBox();
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).BeginInit();
+            saveGroupBox.SuspendLayout();
+            folderGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // screenshotListBox
             // 
             screenshotListBox.FormattingEnabled=true;
             screenshotListBox.ItemHeight=16;
-            screenshotListBox.Location=new Point(778, 23);
+            screenshotListBox.Location=new Point(773, 23);
             screenshotListBox.Margin=new Padding(4, 3, 4, 3);
             screenshotListBox.Name="screenshotListBox";
             screenshotListBox.Size=new Size(192, 436);
@@ -88,7 +92,7 @@
             // 
             screenshotLabel.AutoSize=true;
             screenshotLabel.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            screenshotLabel.Location=new Point(751, 5);
+            screenshotLabel.Location=new Point(773, 4);
             screenshotLabel.Margin=new Padding(4, 0, 4, 0);
             screenshotLabel.Name="screenshotLabel";
             screenshotLabel.Size=new Size(119, 15);
@@ -99,10 +103,10 @@
             // saveAllProgressbar
             // 
             saveAllProgressbar.BackColor=SystemColors.Control;
-            saveAllProgressbar.Location=new Point(252, 461);
+            saveAllProgressbar.Location=new Point(167, 463);
             saveAllProgressbar.Margin=new Padding(4, 3, 4, 3);
             saveAllProgressbar.Name="saveAllProgressbar";
-            saveAllProgressbar.Size=new Size(390, 25);
+            saveAllProgressbar.Size=new Size(475, 31);
             saveAllProgressbar.Step=1;
             saveAllProgressbar.TabIndex=5;
             helpTooltip.SetToolTip(saveAllProgressbar, "This progress bar shows the progress of the current 'Save All' task.");
@@ -110,12 +114,12 @@
             // saveOneBtn
             // 
             saveOneBtn.FlatStyle=FlatStyle.System;
-            saveOneBtn.Location=new Point(2, 461);
+            saveOneBtn.Location=new Point(3, 15);
             saveOneBtn.Margin=new Padding(4, 3, 4, 3);
             saveOneBtn.Name="saveOneBtn";
-            saveOneBtn.Size=new Size(75, 25);
+            saveOneBtn.Size=new Size(40, 25);
             saveOneBtn.TabIndex=1;
-            saveOneBtn.Text="Save One";
+            saveOneBtn.Text="One";
             helpTooltip.SetToolTip(saveOneBtn, "This button saves the current screenshot to a location of your choosing.");
             saveOneBtn.UseVisualStyleBackColor=true;
             saveOneBtn.Click+=saveOneBtn_Click;
@@ -123,12 +127,12 @@
             // saveAllBtn
             // 
             saveAllBtn.FlatStyle=FlatStyle.System;
-            saveAllBtn.Location=new Point(78, 461);
+            saveAllBtn.Location=new Point(42, 15);
             saveAllBtn.Margin=new Padding(4, 3, 4, 3);
             saveAllBtn.Name="saveAllBtn";
-            saveAllBtn.Size=new Size(75, 25);
+            saveAllBtn.Size=new Size(40, 25);
             saveAllBtn.TabIndex=2;
-            saveAllBtn.Text="Save All";
+            saveAllBtn.Text="All";
             helpTooltip.SetToolTip(saveAllBtn, "This button saves all screenshots in the list to a chosen location.");
             saveAllBtn.UseVisualStyleBackColor=true;
             saveAllBtn.Click+=saveAllBtn_Click;
@@ -136,12 +140,12 @@
             // selectFolderBtn
             // 
             selectFolderBtn.FlatStyle=FlatStyle.System;
-            selectFolderBtn.Location=new Point(646, 461);
+            selectFolderBtn.Location=new Point(3, 15);
             selectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             selectFolderBtn.Name="selectFolderBtn";
-            selectFolderBtn.Size=new Size(106, 25);
+            selectFolderBtn.Size=new Size(50, 25);
             selectFolderBtn.TabIndex=3;
-            selectFolderBtn.Text="Select Folder";
+            selectFolderBtn.Text="Select";
             helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
             selectFolderBtn.UseVisualStyleBackColor=true;
             selectFolderBtn.Click+=selectFolderBtn_Click;
@@ -149,12 +153,12 @@
             // detectFolderBtn
             // 
             detectFolderBtn.FlatStyle=FlatStyle.System;
-            detectFolderBtn.Location=new Point(751, 461);
+            detectFolderBtn.Location=new Point(52, 15);
             detectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             detectFolderBtn.Name="detectFolderBtn";
-            detectFolderBtn.Size=new Size(106, 25);
+            detectFolderBtn.Size=new Size(50, 25);
             detectFolderBtn.TabIndex=4;
-            detectFolderBtn.Text="Detect Folder";
+            detectFolderBtn.Text="Detect";
             helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
             detectFolderBtn.UseVisualStyleBackColor=true;
             detectFolderBtn.Click+=detectFolderBtn_Click;
@@ -162,12 +166,12 @@
             // authVerLabel
             // 
             authVerLabel.AutoSize=true;
-            authVerLabel.Location=new Point(873, 3);
+            authVerLabel.Location=new Point(867, 482);
             authVerLabel.Margin=new Padding(4, 0, 4, 0);
             authVerLabel.Name="authVerLabel";
-            authVerLabel.Size=new Size(97, 16);
+            authVerLabel.Size=new Size(98, 16);
             authVerLabel.TabIndex=10;
-            authVerLabel.Text="by Narod (V1.2.0)";
+            authVerLabel.Text="by Narod (Vx.x.x)";
             helpTooltip.SetToolTip(authVerLabel, "Narod's FFXV Screenshot Grabber.\r\n\r\nby Narod");
             // 
             // saveScreenshotDialog
@@ -190,7 +194,7 @@
             // 
             realtimeCheckBox.AutoSize=true;
             realtimeCheckBox.Cursor=Cursors.Help;
-            realtimeCheckBox.Location=new Point(865, 466);
+            realtimeCheckBox.Location=new Point(761, 463);
             realtimeCheckBox.Margin=new Padding(4, 3, 4, 3);
             realtimeCheckBox.Name="realtimeCheckBox";
             realtimeCheckBox.Size=new Size(105, 20);
@@ -208,32 +212,52 @@
             // saveAllTBtn
             // 
             saveAllTBtn.FlatStyle=FlatStyle.System;
-            saveAllTBtn.Location=new Point(154, 461);
+            saveAllTBtn.Location=new Point(81, 15);
             saveAllTBtn.Margin=new Padding(4, 3, 4, 3);
             saveAllTBtn.Name="saveAllTBtn";
-            saveAllTBtn.Size=new Size(96, 25);
+            saveAllTBtn.Size=new Size(73, 25);
             saveAllTBtn.TabIndex=12;
-            saveAllTBtn.Text="Save All Turbo";
+            saveAllTBtn.Text="All (Turbo)";
             helpTooltip.SetToolTip(saveAllTBtn, "This button saves all screenshots in the list to a chosen location.\r\n\r\nIt does this in \"Turbo\" mode, which speeds up the conversion\r\nsignificantly (depends on PC speed, can be up to ~100x).");
             saveAllTBtn.UseVisualStyleBackColor=true;
             saveAllTBtn.Click+=saveAllTBtn_Click;
+            // 
+            // saveGroupBox
+            // 
+            saveGroupBox.Controls.Add(saveOneBtn);
+            saveGroupBox.Controls.Add(saveAllTBtn);
+            saveGroupBox.Controls.Add(saveAllBtn);
+            saveGroupBox.Location=new Point(2, 452);
+            saveGroupBox.Name="saveGroupBox";
+            saveGroupBox.Size=new Size(158, 46);
+            saveGroupBox.TabIndex=13;
+            saveGroupBox.TabStop=false;
+            saveGroupBox.Text="Save";
+            // 
+            // folderGroupBox
+            // 
+            folderGroupBox.Controls.Add(selectFolderBtn);
+            folderGroupBox.Controls.Add(detectFolderBtn);
+            folderGroupBox.Location=new Point(649, 453);
+            folderGroupBox.Name="folderGroupBox";
+            folderGroupBox.Size=new Size(105, 45);
+            folderGroupBox.TabIndex=14;
+            folderGroupBox.TabStop=false;
+            folderGroupBox.Text="Folder";
             // 
             // mainWindow
             // 
             AutoScaleDimensions=new SizeF(7F, 16F);
             AutoScaleMode=AutoScaleMode.Font;
-            ClientSize=new Size(972, 489);
-            Controls.Add(saveAllTBtn);
+            ClientSize=new Size(967, 501);
+            Controls.Add(previewPictureBox);
+            Controls.Add(folderGroupBox);
+            Controls.Add(saveGroupBox);
             Controls.Add(realtimeCheckBox);
             Controls.Add(authVerLabel);
-            Controls.Add(detectFolderBtn);
-            Controls.Add(selectFolderBtn);
-            Controls.Add(saveAllBtn);
-            Controls.Add(saveOneBtn);
             Controls.Add(saveAllProgressbar);
             Controls.Add(screenshotLabel);
             Controls.Add(previewLabel);
-            Controls.Add(previewPictureBox);
             Controls.Add(screenshotListBox);
             Font=new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle=FormBorderStyle.FixedSingle;
@@ -242,6 +266,8 @@
             Name="mainWindow";
             Text="Narod's FFXV Screenshot Grabber";
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).EndInit();
+            saveGroupBox.ResumeLayout(false);
+            folderGroupBox.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -264,5 +290,7 @@
         private CheckBox realtimeCheckBox;
         private ToolTip helpTooltip;
         private Button saveAllTBtn;
+        private GroupBox saveGroupBox;
+        private GroupBox folderGroupBox;
     }
 }

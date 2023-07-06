@@ -30,6 +30,14 @@ namespace FFXV6_Screenshot_Grabber
             {
                 nControl.BackColor = Color.Black; // set back colour to black (BROKEN, it appears the control doesn't support colour changing)
             }
+            else if (nControl is GroupBox)
+            {
+                nControl.ForeColor = Color.White; // set fore colour (text) to white
+                foreach (Control c in nControl.Controls) // as a group box can contain other controls, we need to iterate through those controls
+                {
+                    AddDarkMode(c); // recursively call this function for the control
+                }
+            }
         }
 
         private static bool ShouldUseDarkMode() // private function called to run registry checks
