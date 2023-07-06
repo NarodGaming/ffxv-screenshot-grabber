@@ -59,7 +59,7 @@
             screenshotListBox.Location=new Point(773, 23);
             screenshotListBox.Margin=new Padding(4, 3, 4, 3);
             screenshotListBox.Name="screenshotListBox";
-            screenshotListBox.Size=new Size(192, 436);
+            screenshotListBox.Size=new Size(119, 452);
             screenshotListBox.TabIndex=0;
             screenshotListBox.SelectedIndexChanged+=screenshotListBox_SelectedIndexChanged;
             // 
@@ -92,7 +92,7 @@
             // 
             screenshotLabel.AutoSize=true;
             screenshotLabel.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            screenshotLabel.Location=new Point(773, 4);
+            screenshotLabel.Location=new Point(773, 5);
             screenshotLabel.Margin=new Padding(4, 0, 4, 0);
             screenshotLabel.Name="screenshotLabel";
             screenshotLabel.Size=new Size(119, 15);
@@ -143,7 +143,7 @@
             selectFolderBtn.Location=new Point(3, 15);
             selectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             selectFolderBtn.Name="selectFolderBtn";
-            selectFolderBtn.Size=new Size(50, 25);
+            selectFolderBtn.Size=new Size(55, 25);
             selectFolderBtn.TabIndex=3;
             selectFolderBtn.Text="Select";
             helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
@@ -153,10 +153,10 @@
             // detectFolderBtn
             // 
             detectFolderBtn.FlatStyle=FlatStyle.System;
-            detectFolderBtn.Location=new Point(52, 15);
+            detectFolderBtn.Location=new Point(57, 15);
             detectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             detectFolderBtn.Name="detectFolderBtn";
-            detectFolderBtn.Size=new Size(50, 25);
+            detectFolderBtn.Size=new Size(55, 25);
             detectFolderBtn.TabIndex=4;
             detectFolderBtn.Text="Detect";
             helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
@@ -166,10 +166,11 @@
             // authVerLabel
             // 
             authVerLabel.AutoSize=true;
-            authVerLabel.Location=new Point(867, 482);
+            authVerLabel.Font=new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            authVerLabel.Location=new Point(684, -1);
             authVerLabel.Margin=new Padding(4, 0, 4, 0);
             authVerLabel.Name="authVerLabel";
-            authVerLabel.Size=new Size(98, 16);
+            authVerLabel.Size=new Size(86, 15);
             authVerLabel.TabIndex=10;
             authVerLabel.Text="by Narod (Vx.x.x)";
             helpTooltip.SetToolTip(authVerLabel, "Narod's FFXV Screenshot Grabber.\r\n\r\nby Narod");
@@ -194,7 +195,7 @@
             // 
             realtimeCheckBox.AutoSize=true;
             realtimeCheckBox.Cursor=Cursors.Help;
-            realtimeCheckBox.Location=new Point(761, 463);
+            realtimeCheckBox.Location=new Point(773, 478);
             realtimeCheckBox.Margin=new Padding(4, 3, 4, 3);
             realtimeCheckBox.Name="realtimeCheckBox";
             realtimeCheckBox.Size=new Size(105, 20);
@@ -240,7 +241,7 @@
             folderGroupBox.Controls.Add(detectFolderBtn);
             folderGroupBox.Location=new Point(649, 453);
             folderGroupBox.Name="folderGroupBox";
-            folderGroupBox.Size=new Size(105, 45);
+            folderGroupBox.Size=new Size(117, 45);
             folderGroupBox.TabIndex=14;
             folderGroupBox.TabStop=false;
             folderGroupBox.Text="Folder";
@@ -249,7 +250,7 @@
             // 
             AutoScaleDimensions=new SizeF(7F, 16F);
             AutoScaleMode=AutoScaleMode.Font;
-            ClientSize=new Size(967, 501);
+            ClientSize=new Size(898, 499);
             Controls.Add(previewPictureBox);
             Controls.Add(folderGroupBox);
             Controls.Add(saveGroupBox);
