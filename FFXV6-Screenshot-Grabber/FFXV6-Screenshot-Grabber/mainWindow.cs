@@ -106,6 +106,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             if (screenshotListBox.SelectedIndex == -1) // if the preview image is not set
             {
+                MessageBox.Show("Please select a screenshot to preview first before trying to expand the preview!", "Please select a screenshot!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return; // then theres nothing to show, return
             }
             previewWindow.Show(); // show the preview window (screenshotListBox_SelectedIndexChanged always passes screenshot whether the preview window is visible or not anyway)

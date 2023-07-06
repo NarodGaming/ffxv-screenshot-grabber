@@ -32,7 +32,6 @@
             screenshotListBox=new ListBox();
             previewPictureBox=new PictureBox();
             previewLabel=new Label();
-            expandLabel=new Label();
             screenshotLabel=new Label();
             saveAllProgressbar=new ProgressBar();
             saveOneBtn=new Button();
@@ -81,28 +80,15 @@
             previewLabel.Location=new Point(2, 4);
             previewLabel.Margin=new Padding(4, 0, 4, 0);
             previewLabel.Name="previewLabel";
-            previewLabel.Size=new Size(48, 15);
+            previewLabel.Size=new Size(175, 15);
             previewLabel.TabIndex=2;
-            previewLabel.Text="Preview";
-            // 
-            // expandLabel
-            // 
-            expandLabel.AutoSize=true;
-            expandLabel.BackColor=SystemColors.Control;
-            expandLabel.ForeColor=SystemColors.ControlDarkDark;
-            expandLabel.Location=new Point(511, 4);
-            expandLabel.Margin=new Padding(4, 0, 4, 0);
-            expandLabel.Name="expandLabel";
-            expandLabel.Size=new Size(130, 16);
-            expandLabel.TabIndex=3;
-            expandLabel.Text="(click image to expand)";
-            helpTooltip.SetToolTip(expandLabel, "Click here to open a larger window with your screenshot.");
+            previewLabel.Text="Preview - click image to expand";
             // 
             // screenshotLabel
             // 
             screenshotLabel.AutoSize=true;
             screenshotLabel.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            screenshotLabel.Location=new Point(733, 5);
+            screenshotLabel.Location=new Point(751, 5);
             screenshotLabel.Margin=new Padding(4, 0, 4, 0);
             screenshotLabel.Name="screenshotLabel";
             screenshotLabel.Size=new Size(119, 15);
@@ -116,7 +102,7 @@
             saveAllProgressbar.Location=new Point(252, 461);
             saveAllProgressbar.Margin=new Padding(4, 3, 4, 3);
             saveAllProgressbar.Name="saveAllProgressbar";
-            saveAllProgressbar.Size=new Size(376, 25);
+            saveAllProgressbar.Size=new Size(390, 25);
             saveAllProgressbar.Step=1;
             saveAllProgressbar.TabIndex=5;
             helpTooltip.SetToolTip(saveAllProgressbar, "This progress bar shows the progress of the current 'Save All' task.");
@@ -150,7 +136,7 @@
             // selectFolderBtn
             // 
             selectFolderBtn.FlatStyle=FlatStyle.System;
-            selectFolderBtn.Location=new Point(632, 461);
+            selectFolderBtn.Location=new Point(646, 461);
             selectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             selectFolderBtn.Name="selectFolderBtn";
             selectFolderBtn.Size=new Size(106, 25);
@@ -163,7 +149,7 @@
             // detectFolderBtn
             // 
             detectFolderBtn.FlatStyle=FlatStyle.System;
-            detectFolderBtn.Location=new Point(746, 461);
+            detectFolderBtn.Location=new Point(751, 461);
             detectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             detectFolderBtn.Name="detectFolderBtn";
             detectFolderBtn.Size=new Size(106, 25);
@@ -176,7 +162,7 @@
             // authVerLabel
             // 
             authVerLabel.AutoSize=true;
-            authVerLabel.Location=new Point(872, 468);
+            authVerLabel.Location=new Point(873, 3);
             authVerLabel.Margin=new Padding(4, 0, 4, 0);
             authVerLabel.Name="authVerLabel";
             authVerLabel.Size=new Size(97, 16);
@@ -204,7 +190,7 @@
             // 
             realtimeCheckBox.AutoSize=true;
             realtimeCheckBox.Cursor=Cursors.Help;
-            realtimeCheckBox.Location=new Point(864, 3);
+            realtimeCheckBox.Location=new Point(865, 466);
             realtimeCheckBox.Margin=new Padding(4, 3, 4, 3);
             realtimeCheckBox.Name="realtimeCheckBox";
             realtimeCheckBox.Size=new Size(105, 20);
@@ -246,7 +232,6 @@
             Controls.Add(saveOneBtn);
             Controls.Add(saveAllProgressbar);
             Controls.Add(screenshotLabel);
-            Controls.Add(expandLabel);
             Controls.Add(previewLabel);
             Controls.Add(previewPictureBox);
             Controls.Add(screenshotListBox);
@@ -266,7 +251,6 @@
         private ListBox screenshotListBox;
         private PictureBox previewPictureBox;
         private Label previewLabel;
-        private Label expandLabel;
         private Label screenshotLabel;
         private ProgressBar saveAllProgressbar;
         private Button saveOneBtn;
