@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Reflection.Metadata.Ecma335;
-
-namespace FFXV6_Screenshot_Grabber
+﻿namespace FFXV6_Screenshot_Grabber
 {
     internal static class ScreenshotWriter
     {

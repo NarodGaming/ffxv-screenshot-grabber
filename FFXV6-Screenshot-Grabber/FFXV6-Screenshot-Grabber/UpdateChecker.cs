@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace FFXV6_Screenshot_Grabber
+﻿namespace FFXV6_Screenshot_Grabber
 {
     internal static class UpdateChecker
     {
