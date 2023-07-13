@@ -55,12 +55,13 @@
             // 
             // screenshotListBox
             // 
+            screenshotListBox.BorderStyle=BorderStyle.FixedSingle;
             screenshotListBox.FormattingEnabled=true;
             screenshotListBox.ItemHeight=16;
             screenshotListBox.Location=new Point(773, 23);
             screenshotListBox.Margin=new Padding(4, 3, 4, 3);
             screenshotListBox.Name="screenshotListBox";
-            screenshotListBox.Size=new Size(119, 452);
+            screenshotListBox.Size=new Size(119, 450);
             screenshotListBox.TabIndex=0;
             screenshotListBox.SelectedIndexChanged+=screenshotListBox_SelectedIndexChanged;
             // 
@@ -115,7 +116,7 @@
             // saveOneBtn
             // 
             saveOneBtn.FlatStyle=FlatStyle.System;
-            saveOneBtn.Location=new Point(3, 15);
+            saveOneBtn.Location=new Point(3, 17);
             saveOneBtn.Margin=new Padding(4, 3, 4, 3);
             saveOneBtn.Name="saveOneBtn";
             saveOneBtn.Size=new Size(40, 25);
@@ -128,7 +129,7 @@
             // saveAllBtn
             // 
             saveAllBtn.FlatStyle=FlatStyle.System;
-            saveAllBtn.Location=new Point(42, 15);
+            saveAllBtn.Location=new Point(42, 17);
             saveAllBtn.Margin=new Padding(4, 3, 4, 3);
             saveAllBtn.Name="saveAllBtn";
             saveAllBtn.Size=new Size(40, 25);
@@ -141,7 +142,7 @@
             // selectFolderBtn
             // 
             selectFolderBtn.FlatStyle=FlatStyle.System;
-            selectFolderBtn.Location=new Point(3, 15);
+            selectFolderBtn.Location=new Point(3, 17);
             selectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             selectFolderBtn.Name="selectFolderBtn";
             selectFolderBtn.Size=new Size(55, 25);
@@ -154,7 +155,7 @@
             // detectFolderBtn
             // 
             detectFolderBtn.FlatStyle=FlatStyle.System;
-            detectFolderBtn.Location=new Point(57, 15);
+            detectFolderBtn.Location=new Point(57, 17);
             detectFolderBtn.Margin=new Padding(4, 3, 4, 3);
             detectFolderBtn.Name="detectFolderBtn";
             detectFolderBtn.Size=new Size(55, 25);
@@ -195,7 +196,6 @@
             // realtimeCheckBox
             // 
             realtimeCheckBox.AutoSize=true;
-            realtimeCheckBox.Cursor=Cursors.Help;
             realtimeCheckBox.Location=new Point(773, 478);
             realtimeCheckBox.Margin=new Padding(4, 3, 4, 3);
             realtimeCheckBox.Name="realtimeCheckBox";
@@ -214,7 +214,7 @@
             // saveAllTBtn
             // 
             saveAllTBtn.FlatStyle=FlatStyle.System;
-            saveAllTBtn.Location=new Point(81, 15);
+            saveAllTBtn.Location=new Point(81, 17);
             saveAllTBtn.Margin=new Padding(4, 3, 4, 3);
             saveAllTBtn.Name="saveAllTBtn";
             saveAllTBtn.Size=new Size(73, 25);

@@ -120,7 +120,8 @@ namespace FFXV6_Screenshot_Grabber
             {
                 MessageBox.Show("Unable to save screenshot. Please select a screen to preview first.");
                 return false; // if there's no selected image, and save one was chosen, return false
-            } else if (screenshotListBox.Items.Count == 0 && isAllSave)
+            }
+            else if (screenshotListBox.Items.Count == 0 && isAllSave)
             {
                 MessageBox.Show("Unable to save screenshots. Please select a folder with some screenshots in to save.");
                 return false; // if save all was chosen, but there's no items to save, return false
@@ -132,7 +133,8 @@ namespace FFXV6_Screenshot_Grabber
                 {
                     return false; // then the user has changed their mind, return
                 }
-            } else
+            }
+            else
             {
                 saveScreenshotDialog.ShowDialog();
                 if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
