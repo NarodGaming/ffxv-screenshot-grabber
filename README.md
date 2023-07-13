@@ -2,6 +2,10 @@
 
 Narod's FFXV Screenshot Grabber is a utility which converts the .ss files output by the game, in to usable .jpg files.
 
+[Find it on NexusMods](https://www.nexusmods.com/finalfantasy15/mods/237)
+
+[Find it on NGServe](https://ngserve.games/mods/ffxv-ss-grabber.html)
+
 ## Background
 
 In FFXV (Final Fantasy 15), Prompto (an in-game character) will take in-game photos of what your party has gotten up to. These are saved by the game in a format which a regular photoviewer does not support. This utility can convert these .ss files in to .jpg files for you.
