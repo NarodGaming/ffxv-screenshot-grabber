@@ -63,9 +63,9 @@ namespace FFXV6_Screenshot_Grabber.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _00001333 {
+        internal static System.Drawing.Bitmap default_preview {
             get {
-                object obj = ResourceManager.GetObject("00001333", resourceCulture);
+                object obj = ResourceManager.GetObject("default-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

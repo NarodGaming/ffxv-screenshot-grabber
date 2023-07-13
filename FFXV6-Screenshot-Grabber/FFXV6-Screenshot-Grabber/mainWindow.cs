@@ -78,7 +78,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             screenshotListBox.Items.Clear(); // clear all items currently in the listbox
             if (currentImage != null) { currentImage.Dispose(); } // if there is a current image set, dispose of it
-            if (previewPictureBox.BackgroundImage != null) { previewPictureBox.BackgroundImage = Properties.Resources._00001333; } // if the preview image is set, unset it
+            if (previewPictureBox.BackgroundImage != null) { previewPictureBox.BackgroundImage = Properties.Resources.default_preview; } // if the preview image is set, unset it
             previewWindow.Hide(); // if the preview window is open, this will hide it (as theres no image to display right now)
             updateListBoxCounter();
         }

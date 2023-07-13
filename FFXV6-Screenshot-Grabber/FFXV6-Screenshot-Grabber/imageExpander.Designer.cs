@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(imageExpander));
             previewBox=new PictureBox();
             ((System.ComponentModel.ISupportInitialize)previewBox).BeginInit();
             SuspendLayout();
@@ -49,6 +50,7 @@
             ClientSize=new Size(1280, 720);
             Controls.Add(previewBox);
             Font=new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon=(Icon)resources.GetObject("$this.Icon");
             MinimumSize=new Size(640, 381);
             Name="imageExpander";
             Text="Narod's FFXV Screenshot Grabber - Preview";

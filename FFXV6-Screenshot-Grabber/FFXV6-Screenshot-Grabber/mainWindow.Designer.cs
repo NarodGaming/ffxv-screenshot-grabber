@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components=new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
             screenshotListBox=new ListBox();
             previewPictureBox=new PictureBox();
             previewLabel=new Label();
@@ -65,7 +66,7 @@
             // 
             // previewPictureBox
             // 
-            previewPictureBox.BackgroundImage=Properties.Resources._00001333;
+            previewPictureBox.BackgroundImage=Properties.Resources.default_preview;
             previewPictureBox.BackgroundImageLayout=ImageLayout.Zoom;
             previewPictureBox.Location=new Point(2, 23);
             previewPictureBox.Margin=new Padding(4, 3, 4, 3);
@@ -262,6 +263,7 @@
             Controls.Add(screenshotListBox);
             Font=new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle=FormBorderStyle.FixedSingle;
+            Icon=(Icon)resources.GetObject("$this.Icon");
             Margin=new Padding(4, 3, 4, 3);
             MaximizeBox=false;
             Name="mainWindow";
