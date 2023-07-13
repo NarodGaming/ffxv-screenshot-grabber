@@ -27,15 +27,15 @@ namespace FFXV6_Screenshot_Grabber
                 }
             }
 
-            authVerLabel.Text = $"by Narod (V{Application.ProductVersion})";
+            if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); } // depending on result of previous "foreach", run either the windows or linux folder finder
 
-            if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); }
+            authVerLabel.Text = $"by Narod (V{Application.ProductVersion})"; // set the version label text to show the current version of the program
 
             scanScreenshots(); // scan for screenshots
 
             updateChecker.RunWorkerAsync(); // run the update checker
 
-            DarkMode.SetupDarkMode(this);
+            DarkMode.SetupDarkMode(this); // run darkmode configuration, passing this form as an object
         }
 
         private string returnFullPath() // returns full path of listbox item selected
@@ -85,7 +85,7 @@ namespace FFXV6_Screenshot_Grabber
 
         private void scanScreenshots() // scans for all screenshots in folder, runs at boot, or when screenshot folder has changed
         {
-            resetWindow();
+            resetWindow(); // reset the window (clears listbox, preview image, etc.)
 
             IEnumerable<String> ssFiles = Directory.GetFiles(folderLocation, "*.ss", SearchOption.TopDirectoryOnly).Select(nm => Path.GetFileName(nm)); // get all files ending with ".ss" only in the current directory, linq used to get just filename, not full path
             addToListBox(ssFiles);
@@ -112,40 +112,58 @@ namespace FFXV6_Screenshot_Grabber
             previewWindow.Show(); // show the preview window (screenshotListBox_SelectedIndexChanged always passes screenshot whether the preview window is visible or not anyway)
         }
 
-        private void saveOneBtn_Click(object sender, EventArgs e) // run when the user clicks 'Save One'
+        private bool showSaveDialog(bool isAllSave) // function which runs the shared code between save, save all and save all turbo
         {
             saveAllProgressbar.Value = 0; // reset the progressbar (not used for saving single file anyway)
             saveScreenshotDialog.FileName = ""; // reset any previous dialog prompts that may have shown before
-            if (screenshotListBox.SelectedIndex == -1) // if the selected item is not set
+            if (screenshotListBox.SelectedIndex == -1 && !isAllSave)
             {
-                return; // then theres nothing to save, return
-            }
-            saveScreenshotDialog.ShowDialog(); // show the dialog to select file name to save as
-            if (saveScreenshotDialog.FileName == null || saveScreenshotDialog.FileName == "") // if file name was not set (aka user cancelled dialog)
+                MessageBox.Show("Unable to save screenshot. Please select a screen to preview first.");
+                return false; // if there's no selected image, and save one was chosen, return false
+            } else if (screenshotListBox.Items.Count == 0 && isAllSave)
             {
-                return; // then the user has changed their mind, return
+                MessageBox.Show("Unable to save screenshots. Please select a folder with some screenshots in to save.");
+                return false; // if save all was chosen, but there's no items to save, return false
             }
+            if (isAllSave)
+            {
+                folderDialog.ShowDialog();
+                if (folderDialog.SelectedPath == null || folderDialog.SelectedPath == "") // if the folder name was not set (aka user cancelled dialog)
+                {
+                    return false; // then the user has changed their mind, return
+                }
+            } else
+            {
+                saveScreenshotDialog.ShowDialog();
+                if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
+                {
+                    MessageBox.Show("Unable to save screenshots. Folder chosen does not exist."); // show user message
+                    return false; // then return, as we can't save
+                }
+            }
+            return true; // return true, all checks succesful
+        }
+
+        private void saveOneBtn_Click(object sender, EventArgs e) // run when the user clicks 'Save One'
+        {
+            bool wasSuccessful = showSaveDialog(false);
+
+            if (!wasSuccessful)
+            {
+                return; // some error has occurred
+            }
+
             string newPath = saveScreenshotDialog.FileName; // set the path of the file to save to the users preference as chosen by the dialog prompt
             ScreenshotWriter.writeScreenshot(returnFullPath(), newPath); // write the file to disk
         }
 
         private void saveAllBtn_Click(object sender, EventArgs e) // run when the user clicks 'Save All'
         {
-            saveAllProgressbar.Value = 0; // reset the progressbar (in case of previous 'Save All'
-            folderDialog.SelectedPath = ""; // reset any previous dialog prompts that may have shown before
-            if (screenshotListBox.Items.Count == 0) // if theres no items to save
+            bool wasSuccessful = showSaveDialog(true);
+
+            if (!wasSuccessful)
             {
-                return; // then we can't save any items, return
-            }
-            folderDialog.ShowDialog(); // show the dialog to select folder to save out to
-            if (folderDialog.SelectedPath == null || folderDialog.SelectedPath == "") // if the folder name was not set (aka user cancelled dialog)
-            {
-                return; // then the user has changed their mind, return
-            }
-            if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
-            {
-                MessageBox.Show("Unable to save screenshots. Folder chosen does not exist."); // show user message
-                return; // then return, as we can't save
+                return;
             }
 
             screenshotListBox.Enabled = false; // disable the listbox so no new images can be selected, as this could cause issues.
@@ -167,20 +185,11 @@ namespace FFXV6_Screenshot_Grabber
 
         private void saveAllTBtn_Click(object sender, EventArgs e)
         {
-            folderDialog.SelectedPath = "";
-            if (screenshotListBox.Items.Count == 0)
+            bool wasSuccessful = showSaveDialog(true);
+
+            if (!wasSuccessful)
             {
                 return;
-            }
-            folderDialog.ShowDialog(); // show the dialog to select folder to save out to
-            if (folderDialog.SelectedPath == null || folderDialog.SelectedPath == "") // if the folder name was not set (aka user cancelled dialog)
-            {
-                return; // then the user has changed their mind, return
-            }
-            if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
-            {
-                MessageBox.Show("Unable to save screenshots. Folder chosen does not exist."); // show user message
-                return; // then return, as we can't save
             }
 
             screenshotListBox.Enabled = false; // disable the listbox so no new images can be selected, as this could cause issues.
