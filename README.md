@@ -21,7 +21,7 @@ In FFXV (Final Fantasy 15), Prompto (an in-game character) will take in-game pho
 ## Supported Systems
 
 - Windows: 7, 8.1, 10, 11
-- Linux: SteamOS (& more, but will require manual browsing to folder)
+- Linux: SteamOS (officially supported), other distros should also work, no guarantee.
 
 ## Features
 
@@ -34,7 +34,7 @@ In FFXV (Final Fantasy 15), Prompto (an in-game character) will take in-game pho
 
 ## Limitations
 
-- Auto detection of folders will fail for most Linux (non SteamDeck users), and some Windows users. You can manually browse to the correct location.
+- Auto detection on Linux doesn't always work. The manual location you'll need is quite long, you're looking for the compatdata folder (might need to Google), from there: 637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam - then a set of numbers, then savestorage/snapshot/
 
 ## Helping Narod's FFXV Screenshot Grabber
 
@@ -42,4 +42,3 @@ This utility is fully open-source under GPLv3. Right now, we're looking for help
 
 - Any issues/bugs found
 - Improvements to features and functionality
-- An icon
