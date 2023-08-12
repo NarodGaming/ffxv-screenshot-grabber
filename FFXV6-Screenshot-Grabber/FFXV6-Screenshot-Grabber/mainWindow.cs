@@ -36,6 +36,8 @@ namespace FFXV6_Screenshot_Grabber
             updateChecker.RunWorkerAsync(); // run the update checker
 
             DarkMode.SetupDarkMode(this); // run darkmode configuration, passing this form as an object
+
+            screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
         }
 
         private string returnFullPath() // returns full path of listbox item selected
@@ -80,7 +82,8 @@ namespace FFXV6_Screenshot_Grabber
             if (currentImage != null) { currentImage.Dispose(); } // if there is a current image set, dispose of it
             if (previewPictureBox.BackgroundImage != null) { previewPictureBox.BackgroundImage = Properties.Resources.default_preview; } // if the preview image is set, unset it
             previewWindow.Hide(); // if the preview window is open, this will hide it (as theres no image to display right now)
-            updateListBoxCounter();
+            screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
+            updateListBoxCounter(); // updates the counter for how many screenshots are in the listbox
         }
 
         private void scanScreenshots() // scans for all screenshots in folder, runs at boot, or when screenshot folder has changed
@@ -100,6 +103,7 @@ namespace FFXV6_Screenshot_Grabber
             currentImage = ScreenshotWriter.returnImageScreenshot(returnFullPath()); // set current image to the image that was just selected
             previewPictureBox.BackgroundImage = currentImage; // set up the preview image to this new current image
             previewWindow.retrieveScreenshot(currentImage); // pass the new preview image to the preview window
+            screenshotTakenLabel.Text = $"Snapshot Taken On {File.GetCreationTime(returnFullPath())}";
         }
 
         private void previewPictureBox_Click(object sender, EventArgs e) // run when the user clicks the preview image (to 'expand' it)
@@ -282,6 +286,9 @@ namespace FFXV6_Screenshot_Grabber
                 helpTooltip.SetToolTip(detectFolderBtn, "You must disable Realtime mode to change the folder location."); // tooltips don't actually work on disabled buttons
                 selectFolderBtn.Enabled = false;
                 detectFolderBtn.Enabled = false;
+                selectFolderBtn.Visible = false;
+                detectFolderBtn.Visible = false;
+                folderRealtimeWarning.Visible = true;
                 resetWindow();
             }
             else // if checkbox is unchecked
@@ -291,6 +298,9 @@ namespace FFXV6_Screenshot_Grabber
                 helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
                 selectFolderBtn.Enabled = true;
                 detectFolderBtn.Enabled = true;
+                selectFolderBtn.Visible = true;
+                detectFolderBtn.Visible = true;
+                folderRealtimeWarning.Visible = false;
                 scanScreenshots(); // scan for screenshots in the folder directory again, as realtime folder may be different from current
             }
         }

@@ -48,6 +48,8 @@
             saveAllTBtn=new Button();
             saveGroupBox=new GroupBox();
             folderGroupBox=new GroupBox();
+            folderRealtimeWarning=new Label();
+            screenshotTakenLabel=new Label();
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).BeginInit();
             saveGroupBox.SuspendLayout();
             folderGroupBox.SuspendLayout();
@@ -105,10 +107,10 @@
             // saveAllProgressbar
             // 
             saveAllProgressbar.BackColor=SystemColors.Control;
-            saveAllProgressbar.Location=new Point(167, 463);
+            saveAllProgressbar.Location=new Point(167, 456);
             saveAllProgressbar.Margin=new Padding(4, 3, 4, 3);
             saveAllProgressbar.Name="saveAllProgressbar";
-            saveAllProgressbar.Size=new Size(475, 31);
+            saveAllProgressbar.Size=new Size(475, 42);
             saveAllProgressbar.Step=1;
             saveAllProgressbar.TabIndex=5;
             helpTooltip.SetToolTip(saveAllProgressbar, "This progress bar shows the progress of the current 'Save All' task.");
@@ -169,7 +171,7 @@
             // 
             authVerLabel.AutoSize=true;
             authVerLabel.Font=new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            authVerLabel.Location=new Point(684, -1);
+            authVerLabel.Location=new Point(684, 4);
             authVerLabel.Margin=new Padding(4, 0, 4, 0);
             authVerLabel.Name="authVerLabel";
             authVerLabel.Size=new Size(86, 15);
@@ -240,6 +242,7 @@
             // 
             folderGroupBox.Controls.Add(selectFolderBtn);
             folderGroupBox.Controls.Add(detectFolderBtn);
+            folderGroupBox.Controls.Add(folderRealtimeWarning);
             folderGroupBox.Location=new Point(649, 453);
             folderGroupBox.Name="folderGroupBox";
             folderGroupBox.Size=new Size(117, 45);
@@ -247,11 +250,32 @@
             folderGroupBox.TabStop=false;
             folderGroupBox.Text="Folder";
             // 
+            // folderRealtimeWarning
+            // 
+            folderRealtimeWarning.AutoSize=true;
+            folderRealtimeWarning.Font=new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            folderRealtimeWarning.Location=new Point(12, 14);
+            folderRealtimeWarning.Name="folderRealtimeWarning";
+            folderRealtimeWarning.Size=new Size(91, 30);
+            folderRealtimeWarning.TabIndex=5;
+            folderRealtimeWarning.Text="Disable Realtime\r\n to change folder";
+            folderRealtimeWarning.Visible=false;
+            // 
+            // screenshotTakenLabel
+            // 
+            screenshotTakenLabel.AutoSize=true;
+            screenshotTakenLabel.Location=new Point(335, 3);
+            screenshotTakenLabel.Name="screenshotTakenLabel";
+            screenshotTakenLabel.Size=new Size(212, 16);
+            screenshotTakenLabel.TabIndex=15;
+            screenshotTakenLabel.Text="Snapshot Taken on (locale date format)";
+            // 
             // mainWindow
             // 
             AutoScaleDimensions=new SizeF(7F, 16F);
             AutoScaleMode=AutoScaleMode.Font;
             ClientSize=new Size(898, 499);
+            Controls.Add(screenshotTakenLabel);
             Controls.Add(previewPictureBox);
             Controls.Add(folderGroupBox);
             Controls.Add(saveGroupBox);
@@ -271,6 +295,7 @@
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).EndInit();
             saveGroupBox.ResumeLayout(false);
             folderGroupBox.ResumeLayout(false);
+            folderGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -295,5 +320,7 @@
         private Button saveAllTBtn;
         private GroupBox saveGroupBox;
         private GroupBox folderGroupBox;
+        private Label folderRealtimeWarning;
+        private Label screenshotTakenLabel;
     }
 }

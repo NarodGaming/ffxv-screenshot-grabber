@@ -11,6 +11,9 @@ namespace FFXV6_Screenshot_Grabber
                 Button buttonCast = (Button)nControl; // cast the control to a button (needed for FlatStyle)
                 buttonCast.BackColor = Color.Black; // set back colour of button to black
                 buttonCast.FlatStyle = FlatStyle.Flat; // change style to flat (default FlatStyle is System, which looks better in light mode but doesn't support back colour change)
+                buttonCast.MouseEnter += buttonMouseEnter; // add event for when mouse enters the bounds of the button, so we can 'highlight' it
+                buttonCast.MouseLeave += buttonMouseLeave; // add event for when mouse leaves the bounds of the button, so we can 'unhighlight' it
+                // the above will cause disabled buttons to have 'blank' text, so any disabled buttons should also be hidden
             }
             else if (nControl is ListBox) // if the control is a listbox
             {
@@ -69,6 +72,21 @@ namespace FFXV6_Screenshot_Grabber
                     AddDarkMode(cControl); // add a dark mode to the control (UI element)
                 }
             }
+        }
+
+        public static void buttonMouseLeave(object sender, EventArgs e) // when button leaves the bounds of the button
+        {
+            Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)
+
+            buttonCast.BackColor = Color.Black; // change the back color back to black
+        }
+
+
+        public static void buttonMouseEnter(object sender, EventArgs e) // when button enters the bounds of the button
+        {
+            Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)
+
+            buttonCast.BackColor = Color.DarkGray; // change the back color to grey (highlighting it)
         }
     }
 }
