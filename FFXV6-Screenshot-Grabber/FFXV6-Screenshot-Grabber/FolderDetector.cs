@@ -3,13 +3,18 @@
     internal static class FolderDetector
     {
         private static FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-        private static string failedAutoDirSearch(string positionToBrowse, bool isWindows) // runs when the detectFolder function fails
+
+        private static readonly string windowsFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Windows
+        private static readonly string linuxFolderPath = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // default location for Linux
+        private static readonly string macFolderPath = ""; // default location for Mac (not yet setup)
+
+        private static string failedAutoDirSearch(string positionToBrowse, int platform) // runs when the detectFolder function fails
         {
             folderDialog.SelectedPath = ""; // reset the selected path to nothing, as it might be set from 'Save All' prompt
             folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
             folderDialog.UseDescriptionForTitle = true;
             folderDialog.InitialDirectory = positionToBrowse;
-            if (isWindows)
+            if (platform == 1)
             {
                 MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)"); // message to user
             } else
@@ -32,45 +37,40 @@
             return folderDialog.SelectedPath + "\\"; // all checks passed, set folder location to one specified by user
         }
 
-        public static string detectFolder() // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
+        public static string detectFolder(int platform) // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
         {
-            string documentsFolder = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\";
-            string folderLocation = documentsFolder + "My Games\\FINAL FANTASY XV\\Steam"; // starting directory, as far as we can get without dynamic checks
+            string folderLocation;
+
+            // platforms: (1) Windows, (2) Linux, (3) Mac
+
+            if (platform == 1) // if platform is Windows
+            {
+                folderLocation = windowsFolderPath; // set folder location to default Windows location
+            } else if (platform == 2) // if platform is Linux
+            {
+                folderLocation = linuxFolderPath; // set folder location to default Linux location
+            } else if (platform == 3) // if platform is Mac
+            {
+                folderLocation = macFolderPath; // set folder location to default Mac location
+            } else // if platform is not Windows, Linux or Mac
+            {
+                return failedAutoDirSearch("", platform);
+            }
+
             if (!Directory.Exists(folderLocation)) // if this base directory doesn't exist (it should on all Windows systems who have played the game)
             {
-                return failedAutoDirSearch(documentsFolder, true); // run failed function (above)
+                return failedAutoDirSearch(folderLocation, platform); // run failed function (above)
             }
             string[] subdirs = Directory.GetDirectories(folderLocation); // get all sub directories.
             if (subdirs.Length == 0 || subdirs.Length >= 2) // check how many subdirs were returned, there should only be 1 (unless user has multiple steam accounts they played this game with, in which case they need to specify for themselves). if there's none, then the user hasn't played the game.
             {
-                return failedAutoDirSearch(folderLocation, true); // run failed function (above)
+                return failedAutoDirSearch(folderLocation, platform); // run failed function (above)
             }
             string lastSuccessLocation = folderLocation;
             folderLocation = subdirs[0] + "\\savestorage\\snapshot\\"; // get the only sub dir and append on the location of the snapshot folder
             if (!Directory.Exists(folderLocation)) // if this folder doesn't exist (if all other checks have passed, the only way this could occur is user messing with folders)
             {
-                return failedAutoDirSearch(lastSuccessLocation, true); // run failed function (above)
-            }
-            return folderLocation;
-        }
-
-        public static string detectFolderLinux() // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for STEAM DECK.
-        {
-            string folderLocation = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // this is the path of the steam deck folder, hence "deck"
-            if (!Directory.Exists(folderLocation)) // if this base directory doesn't exist (it should on all Windows systems who have played the game)
-            {
-                return failedAutoDirSearch("/", false); // run failed function (above)
-            }
-            string[] subdirs = Directory.GetDirectories(folderLocation); // get all sub directories.
-            if (subdirs.Length == 0 || subdirs.Length >= 2) // check how many subdirs were returned, there should only be 1 (unless user has multiple steam accounts they played this game with, in which case they need to specify for themselves). if there's none, then the user hasn't played the game.
-            {
-                return failedAutoDirSearch(folderLocation, false); // run failed function (above)
-            }
-            string lastSuccessLocation = folderLocation;
-            folderLocation = subdirs[0] + "/savestorage/snapshot/"; // get the only sub dir and append on the location of the snapshot folder
-            if (!Directory.Exists(folderLocation)) // if this folder doesn't exist (if all other checks have passed, the only way this could occur is user messing with folders)
-            {
-                return failedAutoDirSearch(lastSuccessLocation, false); // run failed function (above)
+                return failedAutoDirSearch(lastSuccessLocation, platform); // run failed function (above)
             }
             return folderLocation;
         }

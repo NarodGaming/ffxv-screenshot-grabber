@@ -14,7 +14,7 @@ namespace FFXV6_Screenshot_Grabber
 
         RealtimeHandler? realtimeObject; // object to handle realtime screenshots
 
-        bool isWindows = true; // holds if the system is running windows or linux, will be set to false in init if on linux
+        int platform = 1; // holds if the system is running windows, linux or mac, will be set to 0 initially (windows)
 
         public mainWindow()
         {
@@ -24,11 +24,11 @@ namespace FFXV6_Screenshot_Grabber
             {
                 if (subValueKey == "Wine") // if wine key exists, then we're on Linux
                 {
-                    isWindows = false;
+                    platform = 2;
                 }
             }
 
-            if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); } // depending on result of previous "foreach", run either the windows or linux folder finder
+            if (platform == 1) { folderLocation = FolderDetector.detectFolder(1); } else { folderLocation = FolderDetector.detectFolder(2); } // depending on result of previous "foreach", run either the windows or linux folder finder
 
             authVerLabel.Text = $"by Narod (V{Assembly.GetExecutingAssembly().GetName().Version})"; // set the version label text to show the current version of the program
 
@@ -236,7 +236,7 @@ namespace FFXV6_Screenshot_Grabber
 
         private void detectFolderBtn_Click(object sender, EventArgs e) // detects default screenshot folder, runs when user clicks 'Detect Folder'
         {
-            folderLocation = FolderDetector.detectFolder(); // runs function to detect folder
+            folderLocation = FolderDetector.detectFolder(platform); // runs function to detect folder
             scanScreenshots(); // runs function to re-scan for screenshots
         }
 
