@@ -1,6 +1,7 @@
 using Microsoft.Win32;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace FFXV6_Screenshot_Grabber
 {
@@ -29,7 +30,7 @@ namespace FFXV6_Screenshot_Grabber
 
             if (isWindows) { folderLocation = FolderDetector.detectFolder(); } else { folderLocation = FolderDetector.detectFolderLinux(); } // depending on result of previous "foreach", run either the windows or linux folder finder
 
-            authVerLabel.Text = $"by Narod (V{Application.ProductVersion})"; // set the version label text to show the current version of the program
+            authVerLabel.Text = $"by Narod (V{Assembly.GetExecutingAssembly().GetName().Version})"; // set the version label text to show the current version of the program
 
             scanScreenshots(); // scan for screenshots
 
@@ -302,6 +303,18 @@ namespace FFXV6_Screenshot_Grabber
                 detectFolderBtn.Visible = true;
                 folderRealtimeWarning.Visible = false;
                 scanScreenshots(); // scan for screenshots in the folder directory again, as realtime folder may be different from current
+            }
+        }
+
+        private void tooltipsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tooltipsCheckbox.Checked)
+            {
+                helpTooltip.Active = true;
+            }
+            else
+            {
+                helpTooltip.Active = false;
             }
         }
     }

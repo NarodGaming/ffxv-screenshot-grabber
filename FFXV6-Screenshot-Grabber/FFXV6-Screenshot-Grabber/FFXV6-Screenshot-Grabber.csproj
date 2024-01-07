@@ -17,14 +17,22 @@
     <Version>1.4.0</Version>
     <Authors>NarodGaming</Authors>
     <Description>A simple yet feature-rich application for fetching FFXV screenshots from a .ss format in to a .jpg</Description>
-    <Copyright>NarodGaming 2023</Copyright>
+    <Copyright>NarodGaming 2024</Copyright>
     <PackageProjectUrl>https://github.com/NarodGaming/ffxv-screenshot-grabber</PackageProjectUrl>
-    <AssemblyVersion>1.4.0</AssemblyVersion>
-    <FileVersion>1.4.0</FileVersion>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <FileVersion>1.4.0.0</FileVersion>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <NeutralLanguage>en-GB</NeutralLanguage>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <PackageIcon>icon-ffxv.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Deterministic>True</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Deterministic>True</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>

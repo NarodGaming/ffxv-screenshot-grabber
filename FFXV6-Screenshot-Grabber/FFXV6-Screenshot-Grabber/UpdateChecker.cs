@@ -1,4 +1,6 @@
-﻿namespace FFXV6_Screenshot_Grabber
+﻿using System.Reflection;
+
+namespace FFXV6_Screenshot_Grabber
 {
     internal static class UpdateChecker
     {
@@ -27,7 +29,7 @@
             latestVersionRaw = latestVersionRaw.Replace(".", ""); // replace the "." with nothing so can be converted to int, this is in the remote version for potential future use for a better version checker
             int latestVersionInt = Convert.ToInt32(latestVersionRaw); // convert the above string to int
 
-            string currentVersion = Application.ProductVersion; // get the current version of the installed FFXVSG
+            string currentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString(); // get the current version of the installed FFXVSG
             string currentVersionRaw = currentVersion.Replace(".", ""); // replace the "." with nothing so can be converted to int
             int currentVersionInt = Convert.ToInt32(currentVersionRaw); // convert the above string to int
 
