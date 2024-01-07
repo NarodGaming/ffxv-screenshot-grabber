@@ -9,33 +9,25 @@ namespace FFXV6_Screenshot_Grabber
             if (nControl is Button) // if the control is a button
             {
                 Button buttonCast = (Button)nControl; // cast the control to a button (needed for FlatStyle)
-                buttonCast.BackColor = Color.Black; // set back colour of button to black
+                buttonCast.BackColor = Color.FromArgb(33, 33, 33); // set back colour of button to (near) black
                 buttonCast.FlatStyle = FlatStyle.Flat; // change style to flat (default FlatStyle is System, which looks better in light mode but doesn't support back colour change)
                 buttonCast.MouseEnter += buttonMouseEnter; // add event for when mouse enters the bounds of the button, so we can 'highlight' it
                 buttonCast.MouseLeave += buttonMouseLeave; // add event for when mouse leaves the bounds of the button, so we can 'unhighlight' it
                 // the above will cause disabled buttons to have 'blank' text, so any disabled buttons should also be hidden
             }
-            else if (nControl is ListBox) // if the control is a listbox
+            else if (nControl is ListBox || nControl is Label) // if the control is a listbox or label (same code used)
             {
-                nControl.BackColor = Color.Black; // set back colour to black
-                nControl.ForeColor = Color.White; // set fore colour (text) to white
-            }
-            else if (nControl is Label) // if the control is a label
-            {
-                nControl.ForeColor = Color.White; // set fore colour (text) to white
-                nControl.BackColor = Color.Black; // set back colour to black
+                nControl.BackColor = Color.FromArgb(33, 33, 33); // set back colour to (near) black
+                nControl.ForeColor = Color.FromArgb(238, 238, 238); // set fore colour (text) to (near) white
             }
             else if (nControl is CheckBox) // if the control is a checkbox
             {
-                nControl.ForeColor = Color.White; // set fore colour (text) to white
+                nControl.ForeColor = Color.FromArgb(238, 238, 238); // set fore colour (text) to (near) white
             }
-            else if (nControl is ProgressBar) // if the control is a progressbar (BROKEN)
-            {
-                nControl.BackColor = Color.Black; // set back colour to black (BROKEN, it appears the control doesn't support colour changing)
-            }
+            // progressbar colour setting used to be here - it was removed because it doesn't work
             else if (nControl is GroupBox)
             {
-                nControl.ForeColor = Color.White; // set fore colour (text) to white
+                nControl.ForeColor = Color.FromArgb(238, 238, 238); // set fore colour (text) to (near) white
                 foreach (Control c in nControl.Controls) // as a group box can contain other controls, we need to iterate through those controls
                 {
                     AddDarkMode(c); // recursively call this function for the control
@@ -48,10 +40,12 @@ namespace FFXV6_Screenshot_Grabber
             bool isDarkMode = false; // set variable as default to false
             try
             {
-                bool readLightModeReg = Convert.ToBoolean(Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", null)); // pull regkey for lightmode, true means light mode, false means dark mode
-                if (!readLightModeReg) // if reg key returns false
+                bool readLightModeReg; // create the bool object (to be used if the reg key exists)
+                object? readLightModeRegObject = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", null); // get the value at the reg key, or return null if it does not exist
+                if (readLightModeRegObject != null) { readLightModeReg = Convert.ToBoolean(readLightModeRegObject); } else { readLightModeReg = true; } // if the reg key isn't null (so it exists) cast the value of it to a bool and store it in the bool object created, otherwise (if the reg key doesnt exist) light mode is enabled / dark mode is unsupported on system (e.g. win7)
+                if (!readLightModeReg) // if light mode is false
                 {
-                    isDarkMode = true; // then change variable to confirm we need dark mode
+                    isDarkMode = true; // then dark mode is true
                 }
             }
             catch (Exception) // if there is any error running this
@@ -65,8 +59,8 @@ namespace FFXV6_Screenshot_Grabber
         {
             if (ShouldUseDarkMode()) // check if we need to set up dark mode
             {
-                callingForm.ForeColor = Color.White; // if we do, then set fore colour (text) to white
-                callingForm.BackColor = Color.Black; // set back colour to black
+                callingForm.ForeColor = Color.FromArgb(238, 238, 238); // if we do, then set fore colour (text) to (near) white
+                callingForm.BackColor = Color.FromArgb(33, 33, 33); // set back colour to black
                 foreach (Control cControl in callingForm.Controls) // for each control (UI element) on the form which called this function
                 {
                     AddDarkMode(cControl); // add a dark mode to the control (UI element)
@@ -78,7 +72,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)
 
-            buttonCast.BackColor = Color.Black; // change the back color back to black
+            buttonCast.BackColor = Color.FromArgb(33, 33, 33); // change the back color back to (near) black
         }
 
 
@@ -86,7 +80,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)
 
-            buttonCast.BackColor = Color.DarkGray; // change the back color to grey (highlighting it)
+            buttonCast.BackColor = Color.FromArgb(66, 66, 66); // change the back color to grey (highlighting it)
         }
     }
 }
