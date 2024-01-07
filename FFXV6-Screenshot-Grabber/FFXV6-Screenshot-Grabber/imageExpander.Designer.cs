@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(imageExpander));
-            previewBox=new PictureBox();
+            previewBox = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)previewBox).BeginInit();
             SuspendLayout();
             // 
             // previewBox
             // 
-            previewBox.BackgroundImageLayout=ImageLayout.Zoom;
-            previewBox.Dock=DockStyle.Fill;
-            previewBox.Location=new Point(0, 0);
-            previewBox.Name="previewBox";
-            previewBox.Size=new Size(1280, 720);
-            previewBox.TabIndex=0;
-            previewBox.TabStop=false;
+            previewBox.BackgroundImageLayout = ImageLayout.Zoom;
+            previewBox.Dock = DockStyle.Fill;
+            previewBox.Location = new Point(0, 0);
+            previewBox.Name = "previewBox";
+            previewBox.Size = new Size(1280, 720);
+            previewBox.TabIndex = 0;
+            previewBox.TabStop = false;
             // 
             // imageExpander
             // 
-            AutoScaleDimensions=new SizeF(7F, 16F);
-            AutoScaleMode=AutoScaleMode.Font;
-            ClientSize=new Size(1280, 720);
+            AutoScaleDimensions = new SizeF(7F, 16F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1280, 720);
             Controls.Add(previewBox);
-            Font=new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Icon=(Icon)resources.GetObject("$this.Icon");
-            MinimumSize=new Size(640, 381);
-            Name="imageExpander";
-            Text="Narod's FFXV Screenshot Grabber - Preview";
-            FormClosing+=imageExpander_FormClosing;
+            Font = new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(320, 201);
+            Name = "imageExpander";
+            Text = "Narod's FFXV Screenshot Grabber - Preview";
+            FormClosing += imageExpander_FormClosing;
             ((System.ComponentModel.ISupportInitialize)previewBox).EndInit();
             ResumeLayout(false);
         }
