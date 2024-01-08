@@ -14,28 +14,13 @@ namespace FFXV6_Screenshot_Grabber
 
         RealtimeHandler? realtimeObject; // object to handle realtime screenshots
 
-        int platform = 1; // holds if the system is running windows, linux or mac, will be set to 0 initially (windows)
+        int platform = 0; // set to 0, main function will set this to the correct platform
 
         public mainWindow()
         {
             InitializeComponent();
 
-            foreach (string subValueKey in Registry.CurrentUser.OpenSubKey("Software")?.GetSubKeyNames() ?? Array.Empty<string>()) // a good way of checking if we're running on Linux or Mac
-            {
-                if (subValueKey == "Wine") // if wine key exists, then we're on Linux or Mac
-                {
-                    platform = 2; // set default to Linux, as we'll search on top to see if we're on Mac
-                    foreach (string macSearchKey in Registry.CurrentUser.OpenSubKey("Software\\Wine")?.GetSubKeyNames() ?? Array.Empty<string>()) // a good way of checking if we're running on Mac - looking for a "Mac Driver" subkey
-                    {
-                        if (macSearchKey == "Mac Driver") // if we find the mac driver subkey, then we're actually on Mac and not Linux
-                        {
-                            platform = 3; // set the platform to Mac
-                            break; // break to save time, as we've found what we're looking for
-                        }
-                    }
-                    break; // break to save time, as we've found what we're looking for
-                }
-            }
+            platform = OSDetector.detectOS(); // run the OS detector function, this will set the platform variable to the correct platform
 
             folderLocation = FolderDetector.detectFolder(platform); // look for the screenshot folder in the default location
 
@@ -53,7 +38,7 @@ namespace FFXV6_Screenshot_Grabber
         private string returnFullPath() // returns full path of listbox item selected
         {
             if (screenshotListBox.SelectedIndex == -1) { return ""; }; // if there is no selected listbox item, return a blank string
-            return folderLocation + screenshotListBox.SelectedItem.ToString(); // otherwise, concat the folder location var with the listbox selected item string and return it
+            return folderLocation + screenshotListBox.SelectedItem.ToString() + ".ss"; // otherwise, concat the folder location var with the listbox selected item string and return it
         }
 
         public void addToListBox(string itemToAdd) // add a single item to the screenshot list box
@@ -100,7 +85,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             resetWindow(); // reset the window (clears listbox, preview image, etc.)
 
-            IEnumerable<String> ssFiles = Directory.GetFiles(folderLocation, "*.ss", SearchOption.TopDirectoryOnly).Select(nm => Path.GetFileName(nm)); // get all files ending with ".ss" only in the current directory, linq used to get just filename, not full path
+            IEnumerable<String> ssFiles = Directory.GetFiles(folderLocation, "*.ss", SearchOption.TopDirectoryOnly).Select(nm => Path.GetFileNameWithoutExtension(nm)); // get all files ending with ".ss" only in the current directory, linq used to get just filename, not full path
             addToListBox(ssFiles);
         }
 

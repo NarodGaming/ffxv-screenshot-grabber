@@ -2,7 +2,7 @@
 {
     internal static class FolderDetector
     {
-        private static FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+        private static FolderBrowserDialog folderDialog = new();
 
         private static readonly string windowsFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Windows
         private static readonly string linuxFolderPath = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // default location for Linux
