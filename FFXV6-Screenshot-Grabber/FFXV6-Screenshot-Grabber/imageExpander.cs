@@ -8,15 +8,7 @@
 
             DarkMode.SetupDarkMode(this);
 
-            // get the current screen size
-            int width = Screen.PrimaryScreen.Bounds.Width;
-            int height = Screen.PrimaryScreen.Bounds.Height;
-
-            int newWidth = (width / 4) - ((width / 4) % 16); // calculate new width to be 1/4 of the screen width, rounded down to the nearest multiple of 16
-
-            int newHeight = (newWidth * 9) / 16; // calculate new height to be 16:9 aspect ratio of the new width
-
-            Size = new Size(newWidth, newHeight + 30); // set the size of this window to be the new width & height, plus 30 pixels for the title bar
+            imageExpander_FirstSize(); // set the size of this window to be 1/4 of the screen width, with a 16:9 aspect ratio
         }
 
         public void retrieveScreenshot(Image newImage) // public function, called when preview image on mainWindow has been updated
@@ -29,6 +21,19 @@
             // this is required, otherwise we need to reinitialise this window if it's closed & re-opened, which is slow and requires more checking to be stable
             Hide(); // hide the window instead
             e.Cancel = true; // silently prevent window from being disposed/closed
+        }
+
+        private void imageExpander_FirstSize()
+        {
+            // get the current screen size
+            int width = Screen.PrimaryScreen.Bounds.Width;
+            int height = Screen.PrimaryScreen.Bounds.Height;
+
+            int newWidth = (width / 4) - ((width / 4) % 16); // calculate new width to be 1/4 of the screen width, rounded down to the nearest multiple of 16
+
+            int newHeight = (newWidth * 9) / 16; // calculate new height to be 16:9 aspect ratio of the new width
+
+            Size = new Size(newWidth, newHeight + 30); // set the size of this window to be the new width & height, plus 30 pixels for the title bar
         }
     }
 }
