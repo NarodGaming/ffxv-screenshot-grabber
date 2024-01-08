@@ -6,7 +6,7 @@
 
         private static readonly string windowsFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Windows
         private static readonly string linuxFolderPath = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // default location for Linux
-        private static readonly string macFolderPath = ""; // default location for Mac (not yet setup)
+        private static readonly string macFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Mac (we're expecting a Windows file path due to some differences in how Linux and Mac opening of the utility is expected)
 
         private static string failedAutoDirSearch(string positionToBrowse, int platform) // runs when the detectFolder function fails
         {
@@ -14,10 +14,10 @@
             folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
             folderDialog.UseDescriptionForTitle = true;
             folderDialog.InitialDirectory = positionToBrowse;
-            if (platform == 1)
+            if (platform == 1 || platform == 3)
             {
                 MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)"); // message to user
-            } else
+            } else if (platform == 2)
             {
                 MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually {steam-library-dir}/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/snapshot"); // message to user
             }
@@ -62,7 +62,7 @@
                 return failedAutoDirSearch(folderLocation, platform); // run failed function (above)
             }
             string[] subdirs = Directory.GetDirectories(folderLocation); // get all sub directories.
-            if (subdirs.Length == 0 || subdirs.Length >= 2) // check how many subdirs were returned, there should only be 1 (unless user has multiple steam accounts they played this game with, in which case they need to specify for themselves). if there's none, then the user hasn't played the game.
+            if (subdirs.Length != 1) // check how many subdirs were returned, there should only be 1 (unless user has multiple steam accounts they played this game with, in which case they need to specify for themselves). if there's none, then the user hasn't played the game.
             {
                 return failedAutoDirSearch(folderLocation, platform); // run failed function (above)
             }
