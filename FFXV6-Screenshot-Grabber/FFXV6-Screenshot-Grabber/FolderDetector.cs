@@ -8,16 +8,16 @@
         private static readonly string linuxFolderPath = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // default location for Linux
         private static readonly string macFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Mac (we're expecting a Windows file path due to some differences in how Linux and Mac opening of the utility is expected)
 
-        private static string failedAutoDirSearch(string positionToBrowse, int platform) // runs when the detectFolder function fails
+        private static string failedAutoDirSearch(string positionToBrowse, OperatingSystem platform) // runs when the detectFolder function fails
         {
             folderDialog.SelectedPath = ""; // reset the selected path to nothing, as it might be set from 'Save All' prompt
             folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
             folderDialog.UseDescriptionForTitle = true;
             folderDialog.InitialDirectory = positionToBrowse;
-            if (platform == 1 || platform == 3)
+            if (platform == OperatingSystem.Windows || platform == OperatingSystem.Mac)
             {
                 MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)"); // message to user
-            } else if (platform == 2)
+            } else if (platform == OperatingSystem.Linux)
             {
                 MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually {steam-library-dir}/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/snapshot"); // message to user
             }
@@ -37,24 +37,23 @@
             return folderDialog.SelectedPath + "\\"; // all checks passed, set folder location to one specified by user
         }
 
-        public static string detectFolder(int platform) // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
+        public static string detectFolder(OperatingSystem platform) // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
         {
             string folderLocation;
 
-            // platforms: (1) Windows, (2) Linux, (3) Mac
-
-            if (platform == 1) // if platform is Windows
+            switch (platform)
             {
-                folderLocation = windowsFolderPath; // set folder location to default Windows location
-            } else if (platform == 2) // if platform is Linux
-            {
-                folderLocation = linuxFolderPath; // set folder location to default Linux location
-            } else if (platform == 3) // if platform is Mac
-            {
-                folderLocation = macFolderPath; // set folder location to default Mac location
-            } else // if platform is not Windows, Linux or Mac
-            {
-                return failedAutoDirSearch("", platform);
+                case OperatingSystem.Windows:
+                    folderLocation = windowsFolderPath;
+                    break;
+                case OperatingSystem.Linux:
+                    folderLocation = linuxFolderPath;
+                    break;
+                case OperatingSystem.Mac:
+                    folderLocation = macFolderPath;
+                    break;
+                default:
+                    return failedAutoDirSearch("", 0);
             }
 
             if (!Directory.Exists(folderLocation)) // if this base directory doesn't exist (it should on all Windows systems who have played the game)

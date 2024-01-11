@@ -14,7 +14,7 @@ namespace FFXV6_Screenshot_Grabber
 
         RealtimeHandler? realtimeObject; // object to handle realtime screenshots
 
-        int platform = 0; // set to 0, main function will set this to the correct platform
+        OperatingSystem platform = OperatingSystem.Unknown; // set to Unknown, main function will set this to the correct platform
 
         public mainWindow()
         {
@@ -33,6 +33,8 @@ namespace FFXV6_Screenshot_Grabber
             DarkMode.SetupDarkMode(this); // run darkmode configuration, passing this form as an object
 
             screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
+
+            helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
         }
 
         private string returnFullPath() // returns full path of listbox item selected

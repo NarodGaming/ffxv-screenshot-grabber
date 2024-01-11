@@ -7,22 +7,30 @@ using System.Threading.Tasks;
 
 namespace FFXV6_Screenshot_Grabber
 {
+    enum OperatingSystem
+    {
+        Unknown = 0,
+        Windows = 1,
+        Linux = 2,
+        Mac = 3
+    }
+
     internal class OSDetector
     {
-        public static int detectOS()
+        public static OperatingSystem detectOS()
         {
-            int platform = 1;
+            OperatingSystem platform = OperatingSystem.Windows;
 
             foreach (string subValueKey in Registry.CurrentUser.OpenSubKey("Software")?.GetSubKeyNames() ?? Array.Empty<string>()) // a good way of checking if we're running on Linux or Mac
             {
                 if (subValueKey == "Wine") // if wine key exists, then we're on Linux or Mac
                 {
-                    platform = 2; // set default to Linux, as we'll search on top to see if we're on Mac
+                    platform = OperatingSystem.Linux; // set default to Linux, as we'll search on top to see if we're on Mac
                     foreach (string macSearchKey in Registry.CurrentUser.OpenSubKey("Software\\Wine")?.GetSubKeyNames() ?? Array.Empty<string>()) // a good way of checking if we're running on Mac - looking for a "Mac Driver" subkey
                     {
                         if (macSearchKey == "Mac Driver") // if we find the mac driver subkey, then we're actually on Mac and not Linux
                         {
-                            platform = 3; // set the platform to Mac
+                            platform = OperatingSystem.Mac; // set the platform to Mac
                             break; // break to save time, as we've found what we're looking for
                         }
                     }

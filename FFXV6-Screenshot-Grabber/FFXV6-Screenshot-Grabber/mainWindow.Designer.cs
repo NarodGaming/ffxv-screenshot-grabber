@@ -172,7 +172,7 @@
             // 
             authVerLabel.AutoSize = true;
             authVerLabel.Font = new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            authVerLabel.Location = new Point(679, 4);
+            authVerLabel.Location = new Point(679, 0);
             authVerLabel.Margin = new Padding(4, 0, 4, 0);
             authVerLabel.Name = "authVerLabel";
             authVerLabel.Size = new Size(93, 15);
