@@ -21,23 +21,23 @@ In FFXV (Final Fantasy 15), Prompto (an in-game character) will take in-game pho
 ## Supported Systems
 
 - Windows: 7, 8.1, 10, 11
-- Linux: SteamOS (officially supported), other distros should also work, no guarantee
-
-macOS is not officially supported, planned to be investigated further at Sonoma launch. Feel free to investigate beforehand and create a pull request! (Look at FolderDetector.cs)
+- Linux: SteamOS, & any other distro where Wine works
+- macOS: 14.0+ (Sonoma)
 
 ## Features
 
 - See a live preview of what the .ss file contains before exporting it
 - Export a single photo, or an entire folders worth in one go
   - Compared to the most popular FFXV Screenshot Utility, this utility is incredibly fast
-- Automatic detection of your screenshot folder, with the option to browse to a custom one
+- Automatic multi-platform detection of your screenshot folder, with the option to browse to a custom one
 - Realtime mode, which can be activated to save a copy of the screenshots as they are taken in-game.
 - Automatic version checker, you will be notified of future updates.
 
 ## Limitations
 
-- Auto detection on Linux doesn't always work. The manual location you'll need is quite long, you're looking for the compatdata folder (might need to Google), from there: 637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam - then a set of numbers, then savestorage/snapshot/
-- SteamOS/Linux setup is complicated, instructions on Nexus: https://www.nexusmods.com/finalfantasy15/mods/237
+- Images are saved with the same file name as their .ss counterpart, which is just a string of sequential numbers.
+- This utility doesn't reset your snapshot in-game file, so you need to sit there and remove all the blank files if you clean out your 'snapshot' folder.
+- SteamOS setup is complicated, instructions on Nexus (link above)
 
 ## Helping Narod's FFXV Screenshot Grabber
 
