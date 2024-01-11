@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Net.Http;
+using System.Reflection;
 
 namespace FFXV6_Screenshot_Grabber
 {

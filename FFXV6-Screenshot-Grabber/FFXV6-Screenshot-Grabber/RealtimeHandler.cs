@@ -1,4 +1,6 @@
-﻿namespace FFXV6_Screenshot_Grabber
+﻿using System.IO;
+
+namespace FFXV6_Screenshot_Grabber
 {
     internal class RealtimeHandler
     {

@@ -25,6 +25,7 @@
     <NeutralLanguage>en-GB</NeutralLanguage>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <PackageIcon>icon-ffxv.png</PackageIcon>
+    <UseWPF>True</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
