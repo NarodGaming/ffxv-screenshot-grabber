@@ -34,7 +34,7 @@ namespace FFXV6_Screenshot_Grabber
 
             screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
 
-            helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
+            helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
         }
 
         private string returnFullPath() // returns full path of listbox item selected
