@@ -5,6 +5,9 @@ using System.Reflection;
 
 namespace FFXV6_Screenshot_Grabber
 {
+    /// <summary>
+    /// The Main GUI window of the utility
+    /// </summary>
     public partial class mainWindow : Form
     {
         imageExpander previewWindow = new imageExpander(); // create reference of imageExpander (the resizeable preview window)
@@ -16,6 +19,9 @@ namespace FFXV6_Screenshot_Grabber
 
         OperatingSystem platform = OperatingSystem.Unknown; // set to Unknown, main function will set this to the correct platform
 
+        /// <summary>
+        /// Handles the startup events associated with the utility (e.g. update checks, OS detection, etc.)
+        /// </summary>
         public mainWindow()
         {
             InitializeComponent();
@@ -37,18 +43,30 @@ namespace FFXV6_Screenshot_Grabber
             helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
         }
 
+        /// <summary>
+        /// Appends the full path to the selected screenshot in the listbox item
+        /// </summary>
+        /// <returns>Returns the full path of any .ss file selected in the listbox</returns>
         private string returnFullPath() // returns full path of listbox item selected
         {
             if (screenshotListBox.SelectedIndex == -1) { return ""; }; // if there is no selected listbox item, return a blank string
             return folderLocation + screenshotListBox.SelectedItem.ToString() + ".ss"; // otherwise, concat the folder location var with the listbox selected item string and return it
         }
 
+        /// <summary>
+        /// Called by the realtime handler when a new screenshot is detected
+        /// </summary>
+        /// <param name="itemToAdd">The name of the screenshot file (not full path) created</param>
         public void addToListBox(string itemToAdd) // add a single item to the screenshot list box
         {
             screenshotListBox.Items.Add(itemToAdd);
             updateListBoxCounter();
         }
 
+        /// <summary>
+        /// Used to add multiple items to the screenshot list box, such as when first scanning for screenshots
+        /// </summary>
+        /// <param name="itemsToAdd">Contains multiple items (not full path) to be added</param>
         public void addToListBox(IEnumerable<String> itemsToAdd) // add an enum of strings to the screenshot list box
         {
             foreach (string ssFile in itemsToAdd) // for each file found in above line
@@ -59,6 +77,10 @@ namespace FFXV6_Screenshot_Grabber
             updateListBoxCounter();
         }
 
+        /// <summary>
+        /// Called by realtime handler when a screenshot is deleted
+        /// </summary>
+        /// <param name="itemToRemove">The name of the screenshot file (not full path) created</param>
         public void removeFromListBox(string itemToRemove) // remove a specific string from the screenshot list box
         {
             if (screenshotListBox.Items.Contains(itemToRemove))
@@ -68,11 +90,17 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
+        /// <summary>
+        /// Updates the number of screenshot counter above the listbox
+        /// </summary>
         private void updateListBoxCounter() // update the counter with how many items are in the screenshot list box
         {
             screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
         }
 
+        /// <summary>
+        /// Resets the window, clearing the listbox, preview image, etc. - useful when switching screenshot folder
+        /// </summary>
         private void resetWindow()
         {
             screenshotListBox.Items.Clear(); // clear all items currently in the listbox
@@ -83,6 +111,9 @@ namespace FFXV6_Screenshot_Grabber
             updateListBoxCounter(); // updates the counter for how many screenshots are in the listbox
         }
 
+        /// <summary>
+        /// Scans the screenshot folder for screenshots, and adds them to the listbox
+        /// </summary>
         private void scanScreenshots() // scans for all screenshots in folder, runs at boot, or when screenshot folder has changed
         {
             resetWindow(); // reset the window (clears listbox, preview image, etc.)
@@ -91,6 +122,9 @@ namespace FFXV6_Screenshot_Grabber
             addToListBox(ssFiles);
         }
 
+        /// <summary>
+        /// Updates the UI with the new screenshot preview when the user selects a new screenshot
+        /// </summary>
         private void screenshotListBox_SelectedIndexChanged(object sender, EventArgs e) // run when the user selects a new screenshot to preview (and then potentially save)
         {
             if (screenshotListBox.SelectedIndex == -1) // if the selected item has been unset
@@ -103,6 +137,9 @@ namespace FFXV6_Screenshot_Grabber
             screenshotTakenLabel.Text = $"Snapshot Taken On {File.GetCreationTime(returnFullPath())}";
         }
 
+        /// <summary>
+        /// Opens a <see cref="imageExpander"/> window with the current preview image
+        /// </summary>
         private void previewPictureBox_Click(object sender, EventArgs e) // run when the user clicks the preview image (to 'expand' it)
         {
             if (screenshotListBox.SelectedIndex == -1) // if the preview image is not set
@@ -113,6 +150,11 @@ namespace FFXV6_Screenshot_Grabber
             previewWindow.Show(); // show the preview window (screenshotListBox_SelectedIndexChanged always passes screenshot whether the preview window is visible or not anyway)
         }
 
+        /// <summary>
+        /// Handles the save dialog for save, save all and save all turbo
+        /// </summary>
+        /// <param name="isAllSave"><c>True</c> if a directory save dialog should be used (Save All / Save All Turbo), <c>False</c> if a single save dialog should be used (Save One)</param>
+        /// <returns><c>True</c> if a directory has been selected and exists, <c>False</c> if no folder was selected, or selected folder doesn't exist</returns>
         private bool showSaveDialog(bool isAllSave) // function which runs the shared code between save, save all and save all turbo
         {
             saveAllProgressbar.Value = 0; // reset the progressbar (not used for saving single file anyway)
@@ -147,6 +189,9 @@ namespace FFXV6_Screenshot_Grabber
             return true; // return true, all checks succesful
         }
 
+        /// <summary>
+        /// Handles saving the screenshot selected in the listbox
+        /// </summary>
         private void saveOneBtn_Click(object sender, EventArgs e) // run when the user clicks 'Save One'
         {
             bool wasSuccessful = showSaveDialog(false);
@@ -160,6 +205,9 @@ namespace FFXV6_Screenshot_Grabber
             ScreenshotWriter.writeScreenshot(returnFullPath(), newPath); // write the file to disk
         }
 
+        /// <summary>
+        /// Handles saving all screenshots in the listbox
+        /// </summary>
         private void saveAllBtn_Click(object sender, EventArgs e) // run when the user clicks 'Save All'
         {
             bool wasSuccessful = showSaveDialog(true);
@@ -186,6 +234,9 @@ namespace FFXV6_Screenshot_Grabber
             screenshotListBox.Enabled = true; // before finishing function, re-enable the listbox
         }
 
+        /// <summary>
+        /// Handles saving all screenshots in the listbox, but using multiple background workers to speed up the process
+        /// </summary>
         private void saveAllTBtn_Click(object sender, EventArgs e)
         {
             bool wasSuccessful = showSaveDialog(true);
@@ -206,11 +257,17 @@ namespace FFXV6_Screenshot_Grabber
             screenshotListBox.Enabled = true;
         }
 
+        /// <summary>
+        /// Handles the progressbar updates for the save all turbo function
+        /// </summary>
         public void turboReportProgress(object sender, ProgressChangedEventArgs e)
         {
             saveAllProgressbar.Value = e.ProgressPercentage;
         }
 
+        /// <summary>
+        /// Handles switching the screenshot folder
+        /// </summary>
         private void selectFolderBtn_Click(object sender, EventArgs e) // opens a folder selector, runs when user clicks 'Select Folder'
         {
             folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
@@ -230,17 +287,26 @@ namespace FFXV6_Screenshot_Grabber
             scanScreenshots(); // re-scan for screenshots
         }
 
+        /// <summary>
+        /// Handles detecting the screenshot folder
+        /// </summary>
         private void detectFolderBtn_Click(object sender, EventArgs e) // detects default screenshot folder, runs when user clicks 'Detect Folder'
         {
             folderLocation = FolderDetector.detectFolder(platform); // runs function to detect folder
             scanScreenshots(); // runs function to re-scan for screenshots
         }
 
+        /// <summary>
+        /// Handles the background worker for checking for updates
+        /// </summary>
         private void updateChecker_DoWork(object sender, DoWorkEventArgs e)
         {
             isUpdateAvailable = UpdateChecker.checkForUpdate(); // run the function to check if theres an update
         }
 
+        /// <summary>
+        /// Handles the completion of the background worker for checking for updates
+        /// </summary>
         private void updateChecker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (isUpdateAvailable) // if there is an update
@@ -258,6 +324,9 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
+        /// <summary>
+        /// Handles configuring the realtime mode (enabling & disabling)
+        /// </summary>
         private void realtimeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (realtimeCheckBox.Checked == true) // if the box has been checked
@@ -302,6 +371,9 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
+        /// <summary>
+        /// Handles the toggling of tooltips
+        /// </summary>
         private void tooltipsCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (tooltipsCheckbox.Checked)

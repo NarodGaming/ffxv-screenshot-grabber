@@ -5,6 +5,10 @@ namespace FFXV6_Screenshot_Grabber
     internal static class UpdateChecker
     {
 
+        /// <summary>
+        /// This function is used to retrieve the latest version number of the utility from the remote server
+        /// </summary>
+        /// <returns>A Task (of String), the result of which contains the latest version number as fetched from the remote server.</returns>
         private async static Task<string> getLatestVersion()
         {
             try // try and catch, for in case theres no internet, url is down, etc.
@@ -22,6 +26,10 @@ namespace FFXV6_Screenshot_Grabber
             return "V0.0.0"; // will occur if error HTTP code is returned
         }
 
+        /// <summary>
+        /// This function is used to check if an update is required
+        /// </summary>
+        /// <returns>Boolean, <c>True</c> if a newer version is available, <c>False</c> if a newer version isn't available.</returns>
         public static bool checkForUpdate() // public function called to check for update
         {
             string latestVersion = getLatestVersion().GetAwaiter().GetResult(); // run function to retrieve remote version info

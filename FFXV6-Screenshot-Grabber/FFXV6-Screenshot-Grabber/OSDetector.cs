@@ -7,16 +7,26 @@ using System.Threading.Tasks;
 
 namespace FFXV6_Screenshot_Grabber
 {
+    /// <summary>
+    /// An enum to represent the operating system we're running on.
+    /// </summary>
     enum OperatingSystem
     {
-        Unknown = 0,
+        Unknown = 0, // only used to configure enum object to default, should never be used
         Windows = 1,
         Linux = 2,
         Mac = 3
     }
 
+    /// <summary>
+    /// Class to detect the operating system we're running on.
+    /// </summary>
     internal class OSDetector
     {
+        /// <summary>
+        /// Checks specific registry keys to determine operating system.
+        /// </summary>
+        /// <returns><see cref="OperatingSystem"/> enum object, between <c>Windows</c>, <c>Linux</c> and <c>Mac</c></returns>
         public static OperatingSystem detectOS()
         {
             OperatingSystem platform = OperatingSystem.Windows;

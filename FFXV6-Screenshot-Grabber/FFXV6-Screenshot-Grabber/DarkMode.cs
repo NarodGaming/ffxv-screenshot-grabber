@@ -2,8 +2,15 @@
 
 namespace FFXV6_Screenshot_Grabber
 {
+    /// <summary>
+    /// Handles Dark Mode for WinForms GUI elements
+    /// </summary>
     internal class DarkMode // initialise class for dark mode
     {
+        /// <summary>
+        /// Run on <see cref="Control"/> to configure Dark Mode colouring, styling and events
+        /// </summary>
+        /// <param name="nControl"><c>Button</c>, <c>ListBox</c>, <c>Label</c>, <c>CheckBox</c> or <c>GroupBox</c> controls (any other controls will be ignored)</param>
         private static void AddDarkMode(Control nControl) // main function which handles each control (UI element) in a form
         {
             if (nControl is Button) // if the control is a button
@@ -35,6 +42,10 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
+        /// <summary>
+        /// Checks a specific registry key to see if Dark Mode should be used (Windows 8 and above (no Linux/Mac support), otherwise determined as False)
+        /// </summary>
+        /// <returns><c>True</c> if the system has Dark Mode selected, <c>False</c> if Dark Mode isn't selected, or the system doesn't support Dark Mode</returns>
         private static bool ShouldUseDarkMode() // private function called to run registry checks
         {
             bool isDarkMode = false; // set variable as default to false
@@ -55,6 +66,10 @@ namespace FFXV6_Screenshot_Grabber
             return isDarkMode; // return result
         }
 
+        /// <summary>
+        /// Recursively sets up Dark Mode for all <see cref="Control"/>s on a <see cref="Form"/>
+        /// </summary>
+        /// <param name="callingForm">The <see cref="Form"/> you would like to configure Dark Mode on</param>
         public static void SetupDarkMode(Form callingForm) // main public function to run all tasks
         {
             if (ShouldUseDarkMode()) // check if we need to set up dark mode
@@ -68,6 +83,9 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
+        /// <summary>
+        /// Dark Mode event for <see cref="Button"/>s, which highlights the button when the mouse enters the bounds of the button
+        /// </summary>
         public static void buttonMouseLeave(object sender, EventArgs e) // when button leaves the bounds of the button
         {
             Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)
@@ -75,7 +93,9 @@ namespace FFXV6_Screenshot_Grabber
             buttonCast.BackColor = Color.FromArgb(33, 33, 33); // change the back color back to (near) black
         }
 
-
+        /// <summary>
+        /// Dark Mode event for <see cref="Button"/>s, which unhighlights the button when the mouse leaves the bounds of the button
+        /// </summary>
         public static void buttonMouseEnter(object sender, EventArgs e) // when button enters the bounds of the button
         {
             Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)

@@ -1,5 +1,8 @@
 ﻿namespace FFXV6_Screenshot_Grabber
 {
+    /// <summary>
+    /// Class for detecting the screenshot folder location on a range of <see cref="OperatingSystem"/>s.
+    /// </summary>
     internal static class FolderDetector
     {
         private static FolderBrowserDialog folderDialog = new();
@@ -8,6 +11,12 @@
         private static readonly string linuxFolderPath = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // default location for Linux
         private static readonly string macFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Mac (we're expecting a Windows file path due to some differences in how Linux and Mac opening of the utility is expected)
 
+        /// <summary>
+        /// Runs when screenshot folder detection fails, prompts the user to select the folder manually.
+        /// </summary>
+        /// <param name="positionToBrowse">The closest directory we got to finding the screenshot folder automatically</param>
+        /// <param name="platform">The users operating system (changes help dialog to help as best as possible)</param>
+        /// <returns>The full path to the screenshot folder (or Exits, if user cancels)</returns>
         private static string failedAutoDirSearch(string positionToBrowse, OperatingSystem platform) // runs when the detectFolder function fails
         {
             folderDialog.SelectedPath = ""; // reset the selected path to nothing, as it might be set from 'Save All' prompt
@@ -37,6 +46,11 @@
             return folderDialog.SelectedPath + "\\"; // all checks passed, set folder location to one specified by user
         }
 
+        /// <summary>
+        /// Automatically detects the screenshot folder location on a range of <see cref="OperatingSystem"/>s.
+        /// </summary>
+        /// <param name="platform">The users operating system, as this determines where the program should look for the folder.</param>
+        /// <returns>The full path of the screenshot folder</returns>
         public static string detectFolder(OperatingSystem platform) // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
         {
             string folderLocation;
