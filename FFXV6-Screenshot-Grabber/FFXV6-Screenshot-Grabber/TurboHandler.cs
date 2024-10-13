@@ -86,8 +86,8 @@ namespace FFXV6_Screenshot_Grabber
             int i = 0; // define a counter
             foreach (String screenshot in screenshotList) // for each screenshot in it's chunk
             {
-                string fileName = newPath + screenshot.Split(".ss")[0] + ".jpg"; // define the new filename that will be used
-                ScreenshotWriter.writeScreenshot(currentPath + screenshot, fileName); // run screenshotwriter (NOT the from all version, as this takes slightly more processing to return the image which we don't care about)
+                string fileName = newPath + screenshot + ".jpg"; // define the new filename that will be used
+                ScreenshotWriter.writeScreenshot(currentPath + screenshot + ".ss", fileName); // run screenshotwriter (NOT the from all version, as this takes slightly more processing to return the image which we don't care about)
                 i++; // increment the counter
                 worker.ReportProgress(i / screenshotList.Count * 100); // report progress back to the main form
             }

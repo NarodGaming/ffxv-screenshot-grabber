@@ -15,7 +15,8 @@ namespace FFXV6_Screenshot_Grabber
         Unknown = 0, // only used to configure enum object to default, should never be used
         Windows = 1,
         Linux = 2,
-        Mac = 3
+        Mac = 3,
+        LegacyWindows = 4
     }
 
     /// <summary>
@@ -45,6 +46,17 @@ namespace FFXV6_Screenshot_Grabber
                         }
                     }
                     break; // break to save time, as we've found what we're looking for
+                }
+            }
+
+            if(platform == OperatingSystem.Windows)
+            {
+                // check if we have a new or old version of windows
+                Version osVersion = Environment.OSVersion.Version;
+                // if we have a version of windows that is less than windows 10, then we shall consider it to be legacy windows
+                if (osVersion.Major < 10)
+                {
+                    platform = OperatingSystem.LegacyWindows;
                 }
             }
 

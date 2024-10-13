@@ -23,7 +23,7 @@
             folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
             folderDialog.UseDescriptionForTitle = true;
             folderDialog.InitialDirectory = positionToBrowse;
-            if (platform == OperatingSystem.Windows || platform == OperatingSystem.Mac)
+            if (platform == OperatingSystem.Windows || platform == OperatingSystem.Mac || platform == OperatingSystem.LegacyWindows)
             {
                 MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)"); // message to user
             } else if (platform == OperatingSystem.Linux)
@@ -58,6 +58,9 @@
             switch (platform)
             {
                 case OperatingSystem.Windows:
+                    folderLocation = windowsFolderPath;
+                    break;
+                case OperatingSystem.LegacyWindows:
                     folderLocation = windowsFolderPath;
                     break;
                 case OperatingSystem.Linux:

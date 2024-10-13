@@ -159,7 +159,7 @@ namespace FFXV6_Screenshot_Grabber
                 MessageBox.Show("Please select a screenshot to preview first before trying to expand the preview!", "Please select a screenshot!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return; // then theres nothing to show, return
             }
-            if (platform == OperatingSystem.Windows) // if we're on Windows, open the default image viewer instead
+            if (platform == OperatingSystem.Windows || platform == OperatingSystem.LegacyWindows) // if we're on Windows, open the default image viewer instead
             {
                 // write the image to disk, then open it with the default image viewer
                 string tempPath = Path.GetTempPath() + "\\NFFXVSG_temp";
@@ -204,11 +204,6 @@ namespace FFXV6_Screenshot_Grabber
             else
             {
                 saveScreenshotDialog.ShowDialog();
-                if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
-                {
-                    MessageBox.Show("Unable to save screenshots. Folder chosen does not exist."); // show user message
-                    return false; // then return, as we can't save
-                }
             }
             return true; // return true, all checks succesful
         }
@@ -248,8 +243,8 @@ namespace FFXV6_Screenshot_Grabber
 
             foreach (string listBoxItem in screenshotListBox.Items) // for each listbox item (screenshot) in listbox (total screenshots)
             {
-                string fileName = newPath + listBoxItem.Split(".ss")[0] + ".jpg"; // gets a full file path to save the new ss to. e.g. listbox may say '00001.ss', this would change it to 'C:\screenshotsaves\00001.jpg' (if folder specified was 'C:\screenshotsaves')
-                currentImage = ScreenshotWriter.writeScreenshotFromAll(folderLocation + listBoxItem, fileName); // write the screenshot to disk, and also retrieve a preview copy of this image
+                string fileName = newPath + listBoxItem + ".jpg"; // gets a full file path to save the new ss to. e.g. listbox may say '00001.ss', this would change it to 'C:\screenshotsaves\00001.jpg' (if folder specified was 'C:\screenshotsaves')
+                currentImage = ScreenshotWriter.writeScreenshotFromAll(folderLocation + listBoxItem + ".ss", fileName); // write the screenshot to disk, and also retrieve a preview copy of this image
                 saveAllProgressbar.PerformStep(); // increment the progress bar by 1
                 previewPictureBox.BackgroundImage = currentImage; // update the preview image
                 Application.DoEvents(); // do events, this slightly slows down the saving operation, but it prevents the UI from locking up and allows us to update the progressbar and preview image
@@ -422,7 +417,7 @@ namespace FFXV6_Screenshot_Grabber
 
         private void mainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (platform == OperatingSystem.Windows)
+            if (platform == OperatingSystem.Windows || platform == OperatingSystem.LegacyWindows)
             {
                 if (Directory.Exists(Path.GetTempPath() + "\\NFFXVSG_temp"))
                 {
