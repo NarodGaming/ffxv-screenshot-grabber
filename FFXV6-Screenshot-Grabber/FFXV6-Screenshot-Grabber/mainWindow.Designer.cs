@@ -233,6 +233,7 @@
             helpTooltip.SetToolTip(realtimeCheckBox, "Realtime mode allows the utility to automatically save screenshots as the game creates them.");
             realtimeCheckBox.UseVisualStyleBackColor = true;
             realtimeCheckBox.CheckedChanged += realtimeCheckBox_CheckedChanged;
+            realtimeCheckBox.Paint += checkboxPainter;
             // 
             // helpTooltip
             // 
@@ -319,6 +320,7 @@
             tooltipsCheckbox.Text = "Enable Tooltips";
             tooltipsCheckbox.UseVisualStyleBackColor = true;
             tooltipsCheckbox.CheckedChanged += tooltipsCheckbox_CheckedChanged;
+            tooltipsCheckbox.Paint += checkboxPainter;
             // 
             // tableLayoutPanel1
             // 

@@ -386,5 +386,15 @@ namespace FFXV6_Screenshot_Grabber
                 helpTooltip.Active = false;
             }
         }
+
+        private void checkboxPainter(object sender, PaintEventArgs e)
+        {
+            CheckBox checkbox = (CheckBox)sender;
+            
+            if (this.DeviceDpi != 96)
+            {
+                checkbox.Text = checkbox.Text.Replace(" ", "\n");
+            }
+        }
     }
 }
