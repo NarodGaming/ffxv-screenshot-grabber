@@ -13,7 +13,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             try // try and catch, for in case theres no internet, url is down, etc.
             {
-                HttpClient verRequest = new HttpClient(); // create a new httpclient to fetch the latest version
+                HttpClient verRequest = new(); // create a new httpclient to fetch the latest version
                 HttpResponseMessage verResponse = await verRequest.GetAsync("https://ngserve.games/cdn/ffxvsg/latest-ver.txt"); // get the web page holding the latest ver info
                 if (verResponse.IsSuccessStatusCode) // if we received a success HTTP code
                 {
@@ -33,7 +33,7 @@ namespace FFXV6_Screenshot_Grabber
         public static bool checkForUpdate() // public function called to check for update
         {
             string latestVersion = getLatestVersion().GetAwaiter().GetResult(); // run function to retrieve remote version info
-            string latestVersionRaw = latestVersion.Substring(1); // remove the "V" at the start. this is in the remote version for potential future use for a better version checker
+            string latestVersionRaw = latestVersion[1..]; // remove the "V" at the start. this is in the remote version for potential future use for a better version checker
             latestVersionRaw = latestVersionRaw.Replace(".", ""); // replace the "." with nothing so can be converted to int, this is in the remote version for potential future use for a better version checker
             int latestVersionInt = Convert.ToInt32(latestVersionRaw); // convert the above string to int
 

@@ -22,14 +22,14 @@ namespace FFXV6_Screenshot_Grabber
                 throw new ArgumentException("No screenshots to save!");
             }
             if (currPath == null) {
-                throw new ArgumentNullException("Current path is null!");
+                throw new ArgumentNullException("currPath");
             } else if (Directory.Exists(currPath) == false)
             {
                 throw new ArgumentException("Current path does not exist!");
             }
             if (newPath == null)
             {
-                throw new ArgumentNullException("New path is null!");
+                throw new ArgumentNullException("newPath");
             } else if (Directory.Exists(newPath) == false)
             {
                 Directory.CreateDirectory(newPath); // this could be a problem if the user doesn't have permission to create a new directory, but that will just throw the relevant exception anyway
@@ -81,7 +81,7 @@ namespace FFXV6_Screenshot_Grabber
         /// <summary>
         /// Handles the processing of the worker, by running <see cref="ScreenshotWriter.writeScreenshot(string, string)"/> for each screenshot in the chunk
         /// </summary>
-        private void threadProcess(object sender, DoWorkEventArgs e) // this is the main processing of the worker
+        private void threadProcess(object? sender, DoWorkEventArgs e) // this is the main processing of the worker
         {
             int i = 0; // define a counter
             foreach (String screenshot in screenshotList) // for each screenshot in it's chunk
@@ -96,7 +96,7 @@ namespace FFXV6_Screenshot_Grabber
         /// <summary>
         /// Handles the completion of the worker, by disposing of the worker and clearing the variables
         /// </summary>
-        private void threadDone(object sender, RunWorkerCompletedEventArgs e) // function to run when background worker is done, disposes and clears vars, hopefully garbage collection does the rest...
+        private void threadDone(object? sender, RunWorkerCompletedEventArgs e) // function to run when background worker is done, disposes and clears vars, hopefully garbage collection does the rest...
         {
             worker.Dispose(); // dispose of the worker (clears it from memory)
             screenshotList.Clear(); // clear the screenshot list

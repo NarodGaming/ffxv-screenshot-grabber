@@ -14,7 +14,7 @@
         {
             if (ssPath == null)
             {
-                throw new ArgumentNullException("SS file path provided is null!");
+                throw new ArgumentNullException("ssPath");
             } else if (!File.Exists(ssPath))
             {
                 throw new FileNotFoundException("SS file path provided does not exist!");
@@ -23,7 +23,7 @@
                 throw new ArgumentException("SS file path provided is not a .ss file!");
             }
             byte[] bytes = File.ReadAllBytes(ssPath); // read the .ss file in as an array of bytes
-            return bytes[36..(bytes.Count()-130)]; // return a specific subsection of the bytes (the original .ss file), effectively converting it from .ss to .jpg
+            return bytes[36..(bytes.Length - 130)]; // return a specific subsection of the bytes (the original .ss file), effectively converting it from .ss to .jpg
         }
 
         /// <summary>
@@ -37,8 +37,8 @@
         {
             if (ssBytes == null)
             {
-                throw new ArgumentNullException("Bytes provided are null!");
-            } else if (ssBytes.Count() == 0)
+                throw new ArgumentNullException("ssBytes");
+            } else if (ssBytes.Length == 0)
             {
                 throw new ArgumentException("Bytes provided are empty!");
             }
@@ -60,7 +60,7 @@
         {
             if (ssPath == null)
             {
-                throw new ArgumentNullException("SS file path provided is null!");
+                throw new ArgumentNullException("ssPath");
             } else if (!File.Exists(ssPath))
             {
                 throw new FileNotFoundException("SS file path provided does not exist!");
@@ -70,7 +70,7 @@
             }
             if (newPath == null)
             {
-                throw new ArgumentNullException("New file path provided is null!");
+                throw new ArgumentNullException("newPath");
             } else if (Path.GetExtension(newPath) != ".jpg")
             {
                 throw new ArgumentException("New file path provided is not a .jpg file!");
@@ -92,7 +92,7 @@
         {
             if (ssPath == null)
             {
-                throw new ArgumentNullException("SS file path provided is null!");
+                throw new ArgumentNullException("ssPath");
             }
             else if (!File.Exists(ssPath))
             {
@@ -119,7 +119,7 @@
         {
             if (ssPath == null)
             {
-                throw new ArgumentNullException("SS file path provided is null!");
+                throw new ArgumentNullException("ssPath");
             }
             else if (!File.Exists(ssPath))
             {
@@ -131,7 +131,7 @@
             }
             if (newPath == null)
             {
-                throw new ArgumentNullException("New file path provided is null!");
+                throw new ArgumentNullException("newPath");
             }
             else if (Path.GetExtension(newPath) != ".jpg")
             {

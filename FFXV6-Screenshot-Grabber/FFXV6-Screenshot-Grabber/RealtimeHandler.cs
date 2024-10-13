@@ -19,16 +19,18 @@
         public RealtimeHandler(mainWindow formCalled, string folderToWatch)
         {
             if (folderToWatch == null) { 
-                throw new ArgumentNullException("Realtime Mode folder is null!");
+                throw new ArgumentNullException("folderToWatch");
             } else if (Directory.Exists(folderToWatch) == false)
             {
                 throw new DirectoryNotFoundException("Realtime Mode folder does not exist!");
             }
             callingForm = formCalled;
             realTimeFolder = folderToWatch;
-            realtimeWatcher = new FileSystemWatcher(); // create a new filesystemwatcher
-            realtimeWatcher.SynchronizingObject = callingForm; // set the object to sync to, to be the calling form
-            realtimeWatcher.Path = realTimeFolder; // set the folder to watch, to the folder with the screenshots in
+            realtimeWatcher = new FileSystemWatcher // create a new filesystemwatcher
+            {
+                SynchronizingObject = callingForm, // set the object to sync to, to be the calling form
+                Path = realTimeFolder // set the folder to watch, to the folder with the screenshots in
+            }; 
             realtimeWatcher.Created += realtimeScreenshotDetected; // set the function to be called if a new screenshot is detected
             realtimeWatcher.Deleted += realtimeScreenshotRemoved; // set the function to be called if that screenshot is deleted (likely by the game)
             realtimeWatcher.EnableRaisingEvents = true; // enable the filesystemwatcher
@@ -48,14 +50,10 @@
         /// </summary>
         private void realtimeScreenshotDetected(object? sender, FileSystemEventArgs? e) // called whenever a new file is created in the watcher directory
         {
-            if (e is null) { return; } // ensures e is not null
-            if (e.Name.Contains(".ss") == false) // if the file does not contain ".ss" (a snapshot file)
-            {
-                return; // return, not interested in that file
-            } // else
+            if (e is null || !e.Name.Contains(".ss")) { return; } // ensures e is not null or not a snapshot file
             callingForm.addToListBox(e.Name); // add it to the listbox
             string newFileName = e.Name.Split(".ss")[0]; // get just the name of the file without extension
-            newFileName = newFileName + ".jpg"; // add the .jpg extension to the name of the file
+            newFileName += ".jpg"; // add the .jpg extension to the name of the file
             ScreenshotWriter.writeScreenshot(e.FullPath, realTimeFolder + "\\" + newFileName); // write the screenshot with the file name as .jpg
         }
 
@@ -64,11 +62,7 @@
         /// </summary>
         private void realtimeScreenshotRemoved(object? sender, FileSystemEventArgs? e) // when a snapshot file is removed (happens when user deletes it in-game, or rejects it at end of day)
         {
-            if (e is null) { return; } // ensures e is not null
-            if (e.Name.Contains(".ss") == false) // if the file does not contain ".ss" (a snapshot file)
-            {
-                return; // return, not interested in that file
-            }
+            if (e is null || !e.Name.Contains(".ss")) { return; } // ensures e is not null or not a snapshot file
             callingForm.removeFromListBox(e.Name); // attempt to remove it from the listbox, it should exist
         }
     }

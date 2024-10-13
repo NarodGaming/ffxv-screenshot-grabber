@@ -13,16 +13,16 @@ namespace FFXV6_Screenshot_Grabber
         /// <param name="nControl"><c>Button</c>, <c>ListBox</c>, <c>Label</c>, <c>CheckBox</c> or <c>GroupBox</c> controls (any other controls will be ignored)</param>
         private static void AddDarkMode(Control nControl) // main function which handles each control (UI element) in a form
         {
-            if (nControl is Button) // if the control is a button
+            
+            if (nControl is Button buttonCast) // if the control is a button, cast the control to a button (needed for FlatStyle)
             {
-                Button buttonCast = (Button)nControl; // cast the control to a button (needed for FlatStyle)
                 buttonCast.BackColor = Color.FromArgb(33, 33, 33); // set back colour of button to (near) black
                 buttonCast.FlatStyle = FlatStyle.Flat; // change style to flat (default FlatStyle is System, which looks better in light mode but doesn't support back colour change)
                 buttonCast.MouseEnter += buttonMouseEnter; // add event for when mouse enters the bounds of the button, so we can 'highlight' it
                 buttonCast.MouseLeave += buttonMouseLeave; // add event for when mouse leaves the bounds of the button, so we can 'unhighlight' it
                 // the above will cause disabled buttons to have 'blank' text, so any disabled buttons should also be hidden
             }
-            else if (nControl is ListBox || nControl is Label) // if the control is a listbox or label (same code used)
+            else if (nControl is ListBox or Label) // if the control is a listbox or label (same code used)
             {
                 nControl.BackColor = Color.FromArgb(33, 33, 33); // set back colour to (near) black
                 nControl.ForeColor = Color.FromArgb(238, 238, 238); // set fore colour (text) to (near) white
@@ -93,8 +93,9 @@ namespace FFXV6_Screenshot_Grabber
         /// <summary>
         /// Dark Mode event for <see cref="Button"/>s, which highlights the button when the mouse enters the bounds of the button
         /// </summary>
-        public static void buttonMouseLeave(object sender, EventArgs e) // when button leaves the bounds of the button
+        public static void buttonMouseLeave(object? sender, EventArgs e) // when button leaves the bounds of the button
         {
+            if(sender == null) { return; } // if the sender is null, return (this should never happen, but it's a safety check)
             Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)
 
             buttonCast.BackColor = Color.FromArgb(33, 33, 33); // change the back color back to (near) black
@@ -103,8 +104,9 @@ namespace FFXV6_Screenshot_Grabber
         /// <summary>
         /// Dark Mode event for <see cref="Button"/>s, which unhighlights the button when the mouse leaves the bounds of the button
         /// </summary>
-        public static void buttonMouseEnter(object sender, EventArgs e) // when button enters the bounds of the button
+        public static void buttonMouseEnter(object? sender, EventArgs e) // when button enters the bounds of the button
         {
+            if(sender == null) { return; } // if the sender is null, return (this should never happen, but it's a safety check)
             Button buttonCast = (Button)sender; // cast the object to a button (which won't fail, this event is only applied to buttons)
 
             buttonCast.BackColor = Color.FromArgb(66, 66, 66); // change the back color to grey (highlighting it)

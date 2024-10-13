@@ -10,7 +10,7 @@ namespace FFXV6_Screenshot_Grabber
     /// </summary>
     public partial class mainWindow : Form
     {
-        imageExpander previewWindow = new imageExpander(); // create reference of imageExpander (the resizeable preview window)
+        readonly imageExpander previewWindow = new(); // create reference of imageExpander (the resizeable preview window)
         Image? currentImage; // variable to store current preview image
         string folderLocation; // variable to store folder location of screenshots
         bool isUpdateAvailable; // variable to store if update is required or not
@@ -42,6 +42,11 @@ namespace FFXV6_Screenshot_Grabber
             screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
 
             helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
+
+            if(platform != OperatingSystem.Windows)
+            {
+                MessageBox.Show($"Notice: .NET 6.0 is out of support on November 12, 2024. Therefore, this program will upgrade to .NET 8.0 in early November 2024. As you are on {platform.ToString()}, you may need to re-follow the instructions on the NexusMods page after updating past V1.6.0.0 - apologies for any inconvenience caused.");
+            }
         }
 
         /// <summary>
@@ -105,7 +110,7 @@ namespace FFXV6_Screenshot_Grabber
         private void resetWindow()
         {
             screenshotListBox.Items.Clear(); // clear all items currently in the listbox
-            if (currentImage != null) { currentImage.Dispose(); } // if there is a current image set, dispose of it
+            currentImage?.Dispose(); // if there is a current image set, dispose of it
             if (previewPictureBox.BackgroundImage != null) { previewPictureBox.BackgroundImage = Properties.Resources.default_preview; } // if the preview image is set, unset it
             previewWindow.Hide(); // if the preview window is open, this will hide it (as theres no image to display right now)
             screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
@@ -143,7 +148,7 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         private void previewPictureBox_Click(object sender, EventArgs e) // run when the user clicks the preview image (to 'expand' it)
         {
-            MouseEventArgs mouseEvent = e as MouseEventArgs;
+            MouseEventArgs mouseEvent = (MouseEventArgs)e;
             if (mouseEvent.Button == MouseButtons.Right)
             {
                 Clipboard.SetImage(currentImage);
@@ -159,7 +164,7 @@ namespace FFXV6_Screenshot_Grabber
                 // write the image to disk, then open it with the default image viewer
                 string tempPath = Path.GetTempPath() + "\\NFFXVSG_temp";
                 Directory.CreateDirectory(tempPath);
-                tempPath = tempPath + $"\\{screenshotListBox.SelectedItem.ToString()}_temp.jpg";
+                tempPath += $"\\{screenshotListBox.SelectedItem}_temp.jpg";
                 ScreenshotWriter.writeScreenshot(returnFullPath(), tempPath);
                 Process.Start("cmd", $"/c {tempPath}");
             }
@@ -279,7 +284,7 @@ namespace FFXV6_Screenshot_Grabber
         /// <summary>
         /// Handles the progressbar updates for the save all turbo function
         /// </summary>
-        public void turboReportProgress(object sender, ProgressChangedEventArgs e)
+        public void turboReportProgress(object? sender, ProgressChangedEventArgs e)
         {
             saveAllProgressbar.Value = e.ProgressPercentage;
         }
@@ -378,7 +383,7 @@ namespace FFXV6_Screenshot_Grabber
             }
             else // if checkbox is unchecked
             {
-                if (realtimeObject is not null) { realtimeObject.safeStop(); } // safely stop the realtime watcher 
+                realtimeObject?.safeStop(); // safely stop the realtime watcher 
                 helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
                 helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
                 selectFolderBtn.Enabled = true;
