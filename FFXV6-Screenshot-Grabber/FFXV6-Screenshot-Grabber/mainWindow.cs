@@ -143,12 +143,30 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         private void previewPictureBox_Click(object sender, EventArgs e) // run when the user clicks the preview image (to 'expand' it)
         {
+            MouseEventArgs mouseEvent = e as MouseEventArgs;
+            if (mouseEvent.Button == MouseButtons.Right)
+            {
+                Clipboard.SetImage(currentImage);
+                return;
+            }
             if (screenshotListBox.SelectedIndex == -1) // if the preview image is not set
             {
                 MessageBox.Show("Please select a screenshot to preview first before trying to expand the preview!", "Please select a screenshot!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return; // then theres nothing to show, return
             }
-            previewWindow.Show(); // show the preview window (screenshotListBox_SelectedIndexChanged always passes screenshot whether the preview window is visible or not anyway)
+            if (platform == OperatingSystem.Windows) // if we're on Windows, open the default image viewer instead
+            {
+                // write the image to disk, then open it with the default image viewer
+                string tempPath = Path.GetTempPath() + "\\NFFXVSG_temp";
+                Directory.CreateDirectory(tempPath);
+                tempPath = tempPath + $"\\{screenshotListBox.SelectedItem.ToString()}_temp.jpg";
+                ScreenshotWriter.writeScreenshot(returnFullPath(), tempPath);
+                Process.Start("cmd", $"/c {tempPath}");
+            }
+            else
+            {
+                previewWindow.Show(); // show the preview window (screenshotListBox_SelectedIndexChanged always passes screenshot whether the preview window is visible or not anyway)
+            }
         }
 
         /// <summary>
@@ -390,10 +408,21 @@ namespace FFXV6_Screenshot_Grabber
         private void checkboxPainter(object sender, PaintEventArgs e)
         {
             CheckBox checkbox = (CheckBox)sender;
-            
+
             if (this.DeviceDpi != 96)
             {
                 checkbox.Text = checkbox.Text.Replace(" ", "\n");
+            }
+        }
+
+        private void mainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (platform == OperatingSystem.Windows)
+            {
+                if (Directory.Exists(Path.GetTempPath() + "\\NFFXVSG_temp"))
+                {
+                    Directory.Delete(Path.GetTempPath() + "\\NFFXVSG_temp", true);
+                }
             }
         }
     }

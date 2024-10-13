@@ -51,19 +51,19 @@
             folderRealtimeWarning = new Label();
             screenshotTakenLabel = new Label();
             tooltipsCheckbox = new CheckBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            tableLayoutPanel5 = new TableLayoutPanel();
+            upperTableLayoutPanel = new TableLayoutPanel();
+            rightTableLayoutPanel = new TableLayoutPanel();
+            lowerTableLayoutPanel = new TableLayoutPanel();
+            leftTableLayoutPanel = new TableLayoutPanel();
+            outerTableLayoutPanel = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).BeginInit();
             saveGroupBox.SuspendLayout();
             folderGroupBox.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            tableLayoutPanel5.SuspendLayout();
+            upperTableLayoutPanel.SuspendLayout();
+            rightTableLayoutPanel.SuspendLayout();
+            lowerTableLayoutPanel.SuspendLayout();
+            leftTableLayoutPanel.SuspendLayout();
+            outerTableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
             // screenshotListBox
@@ -91,7 +91,7 @@
             previewPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             previewPictureBox.TabIndex = 1;
             previewPictureBox.TabStop = false;
-            helpTooltip.SetToolTip(previewPictureBox, "Your image preview for the selected image will appear here.");
+            helpTooltip.SetToolTip(previewPictureBox, "Your image preview for the selected image will appear here.\r\n\r\nClick to open a preview window. On Windows, this will be your\r\ndefault photo viewer.\r\n\r\nRight-click to copy the image to your clipboard.");
             previewPictureBox.Click += previewPictureBox_Click;
             // 
             // previewLabel
@@ -322,104 +322,104 @@
             tooltipsCheckbox.CheckedChanged += tooltipsCheckbox_CheckedChanged;
             tooltipsCheckbox.Paint += checkboxPainter;
             // 
-            // tableLayoutPanel1
+            // upperTableLayoutPanel
             // 
-            tableLayoutPanel1.AutoSize = true;
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.Controls.Add(previewLabel, 0, 0);
-            tableLayoutPanel1.Controls.Add(screenshotTakenLabel, 1, 0);
-            tableLayoutPanel1.Controls.Add(authVerLabel, 2, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-            tableLayoutPanel1.Location = new Point(3, 3);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(750, 16);
-            tableLayoutPanel1.TabIndex = 18;
+            upperTableLayoutPanel.AutoSize = true;
+            upperTableLayoutPanel.ColumnCount = 3;
+            upperTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            upperTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            upperTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            upperTableLayoutPanel.Controls.Add(previewLabel, 0, 0);
+            upperTableLayoutPanel.Controls.Add(screenshotTakenLabel, 1, 0);
+            upperTableLayoutPanel.Controls.Add(authVerLabel, 2, 0);
+            upperTableLayoutPanel.Dock = DockStyle.Fill;
+            upperTableLayoutPanel.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
+            upperTableLayoutPanel.Location = new Point(3, 3);
+            upperTableLayoutPanel.Name = "upperTableLayoutPanel";
+            upperTableLayoutPanel.RowCount = 1;
+            upperTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            upperTableLayoutPanel.Size = new Size(750, 16);
+            upperTableLayoutPanel.TabIndex = 18;
             // 
-            // tableLayoutPanel2
+            // rightTableLayoutPanel
             // 
-            tableLayoutPanel2.AutoSize = true;
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(tooltipsCheckbox, 0, 2);
-            tableLayoutPanel2.Controls.Add(realtimeCheckBox, 0, 3);
-            tableLayoutPanel2.Controls.Add(screenshotLabel, 0, 0);
-            tableLayoutPanel2.Controls.Add(screenshotListBox, 0, 1);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(765, 3);
-            tableLayoutPanel2.MaximumSize = new Size(130, 0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 4;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(130, 493);
-            tableLayoutPanel2.TabIndex = 19;
+            rightTableLayoutPanel.AutoSize = true;
+            rightTableLayoutPanel.ColumnCount = 1;
+            rightTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            rightTableLayoutPanel.Controls.Add(tooltipsCheckbox, 0, 2);
+            rightTableLayoutPanel.Controls.Add(realtimeCheckBox, 0, 3);
+            rightTableLayoutPanel.Controls.Add(screenshotLabel, 0, 0);
+            rightTableLayoutPanel.Controls.Add(screenshotListBox, 0, 1);
+            rightTableLayoutPanel.Dock = DockStyle.Fill;
+            rightTableLayoutPanel.Location = new Point(765, 3);
+            rightTableLayoutPanel.MaximumSize = new Size(130, 0);
+            rightTableLayoutPanel.Name = "rightTableLayoutPanel";
+            rightTableLayoutPanel.RowCount = 4;
+            rightTableLayoutPanel.RowStyles.Add(new RowStyle());
+            rightTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            rightTableLayoutPanel.RowStyles.Add(new RowStyle());
+            rightTableLayoutPanel.RowStyles.Add(new RowStyle());
+            rightTableLayoutPanel.Size = new Size(130, 493);
+            rightTableLayoutPanel.TabIndex = 19;
             // 
-            // tableLayoutPanel3
+            // lowerTableLayoutPanel
             // 
-            tableLayoutPanel3.ColumnCount = 3;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel3.Controls.Add(saveGroupBox, 0, 0);
-            tableLayoutPanel3.Controls.Add(folderGroupBox, 2, 0);
-            tableLayoutPanel3.Controls.Add(saveAllProgressbar, 1, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 440);
-            tableLayoutPanel3.MaximumSize = new Size(0, 50);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(750, 50);
-            tableLayoutPanel3.TabIndex = 20;
+            lowerTableLayoutPanel.ColumnCount = 3;
+            lowerTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            lowerTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            lowerTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            lowerTableLayoutPanel.Controls.Add(saveGroupBox, 0, 0);
+            lowerTableLayoutPanel.Controls.Add(folderGroupBox, 2, 0);
+            lowerTableLayoutPanel.Controls.Add(saveAllProgressbar, 1, 0);
+            lowerTableLayoutPanel.Dock = DockStyle.Fill;
+            lowerTableLayoutPanel.Location = new Point(3, 440);
+            lowerTableLayoutPanel.MaximumSize = new Size(0, 50);
+            lowerTableLayoutPanel.Name = "lowerTableLayoutPanel";
+            lowerTableLayoutPanel.RowCount = 1;
+            lowerTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            lowerTableLayoutPanel.Size = new Size(750, 50);
+            lowerTableLayoutPanel.TabIndex = 20;
             // 
-            // tableLayoutPanel4
+            // leftTableLayoutPanel
             // 
-            tableLayoutPanel4.AutoSize = true;
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(tableLayoutPanel1, 0, 0);
-            tableLayoutPanel4.Controls.Add(tableLayoutPanel3, 0, 2);
-            tableLayoutPanel4.Controls.Add(previewPictureBox, 0, 1);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 3);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 3;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle());
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle());
-            tableLayoutPanel4.Size = new Size(756, 493);
-            tableLayoutPanel4.TabIndex = 21;
+            leftTableLayoutPanel.AutoSize = true;
+            leftTableLayoutPanel.ColumnCount = 1;
+            leftTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            leftTableLayoutPanel.Controls.Add(upperTableLayoutPanel, 0, 0);
+            leftTableLayoutPanel.Controls.Add(lowerTableLayoutPanel, 0, 2);
+            leftTableLayoutPanel.Controls.Add(previewPictureBox, 0, 1);
+            leftTableLayoutPanel.Dock = DockStyle.Fill;
+            leftTableLayoutPanel.Location = new Point(3, 3);
+            leftTableLayoutPanel.Name = "leftTableLayoutPanel";
+            leftTableLayoutPanel.RowCount = 3;
+            leftTableLayoutPanel.RowStyles.Add(new RowStyle());
+            leftTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            leftTableLayoutPanel.RowStyles.Add(new RowStyle());
+            leftTableLayoutPanel.Size = new Size(756, 493);
+            leftTableLayoutPanel.TabIndex = 21;
             // 
-            // tableLayoutPanel5
+            // outerTableLayoutPanel
             // 
-            tableLayoutPanel5.AutoSize = true;
-            tableLayoutPanel5.ColumnCount = 2;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel5.Controls.Add(tableLayoutPanel4, 0, 0);
-            tableLayoutPanel5.Controls.Add(tableLayoutPanel2, 1, 0);
-            tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(0, 0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 1;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Size = new Size(898, 499);
-            tableLayoutPanel5.TabIndex = 22;
+            outerTableLayoutPanel.AutoSize = true;
+            outerTableLayoutPanel.ColumnCount = 2;
+            outerTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            outerTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            outerTableLayoutPanel.Controls.Add(leftTableLayoutPanel, 0, 0);
+            outerTableLayoutPanel.Controls.Add(rightTableLayoutPanel, 1, 0);
+            outerTableLayoutPanel.Dock = DockStyle.Fill;
+            outerTableLayoutPanel.Location = new Point(0, 0);
+            outerTableLayoutPanel.Name = "outerTableLayoutPanel";
+            outerTableLayoutPanel.RowCount = 1;
+            outerTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            outerTableLayoutPanel.Size = new Size(898, 499);
+            outerTableLayoutPanel.TabIndex = 22;
             // 
             // mainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(898, 499);
-            Controls.Add(tableLayoutPanel5);
+            Controls.Add(outerTableLayoutPanel);
             Font = new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
@@ -427,21 +427,22 @@
             MinimumSize = new Size(914, 538);
             Name = "mainWindow";
             Text = "Narod's FFXV Screenshot Grabber";
+            FormClosing += mainWindow_FormClosing;
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).EndInit();
             saveGroupBox.ResumeLayout(false);
             saveGroupBox.PerformLayout();
             folderGroupBox.ResumeLayout(false);
             folderGroupBox.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
-            tableLayoutPanel5.ResumeLayout(false);
-            tableLayoutPanel5.PerformLayout();
+            upperTableLayoutPanel.ResumeLayout(false);
+            upperTableLayoutPanel.PerformLayout();
+            rightTableLayoutPanel.ResumeLayout(false);
+            rightTableLayoutPanel.PerformLayout();
+            lowerTableLayoutPanel.ResumeLayout(false);
+            lowerTableLayoutPanel.PerformLayout();
+            leftTableLayoutPanel.ResumeLayout(false);
+            leftTableLayoutPanel.PerformLayout();
+            outerTableLayoutPanel.ResumeLayout(false);
+            outerTableLayoutPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -469,10 +470,10 @@
         private Label folderRealtimeWarning;
         private Label screenshotTakenLabel;
         private CheckBox tooltipsCheckbox;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
-        private TableLayoutPanel tableLayoutPanel4;
-        private TableLayoutPanel tableLayoutPanel5;
+        private TableLayoutPanel upperTableLayoutPanel;
+        private TableLayoutPanel rightTableLayoutPanel;
+        private TableLayoutPanel lowerTableLayoutPanel;
+        private TableLayoutPanel leftTableLayoutPanel;
+        private TableLayoutPanel outerTableLayoutPanel;
     }
 }
