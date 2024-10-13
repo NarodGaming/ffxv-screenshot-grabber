@@ -24,6 +24,7 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         public mainWindow()
         {
+
             InitializeComponent();
 
             platform = OSDetector.detectOS(); // run the OS detector function, this will set the platform variable to the correct platform

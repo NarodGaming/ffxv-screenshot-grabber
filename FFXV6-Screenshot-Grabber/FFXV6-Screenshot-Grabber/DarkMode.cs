@@ -40,6 +40,13 @@ namespace FFXV6_Screenshot_Grabber
                     AddDarkMode(c); // recursively call this function for the control
                 }
             }
+            else if (nControl is TableLayoutPanel)
+            {
+                foreach (Control c in nControl.Controls)
+                {
+                    AddDarkMode(c); // recursively call this function for the control
+                }
+            }
         }
 
         /// <summary>
