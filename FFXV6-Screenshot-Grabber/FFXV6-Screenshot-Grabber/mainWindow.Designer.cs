@@ -56,6 +56,7 @@
             lowerTableLayoutPanel = new TableLayoutPanel();
             leftTableLayoutPanel = new TableLayoutPanel();
             outerTableLayoutPanel = new TableLayoutPanel();
+            comradesCheckbox = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).BeginInit();
             saveGroupBox.SuspendLayout();
             folderGroupBox.SuspendLayout();
@@ -75,7 +76,7 @@
             screenshotListBox.Location = new Point(4, 18);
             screenshotListBox.Margin = new Padding(4, 3, 4, 3);
             screenshotListBox.Name = "screenshotListBox";
-            screenshotListBox.Size = new Size(122, 420);
+            screenshotListBox.Size = new Size(122, 394);
             screenshotListBox.TabIndex = 0;
             screenshotListBox.SelectedIndexChanged += screenshotListBox_SelectedIndexChanged;
             // 
@@ -224,7 +225,7 @@
             // 
             realtimeCheckBox.AutoSize = true;
             realtimeCheckBox.Dock = DockStyle.Fill;
-            realtimeCheckBox.Location = new Point(4, 470);
+            realtimeCheckBox.Location = new Point(4, 444);
             realtimeCheckBox.Margin = new Padding(4, 3, 4, 3);
             realtimeCheckBox.Name = "realtimeCheckBox";
             realtimeCheckBox.Size = new Size(122, 20);
@@ -313,7 +314,7 @@
             tooltipsCheckbox.Checked = true;
             tooltipsCheckbox.CheckState = CheckState.Checked;
             tooltipsCheckbox.Dock = DockStyle.Fill;
-            tooltipsCheckbox.Location = new Point(3, 444);
+            tooltipsCheckbox.Location = new Point(3, 418);
             tooltipsCheckbox.Name = "tooltipsCheckbox";
             tooltipsCheckbox.Size = new Size(124, 20);
             tooltipsCheckbox.TabIndex = 16;
@@ -350,13 +351,15 @@
             rightTableLayoutPanel.Controls.Add(realtimeCheckBox, 0, 3);
             rightTableLayoutPanel.Controls.Add(screenshotLabel, 0, 0);
             rightTableLayoutPanel.Controls.Add(screenshotListBox, 0, 1);
+            rightTableLayoutPanel.Controls.Add(comradesCheckbox, 0, 4);
             rightTableLayoutPanel.Dock = DockStyle.Fill;
             rightTableLayoutPanel.Location = new Point(765, 3);
             rightTableLayoutPanel.MaximumSize = new Size(130, 0);
             rightTableLayoutPanel.Name = "rightTableLayoutPanel";
-            rightTableLayoutPanel.RowCount = 4;
+            rightTableLayoutPanel.RowCount = 5;
             rightTableLayoutPanel.RowStyles.Add(new RowStyle());
             rightTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            rightTableLayoutPanel.RowStyles.Add(new RowStyle());
             rightTableLayoutPanel.RowStyles.Add(new RowStyle());
             rightTableLayoutPanel.RowStyles.Add(new RowStyle());
             rightTableLayoutPanel.Size = new Size(130, 493);
@@ -413,6 +416,20 @@
             outerTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             outerTableLayoutPanel.Size = new Size(898, 499);
             outerTableLayoutPanel.TabIndex = 22;
+            // 
+            // comradesCheckbox
+            // 
+            comradesCheckbox.AutoSize = true;
+            comradesCheckbox.Dock = DockStyle.Fill;
+            comradesCheckbox.Location = new Point(3, 470);
+            comradesCheckbox.Name = "comradesCheckbox";
+            comradesCheckbox.Size = new Size(124, 20);
+            comradesCheckbox.TabIndex = 17;
+            comradesCheckbox.Text = "Comrades Photos";
+            helpTooltip.SetToolTip(comradesCheckbox, "Quick switches you to Comrades photos (or base game photos)\r\n\r\nYou can also achieve this by using 'Select' in the folder options.");
+            comradesCheckbox.UseVisualStyleBackColor = true;
+            comradesCheckbox.CheckedChanged += comradesCheckbox_CheckedChanged;
+            comradesCheckbox.Paint += checkboxPainter;
             // 
             // mainWindow
             // 
@@ -475,5 +492,6 @@
         private TableLayoutPanel lowerTableLayoutPanel;
         private TableLayoutPanel leftTableLayoutPanel;
         private TableLayoutPanel outerTableLayoutPanel;
+        private CheckBox comradesCheckbox;
     }
 }

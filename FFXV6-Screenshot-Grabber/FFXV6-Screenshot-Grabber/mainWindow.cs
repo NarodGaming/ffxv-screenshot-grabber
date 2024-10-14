@@ -14,6 +14,7 @@ namespace FFXV6_Screenshot_Grabber
         Image? currentImage; // variable to store current preview image
         string folderLocation; // variable to store folder location of screenshots
         bool isUpdateAvailable; // variable to store if update is required or not
+        bool isComrades = false; // variable to store if we're in comrades mode or not
 
         RealtimeHandler? realtimeObject; // object to handle realtime screenshots
 
@@ -29,7 +30,7 @@ namespace FFXV6_Screenshot_Grabber
 
             platform = OSDetector.detectOS(); // run the OS detector function, this will set the platform variable to the correct platform
 
-            folderLocation = FolderDetector.detectFolder(platform); // look for the screenshot folder in the default location
+            folderLocation = FolderDetector.detectFolder(platform, isComrades); // look for the screenshot folder in the default location
 
             authVerLabel.Text = $"by Narod (V{Assembly.GetExecutingAssembly().GetName().Version})"; // set the version label text to show the current version of the program
 
@@ -43,7 +44,7 @@ namespace FFXV6_Screenshot_Grabber
 
             helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
 
-            if(platform != OperatingSystem.Windows)
+            if (platform != OperatingSystem.Windows)
             {
                 MessageBox.Show($"Notice: .NET 6.0 is out of support on November 12, 2024. Therefore, this program will upgrade to .NET 8.0 in early November 2024. As you are on {platform.ToString()}, you may need to re-follow the instructions on the NexusMods page after updating past V1.6.0.0 - apologies for any inconvenience caused.");
             }
@@ -196,17 +197,13 @@ namespace FFXV6_Screenshot_Grabber
             if (isAllSave)
             {
                 folderDialog.ShowDialog();
-                if (folderDialog.SelectedPath == null || folderDialog.SelectedPath == "") // if the folder name was not set (aka user cancelled dialog)
-                {
-                    return false; // then the user has changed their mind, return
-                }
+                return string.IsNullOrEmpty(folderDialog.SelectedPath) == false; // if the folder name was not set (aka user cancelled dialog), return false
             }
             else
             {
                 saveScreenshotDialog.ShowDialog();
                 return saveScreenshotDialog.FileName != ""; // if the file name was not set (aka user cancelled dialog), return false
             }
-            return true; // return true, all checks succesful
         }
 
         /// <summary>
@@ -312,7 +309,7 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         private void detectFolderBtn_Click(object sender, EventArgs e) // detects default screenshot folder, runs when user clicks 'Detect Folder'
         {
-            folderLocation = FolderDetector.detectFolder(platform); // runs function to detect folder
+            folderLocation = FolderDetector.detectFolder(platform, isComrades); // runs function to detect folder
             scanScreenshots(); // runs function to re-scan for screenshots
         }
 
@@ -431,6 +428,24 @@ namespace FFXV6_Screenshot_Grabber
                     Directory.Delete(Path.GetTempPath() + "\\NFFXVSG_temp", true);
                 }
             }
+        }
+
+        private void comradesCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (comradesCheckbox.Checked)
+            {
+                // switch to comrades mode
+                isComrades = true;
+                this.Text = "Narod's FFXV (Comrades) Screenshot Grabber";
+            } else
+            {
+                // switch out of comrades mode
+                isComrades = false;
+                this.Text = "Narod's FFXV Screenshot Grabber";
+            }
+
+            folderLocation = FolderDetector.detectFolder(platform, isComrades);
+            resetWindow();
         }
     }
 }

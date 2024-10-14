@@ -17,7 +17,7 @@
         /// <param name="positionToBrowse">The closest directory we got to finding the screenshot folder automatically</param>
         /// <param name="platform">The users operating system (changes help dialog to help as best as possible)</param>
         /// <returns>The full path to the screenshot folder (or Exits, if user cancels)</returns>
-        private static string failedAutoDirSearch(string positionToBrowse, OperatingSystem platform) // runs when the detectFolder function fails
+        private static string failedAutoDirSearch(string positionToBrowse, OperatingSystem platform, bool isComrades) // runs when the detectFolder function fails
         {
             folderDialog.SelectedPath = ""; // reset the selected path to nothing, as it might be set from 'Save All' prompt
             folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
@@ -25,21 +25,33 @@
             folderDialog.InitialDirectory = positionToBrowse;
             if (platform == OperatingSystem.Windows || platform == OperatingSystem.Mac || platform == OperatingSystem.LegacyWindows)
             {
-                MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)"); // message to user
+                if (isComrades)
+                {
+                    MessageBox.Show("Unable to automatically detect FFXV Comrades folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\multiplayer\\snapshot)"); // message to user
+                } else
+                {
+                    MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)"); // message to user
+                }
             } else if (platform == OperatingSystem.Linux)
             {
-                MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually {steam-library-dir}/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/snapshot"); // message to user
+                if (isComrades)
+                {
+                    MessageBox.Show("Unable to automatically detect FFXV Comrades folder! Please manually search for it! (usually {steam-library-dir}/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/multiplayer/snapshot"); // message to user
+                } else
+                {
+                    MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually {steam-library-dir}/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/snapshot"); // message to user
+                }
             }
             folderDialog.ShowDialog(); // show the dialog to prompt the user to select screenshot dir
             if (folderDialog.SelectedPath == null || folderDialog.SelectedPath == "") // if they click cancel or otherwise don't select a directory
             {
-                MessageBox.Show("No FFXV screenshot folder provided. You must select a folder! Closing..."); // message to user
+                MessageBox.Show("No valid screenshot folder provided. You must select a folder! Closing..."); // message to user
                 Application.Exit(); // safely exit
                 return ""; // prevent any extra checks running
             }
             if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory specified does not exist
             {
-                MessageBox.Show("FFXV screenshot folder given does not exist, or not enough permissions to access! Closing..."); // message to user
+                MessageBox.Show("Screenshot folder given does not exist, or not enough permissions to access! Closing..."); // message to user
                 Application.Exit(); // safely exit
                 return ""; // prevent any extra checks running
             }
@@ -51,7 +63,7 @@
         /// </summary>
         /// <param name="platform">The users operating system, as this determines where the program should look for the folder.</param>
         /// <returns>The full path of the screenshot folder</returns>
-        public static string detectFolder(OperatingSystem platform) // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
+        public static string detectFolder(OperatingSystem platform, bool isComrades) // detects screenshot folder, runs at boot or when user selects 'Detect Folder' designed for WINDOWS.
         {
             string folderLocation;
 
@@ -70,23 +82,29 @@
                     folderLocation = macFolderPath;
                     break;
                 default:
-                    return failedAutoDirSearch("", 0);
+                    return failedAutoDirSearch("", 0, isComrades);
             }
 
             if (!Directory.Exists(folderLocation)) // if this base directory doesn't exist (it should on all Windows systems who have played the game)
             {
-                return failedAutoDirSearch(folderLocation, platform); // run failed function (above)
+                return failedAutoDirSearch(folderLocation, platform, isComrades); // run failed function (above)
             }
             string[] subdirs = Directory.GetDirectories(folderLocation); // get all sub directories.
             if (subdirs.Length != 1) // check how many subdirs were returned, there should only be 1 (unless user has multiple steam accounts they played this game with, in which case they need to specify for themselves). if there's none, then the user hasn't played the game.
             {
-                return failedAutoDirSearch(folderLocation, platform); // run failed function (above)
+                return failedAutoDirSearch(folderLocation, platform, isComrades); // run failed function (above)
             }
             string lastSuccessLocation = folderLocation;
-            folderLocation = subdirs[0] + "\\savestorage\\snapshot\\"; // get the only sub dir and append on the location of the snapshot folder
+            if (isComrades) // not sure if this section here works on Linux or SteamOS - needs testing
+            {
+                folderLocation = subdirs[0] + "\\savestorage\\multiplayer\\snapshot\\"; // get the only sub dir and append on the location of the snapshot folder
+            } else
+            {
+                folderLocation = subdirs[0] + "\\savestorage\\snapshot\\"; // get the only sub dir and append on the location of the snapshot folder
+            }
             if (!Directory.Exists(folderLocation)) // if this folder doesn't exist (if all other checks have passed, the only way this could occur is user messing with folders)
             {
-                return failedAutoDirSearch(lastSuccessLocation, platform); // run failed function (above)
+                return failedAutoDirSearch(lastSuccessLocation, platform, isComrades); // run failed function (above)
             }
             return folderLocation;
         }
