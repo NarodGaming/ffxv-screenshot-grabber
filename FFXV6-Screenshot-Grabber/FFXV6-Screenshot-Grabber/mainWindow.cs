@@ -149,15 +149,15 @@ namespace FFXV6_Screenshot_Grabber
         private void previewPictureBox_Click(object sender, EventArgs e) // run when the user clicks the preview image (to 'expand' it)
         {
             MouseEventArgs mouseEvent = (MouseEventArgs)e;
+            if (screenshotListBox.SelectedIndex == -1) // if the preview image is not set
+            {
+                MessageBox.Show("Please select a screenshot to preview first!", "Please select a screenshot!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return; // then theres nothing to show, return
+            }
             if (mouseEvent.Button == MouseButtons.Right)
             {
                 Clipboard.SetImage(currentImage);
                 return;
-            }
-            if (screenshotListBox.SelectedIndex == -1) // if the preview image is not set
-            {
-                MessageBox.Show("Please select a screenshot to preview first before trying to expand the preview!", "Please select a screenshot!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return; // then theres nothing to show, return
             }
             if (platform == OperatingSystem.Windows || platform == OperatingSystem.LegacyWindows) // if we're on Windows, open the default image viewer instead
             {
@@ -204,6 +204,7 @@ namespace FFXV6_Screenshot_Grabber
             else
             {
                 saveScreenshotDialog.ShowDialog();
+                return saveScreenshotDialog.FileName != ""; // if the file name was not set (aka user cancelled dialog), return false
             }
             return true; // return true, all checks succesful
         }
@@ -405,6 +406,9 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
+        /// <summary>
+        /// Handles DPI sizing on checkboxes (as WinForms doesn't handle DPI scaling well)
+        /// </summary>
         private void checkboxPainter(object sender, PaintEventArgs e)
         {
             CheckBox checkbox = (CheckBox)sender;
@@ -415,6 +419,9 @@ namespace FFXV6_Screenshot_Grabber
             }
         }
 
+        /// <summary>
+        /// Deletes temporary preview files & folder on closing the utility
+        /// </summary>
         private void mainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (platform == OperatingSystem.Windows || platform == OperatingSystem.LegacyWindows)

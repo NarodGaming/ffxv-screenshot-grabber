@@ -13,10 +13,10 @@ namespace FFXV6_Screenshot_Grabber
     enum OperatingSystem
     {
         Unknown = 0, // only used to configure enum object to default, should never be used
-        Windows = 1,
-        Linux = 2,
-        Mac = 3,
-        LegacyWindows = 4
+        Windows = 1, // Windows 10 and above
+        Linux = 2, // Linux (officially, SteamOS only)
+        Mac = 3, // Mac (officially, macOS Sonoma 14.0 and above)
+        LegacyWindows = 4 // Windows 8.1 and below
     }
 
     /// <summary>
