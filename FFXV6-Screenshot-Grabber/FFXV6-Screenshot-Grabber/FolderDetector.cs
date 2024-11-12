@@ -7,9 +7,14 @@
     {
         private static FolderBrowserDialog folderDialog = new();
 
-        private static readonly string windowsFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Windows
-        private static readonly string linuxFolderPath = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam"; // default location for Linux
-        private static readonly string macFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV\\Steam"; // default location for Mac (we're expecting a Windows file path due to some differences in how Linux and Mac opening of the utility is expected)
+        private static readonly string windowsBaseFolderPath = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Documents\\My Games\\FINAL FANTASY XV"; // default base location for Windows
+        private static readonly string linuxBaseFolderPath = "~/.local/share/Steam/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV"; // default base location for Linux
+        private static readonly string macBaseFolderPath = windowsBaseFolderPath; // default base location for Mac (we're expecting a Windows file path due to some differences in how Linux and Mac opening of the utility is expected)
+
+        private static readonly string windowsMSFolderPath = Environment.GetEnvironmentVariable("LOCALAPPDATA") + "\\Packages\\39EA002F.FINALFANTASYXVforPC_n746a19ndrrjg\\LocalState"; // default location for Windows (MS Store)
+        // there's no proper way to run the MS Store version on Linux or Mac, so we're not going to bother with those
+
+        // both origin & steam instead will use the 'base' folder
 
         /// <summary>
         /// Runs when screenshot folder detection fails, prompts the user to select the folder manually.
@@ -70,16 +75,16 @@
             switch (platform)
             {
                 case OperatingSystem.Windows:
-                    folderLocation = windowsFolderPath;
+                    folderLocation = windowsBaseFolderPath;
                     break;
                 case OperatingSystem.LegacyWindows:
-                    folderLocation = windowsFolderPath;
+                    folderLocation = windowsBaseFolderPath;
                     break;
                 case OperatingSystem.Linux:
-                    folderLocation = linuxFolderPath;
+                    folderLocation = linuxBaseFolderPath;
                     break;
                 case OperatingSystem.Mac:
-                    folderLocation = macFolderPath;
+                    folderLocation = macBaseFolderPath;
                     break;
                 default:
                     return failedAutoDirSearch("", 0, isComrades);
@@ -89,6 +94,12 @@
             {
                 return failedAutoDirSearch(folderLocation, platform, isComrades); // run failed function (above)
             }
+            string[] platformnames = Directory.GetDirectories(folderLocation); // get all sub directories (expecting it to say either 'Steam' or 'Origin')
+            if (platformnames.Length != 1) // check how many were returned - this could actually implement a screen to select between Steam/Origin here, but that's a very rare case
+            {
+                return failedAutoDirSearch(folderLocation, platform, isComrades); // run failed function (above)
+            }
+            folderLocation = platformnames[0]; // move down the sub folder structure
             string[] subdirs = Directory.GetDirectories(folderLocation); // get all sub directories.
             if (subdirs.Length != 1) // check how many subdirs were returned, there should only be 1 (unless user has multiple steam accounts they played this game with, in which case they need to specify for themselves). if there's none, then the user hasn't played the game.
             {
