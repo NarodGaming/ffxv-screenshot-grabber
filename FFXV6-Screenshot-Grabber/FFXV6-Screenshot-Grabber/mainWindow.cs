@@ -43,11 +43,6 @@ namespace FFXV6_Screenshot_Grabber
             screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
 
             helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
-
-            if (platform != OperatingSystem.Windows)
-            {
-                MessageBox.Show($"Notice: .NET 6.0 is out of support on November 12, 2024. Therefore, this program will upgrade to .NET 8.0 in early November 2024. As you are on {platform.ToString()}, you may need to re-follow the instructions on the NexusMods page after updating past V1.6.0.0 - apologies for any inconvenience caused.");
-            }
         }
 
         /// <summary>
