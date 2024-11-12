@@ -28,6 +28,11 @@ namespace FFXV6_Screenshot_Grabber
 
             InitializeComponent();
 
+            if (this.DeviceDpi != 96) // very basic DPI scaling feature, works better than nothing but it's not perfect (the actual size of the items isn't increasing, like the buttons etc. so it's spilling over)
+            {
+                this.Font = new Font(this.Font.FontFamily, (this.Font.Size / 96f) * this.DeviceDpi, this.Font.Style); // increase font size on DPI scaling
+            }
+
             platform = OSDetector.detectOS(); // run the OS detector function, this will set the platform variable to the correct platform
 
             folderLocation = FolderDetector.detectFolder(platform, isComrades); // look for the screenshot folder in the default location
@@ -162,7 +167,7 @@ namespace FFXV6_Screenshot_Grabber
                 Directory.CreateDirectory(tempPath);
                 tempPath += $"\\{screenshotListBox.SelectedItem}_temp.jpg";
                 ScreenshotWriter.writeScreenshot(returnFullPath(), tempPath);
-                Process.Start("cmd", $"/c {tempPath}");
+                Process.Start("cmd", $"/c \"{tempPath}\"");
             }
             else
             {

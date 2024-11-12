@@ -46,6 +46,7 @@
             realtimeCheckBox = new CheckBox();
             helpTooltip = new ToolTip(components);
             saveAllTBtn = new Button();
+            comradesCheckbox = new CheckBox();
             saveGroupBox = new GroupBox();
             folderGroupBox = new GroupBox();
             folderRealtimeWarning = new Label();
@@ -56,7 +57,6 @@
             lowerTableLayoutPanel = new TableLayoutPanel();
             leftTableLayoutPanel = new TableLayoutPanel();
             outerTableLayoutPanel = new TableLayoutPanel();
-            comradesCheckbox = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)previewPictureBox).BeginInit();
             saveGroupBox.SuspendLayout();
             folderGroupBox.SuspendLayout();
@@ -72,7 +72,6 @@
             screenshotListBox.BorderStyle = BorderStyle.FixedSingle;
             screenshotListBox.Dock = DockStyle.Fill;
             screenshotListBox.FormattingEnabled = true;
-            screenshotListBox.ItemHeight = 16;
             screenshotListBox.Location = new Point(4, 18);
             screenshotListBox.Margin = new Padding(4, 3, 4, 3);
             screenshotListBox.Name = "screenshotListBox";
@@ -99,7 +98,7 @@
             // 
             previewLabel.AutoSize = true;
             previewLabel.Dock = DockStyle.Fill;
-            previewLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            previewLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             previewLabel.Location = new Point(4, 0);
             previewLabel.Margin = new Padding(4, 0, 4, 0);
             previewLabel.Name = "previewLabel";
@@ -111,7 +110,7 @@
             // 
             screenshotLabel.AutoSize = true;
             screenshotLabel.Dock = DockStyle.Fill;
-            screenshotLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            screenshotLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             screenshotLabel.Location = new Point(4, 0);
             screenshotLabel.Margin = new Padding(4, 0, 4, 0);
             screenshotLabel.Name = "screenshotLabel";
@@ -188,7 +187,7 @@
             detectFolderBtn.Size = new Size(55, 28);
             detectFolderBtn.TabIndex = 4;
             detectFolderBtn.Text = "Detect";
-            helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
+            helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/(Steam/Origin)/.../savestorage/snapshot\"");
             detectFolderBtn.UseVisualStyleBackColor = true;
             detectFolderBtn.Click += detectFolderBtn_Click;
             // 
@@ -196,7 +195,7 @@
             // 
             authVerLabel.AutoSize = true;
             authVerLabel.Dock = DockStyle.Fill;
-            authVerLabel.Font = new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            authVerLabel.Font = new Font("Segoe UI Variable Text", 8.25F);
             authVerLabel.Location = new Point(653, 0);
             authVerLabel.Margin = new Padding(4, 0, 4, 0);
             authVerLabel.Name = "authVerLabel";
@@ -256,6 +255,20 @@
             saveAllTBtn.UseVisualStyleBackColor = true;
             saveAllTBtn.Click += saveAllTBtn_Click;
             // 
+            // comradesCheckbox
+            // 
+            comradesCheckbox.AutoSize = true;
+            comradesCheckbox.Dock = DockStyle.Fill;
+            comradesCheckbox.Location = new Point(3, 470);
+            comradesCheckbox.Name = "comradesCheckbox";
+            comradesCheckbox.Size = new Size(124, 20);
+            comradesCheckbox.TabIndex = 17;
+            comradesCheckbox.Text = "Comrades Photos";
+            helpTooltip.SetToolTip(comradesCheckbox, "Quick switches you to Comrades photos (or base game photos)\r\n\r\nYou can also achieve this by using 'Select' in the folder options.");
+            comradesCheckbox.UseVisualStyleBackColor = true;
+            comradesCheckbox.CheckedChanged += comradesCheckbox_CheckedChanged;
+            comradesCheckbox.Paint += checkboxPainter;
+            // 
             // saveGroupBox
             // 
             saveGroupBox.AutoSize = true;
@@ -289,7 +302,7 @@
             // folderRealtimeWarning
             // 
             folderRealtimeWarning.AutoSize = true;
-            folderRealtimeWarning.Font = new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            folderRealtimeWarning.Font = new Font("Segoe UI Variable Text", 8.25F);
             folderRealtimeWarning.Location = new Point(12, 14);
             folderRealtimeWarning.Name = "folderRealtimeWarning";
             folderRealtimeWarning.Size = new Size(91, 30);
@@ -417,30 +430,15 @@
             outerTableLayoutPanel.Size = new Size(898, 499);
             outerTableLayoutPanel.TabIndex = 22;
             // 
-            // comradesCheckbox
-            // 
-            comradesCheckbox.AutoSize = true;
-            comradesCheckbox.Dock = DockStyle.Fill;
-            comradesCheckbox.Location = new Point(3, 470);
-            comradesCheckbox.Name = "comradesCheckbox";
-            comradesCheckbox.Size = new Size(124, 20);
-            comradesCheckbox.TabIndex = 17;
-            comradesCheckbox.Text = "Comrades Photos";
-            helpTooltip.SetToolTip(comradesCheckbox, "Quick switches you to Comrades photos (or base game photos)\r\n\r\nYou can also achieve this by using 'Select' in the folder options.");
-            comradesCheckbox.UseVisualStyleBackColor = true;
-            comradesCheckbox.CheckedChanged += comradesCheckbox_CheckedChanged;
-            comradesCheckbox.Paint += checkboxPainter;
-            // 
             // mainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(898, 499);
             Controls.Add(outerTableLayoutPanel);
-            Font = new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI Variable Text", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
-            MaximizeBox = false;
             MinimumSize = new Size(914, 538);
             Name = "mainWindow";
             Text = "Narod's FFXV Screenshot Grabber";
