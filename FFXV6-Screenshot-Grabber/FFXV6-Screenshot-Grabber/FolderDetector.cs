@@ -76,6 +76,10 @@
             {
                 case OperatingSystem.Windows:
                     folderLocation = windowsBaseFolderPath;
+                    if (Directory.Exists(windowsMSFolderPath)) // if the MS Store folder exists, then we're running the MS Store version of the game
+                    {
+                        failedAutoDirSearch(windowsMSFolderPath, platform, isComrades); // don't currently support MS Store version (don't own it, can't test it) so just fail the search here
+                    }
                     break;
                 case OperatingSystem.LegacyWindows:
                     folderLocation = windowsBaseFolderPath;

@@ -432,7 +432,8 @@ namespace FFXV6_Screenshot_Grabber
                 // switch to comrades mode
                 isComrades = true;
                 this.Text = "Narod's FFXV (Comrades) Screenshot Grabber";
-            } else
+            }
+            else
             {
                 // switch out of comrades mode
                 isComrades = false;
