@@ -162,7 +162,14 @@ namespace FFXV6_Screenshot_Grabber
                 Directory.CreateDirectory(tempPath);
                 tempPath += $"\\{screenshotListBox.SelectedItem}_temp.jpg";
                 ScreenshotWriter.writeScreenshot(returnFullPath(), tempPath);
-                Process.Start("cmd", $"/c \"{tempPath}\"");
+                Process p = new Process();
+                p.StartInfo = new ProcessStartInfo
+                {
+                    FileName = tempPath,
+                    UseShellExecute = true,
+                    CreateNoWindow = true
+                };
+                p.Start();
             }
             else
             {
