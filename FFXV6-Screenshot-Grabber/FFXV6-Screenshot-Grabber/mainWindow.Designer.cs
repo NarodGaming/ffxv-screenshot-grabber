@@ -72,6 +72,7 @@
             screenshotListBox.BorderStyle = BorderStyle.FixedSingle;
             screenshotListBox.Dock = DockStyle.Fill;
             screenshotListBox.FormattingEnabled = true;
+            screenshotListBox.ItemHeight = 16;
             screenshotListBox.Location = new Point(4, 18);
             screenshotListBox.Margin = new Padding(4, 3, 4, 3);
             screenshotListBox.Name = "screenshotListBox";
@@ -98,7 +99,7 @@
             // 
             previewLabel.AutoSize = true;
             previewLabel.Dock = DockStyle.Fill;
-            previewLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            previewLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             previewLabel.Location = new Point(4, 0);
             previewLabel.Margin = new Padding(4, 0, 4, 0);
             previewLabel.Name = "previewLabel";
@@ -110,7 +111,7 @@
             // 
             screenshotLabel.AutoSize = true;
             screenshotLabel.Dock = DockStyle.Fill;
-            screenshotLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            screenshotLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             screenshotLabel.Location = new Point(4, 0);
             screenshotLabel.Margin = new Padding(4, 0, 4, 0);
             screenshotLabel.Name = "screenshotLabel";
@@ -130,6 +131,7 @@
             saveAllProgressbar.Step = 1;
             saveAllProgressbar.TabIndex = 5;
             helpTooltip.SetToolTip(saveAllProgressbar, "This progress bar shows the progress of the current 'Save All' task.");
+            saveAllProgressbar.Visible = false;
             // 
             // saveOneBtn
             // 
@@ -195,7 +197,7 @@
             // 
             authVerLabel.AutoSize = true;
             authVerLabel.Dock = DockStyle.Fill;
-            authVerLabel.Font = new Font("Segoe UI Variable Text", 8.25F);
+            authVerLabel.Font = new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             authVerLabel.Location = new Point(653, 0);
             authVerLabel.Margin = new Padding(4, 0, 4, 0);
             authVerLabel.Name = "authVerLabel";
@@ -302,7 +304,7 @@
             // folderRealtimeWarning
             // 
             folderRealtimeWarning.AutoSize = true;
-            folderRealtimeWarning.Font = new Font("Segoe UI Variable Text", 8.25F);
+            folderRealtimeWarning.Font = new Font("Segoe UI Variable Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             folderRealtimeWarning.Location = new Point(12, 14);
             folderRealtimeWarning.Name = "folderRealtimeWarning";
             folderRealtimeWarning.Size = new Size(91, 30);
@@ -436,7 +438,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(898, 499);
             Controls.Add(outerTableLayoutPanel);
-            Font = new Font("Segoe UI Variable Text", 9F);
+            Font = new Font("Segoe UI Variable Text", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             MinimumSize = new Size(914, 538);

@@ -240,6 +240,7 @@ namespace FFXV6_Screenshot_Grabber
 
             string newPath = folderDialog.SelectedPath + "\\"; // set the path to save the files to, as per the users wishes
             saveAllProgressbar.Maximum = screenshotListBox.Items.Count; // set the maximum value of the progressbar to the number of screenshots to save. minimum is always 0 and step is 1.
+            saveAllProgressbar.Visible = true; // show the progressbar, as it was hidden before
 
             foreach (string listBoxItem in screenshotListBox.Items) // for each listbox item (screenshot) in listbox (total screenshots)
             {
@@ -269,6 +270,7 @@ namespace FFXV6_Screenshot_Grabber
             string newPath = folderDialog.SelectedPath + "\\"; // set the path to save the files to, as per the users wishes
 
             saveAllProgressbar.Maximum = 100; // the workers will report percentages rather than the screenshot number they have completed
+            saveAllProgressbar.Visible = true; // show the progressbar, as it was hidden before
 
             TurboHandler turboObject = new();
             turboObject.configureTurbo(screenshotListBox.Items.Cast<String>().ToList(), folderLocation, newPath, this);
