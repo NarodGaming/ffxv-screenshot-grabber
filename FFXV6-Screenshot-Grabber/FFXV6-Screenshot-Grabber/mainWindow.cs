@@ -330,6 +330,7 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         private void updateChecker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
             if (isUpdateAvailable) // if there is an update
             {
                 DialogResult shouldGetUpdate = MessageBox.Show("An update to Narod's FFXV Screenshot Grabber is available, do you wish to download the update?", "Narod's FFXV Screenshot Grabber - Update Available", MessageBoxButtons.YesNo); // show dialog to user
