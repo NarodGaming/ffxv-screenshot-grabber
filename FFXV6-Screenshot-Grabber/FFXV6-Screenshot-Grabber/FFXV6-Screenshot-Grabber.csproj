@@ -12,7 +12,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>Narod's FFXV Screenshot Grabber</AssemblyName>
+    <AssemblyName>Narods FFXV Screenshot Grabber</AssemblyName>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Version>1.6.2</Version>
     <Authors>NarodGaming</Authors>
@@ -40,6 +40,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Locale\Dialogs\Dialogs.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Dialogs.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Locale\DynamicLabels\DynamicLabels.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DynamicLabels.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -48,6 +58,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Locale\Dialogs\Dialogs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Dialogs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Locale\DynamicLabels\DynamicLabels.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DynamicLabels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

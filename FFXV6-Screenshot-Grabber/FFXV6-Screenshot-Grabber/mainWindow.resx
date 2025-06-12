@@ -117,22 +117,883 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="screenshotListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="screenshotListBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="screenshotListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 18</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="screenshotListBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="screenshotListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 394</value>
+  </data>
+  <data name="screenshotListBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;screenshotListBox.Name" xml:space="preserve">
+    <value>screenshotListBox</value>
+  </data>
+  <data name="&gt;&gt;screenshotListBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;screenshotListBox.Parent" xml:space="preserve">
+    <value>rightTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;screenshotListBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="previewPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="previewPictureBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="previewPictureBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
+  </data>
+  <data name="previewPictureBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="previewPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>748, 409</value>
+  </data>
+  <data name="previewPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="previewPictureBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <metadata name="helpTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>428, 20</value>
   </metadata>
+  <data name="previewPictureBox.ToolTip" xml:space="preserve">
+    <value>Your image preview for the selected image will appear here.
+
+Click to open a preview window. On Windows, this will be your
+default photo viewer.
+
+Right-click to copy the image to your clipboard.</value>
+  </data>
+  <data name="&gt;&gt;previewPictureBox.Name" xml:space="preserve">
+    <value>previewPictureBox</value>
+  </data>
+  <data name="&gt;&gt;previewPictureBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;previewPictureBox.Parent" xml:space="preserve">
+    <value>leftTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;previewPictureBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="previewLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="previewLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="previewLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Semibold, 9pt, style=Bold</value>
+  </data>
+  <data name="previewLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 0</value>
+  </data>
+  <data name="previewLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="previewLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 16</value>
+  </data>
+  <data name="previewLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="previewLabel.Text" xml:space="preserve">
+    <value>Preview - click image to expand</value>
+  </data>
+  <data name="&gt;&gt;previewLabel.Name" xml:space="preserve">
+    <value>previewLabel</value>
+  </data>
+  <data name="&gt;&gt;previewLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;previewLabel.Parent" xml:space="preserve">
+    <value>upperTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;previewLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="screenshotLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="screenshotLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="screenshotLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Semibold, 9pt, style=Bold</value>
+  </data>
+  <data name="screenshotLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 0</value>
+  </data>
+  <data name="screenshotLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="screenshotLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 15</value>
+  </data>
+  <data name="screenshotLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="screenshotLabel.Text" xml:space="preserve">
+    <value>Screenshots: 000000</value>
+  </data>
+  <data name="screenshotLabel.ToolTip" xml:space="preserve">
+    <value>This is the number of screenshots shown in the list below.</value>
+  </data>
+  <data name="&gt;&gt;screenshotLabel.Name" xml:space="preserve">
+    <value>screenshotLabel</value>
+  </data>
+  <data name="&gt;&gt;screenshotLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;screenshotLabel.Parent" xml:space="preserve">
+    <value>rightTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;screenshotLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="saveAllProgressbar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="saveAllProgressbar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 3</value>
+  </data>
+  <data name="saveAllProgressbar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="saveAllProgressbar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>427, 44</value>
+  </data>
+  <data name="saveAllProgressbar.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="saveAllProgressbar.ToolTip" xml:space="preserve">
+    <value>This progress bar shows the progress of the current 'Save All' task.</value>
+  </data>
+  <data name="saveAllProgressbar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;saveAllProgressbar.Name" xml:space="preserve">
+    <value>saveAllProgressbar</value>
+  </data>
+  <data name="&gt;&gt;saveAllProgressbar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAllProgressbar.Parent" xml:space="preserve">
+    <value>lowerTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;saveAllProgressbar.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="saveOneBtn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saveOneBtn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="saveOneBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="saveOneBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="saveOneBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="saveOneBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 28</value>
+  </data>
+  <data name="saveOneBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="saveOneBtn.Text" xml:space="preserve">
+    <value>One</value>
+  </data>
+  <data name="saveOneBtn.ToolTip" xml:space="preserve">
+    <value>This button saves the current screenshot to a location of your choosing.</value>
+  </data>
+  <data name="&gt;&gt;saveOneBtn.Name" xml:space="preserve">
+    <value>saveOneBtn</value>
+  </data>
+  <data name="&gt;&gt;saveOneBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveOneBtn.Parent" xml:space="preserve">
+    <value>saveGroupBox</value>
+  </data>
+  <data name="&gt;&gt;saveOneBtn.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="saveAllBtn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saveAllBtn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="saveAllBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="saveAllBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 19</value>
+  </data>
+  <data name="saveAllBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="saveAllBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 28</value>
+  </data>
+  <data name="saveAllBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="saveAllBtn.Text" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="saveAllBtn.ToolTip" xml:space="preserve">
+    <value>This button saves all screenshots in the list to a chosen location.
+
+Compared to 'Turbo' mode, it's slower but shows a preview
+of the images as they are saved.</value>
+  </data>
+  <data name="&gt;&gt;saveAllBtn.Name" xml:space="preserve">
+    <value>saveAllBtn</value>
+  </data>
+  <data name="&gt;&gt;saveAllBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAllBtn.Parent" xml:space="preserve">
+    <value>saveGroupBox</value>
+  </data>
+  <data name="&gt;&gt;saveAllBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="selectFolderBtn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="selectFolderBtn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="selectFolderBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="selectFolderBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="selectFolderBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="selectFolderBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 28</value>
+  </data>
+  <data name="selectFolderBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="selectFolderBtn.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="selectFolderBtn.ToolTip" xml:space="preserve">
+    <value>This button allows you to change the current screenshot directory.</value>
+  </data>
+  <data name="&gt;&gt;selectFolderBtn.Name" xml:space="preserve">
+    <value>selectFolderBtn</value>
+  </data>
+  <data name="&gt;&gt;selectFolderBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;selectFolderBtn.Parent" xml:space="preserve">
+    <value>folderGroupBox</value>
+  </data>
+  <data name="&gt;&gt;selectFolderBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="detectFolderBtn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="detectFolderBtn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="detectFolderBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="detectFolderBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 19</value>
+  </data>
+  <data name="detectFolderBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="detectFolderBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 28</value>
+  </data>
+  <data name="detectFolderBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="detectFolderBtn.Text" xml:space="preserve">
+    <value>Detect</value>
+  </data>
+  <data name="detectFolderBtn.ToolTip" xml:space="preserve">
+    <value>This button attempts to automatically locate your screenshot folder.
+
+Typically this is "My Games/FINAL FANTASY XV/(Steam/Origin)/.../savestorage/snapshot"</value>
+  </data>
+  <data name="&gt;&gt;detectFolderBtn.Name" xml:space="preserve">
+    <value>detectFolderBtn</value>
+  </data>
+  <data name="&gt;&gt;detectFolderBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;detectFolderBtn.Parent" xml:space="preserve">
+    <value>folderGroupBox</value>
+  </data>
+  <data name="&gt;&gt;detectFolderBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="authVerLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="authVerLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="authVerLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
+  <data name="authVerLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>653, 0</value>
+  </data>
+  <data name="authVerLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="authVerLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 16</value>
+  </data>
+  <data name="authVerLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="authVerLabel.Text" xml:space="preserve">
+    <value>by Narod (Vx.x.x.x)</value>
+  </data>
+  <data name="authVerLabel.ToolTip" xml:space="preserve">
+    <value>Narod's FFXV Screenshot Grabber.
+
+by Narod</value>
+  </data>
+  <data name="&gt;&gt;authVerLabel.Name" xml:space="preserve">
+    <value>authVerLabel</value>
+  </data>
+  <data name="&gt;&gt;authVerLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;authVerLabel.Parent" xml:space="preserve">
+    <value>upperTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;authVerLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="saveScreenshotDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="saveScreenshotDialog.Filter" xml:space="preserve">
+    <value>JPG file|*.jpg</value>
+  </data>
+  <data name="saveScreenshotDialog.Title" xml:space="preserve">
+    <value>Choose where to save this screenshot...</value>
+  </data>
   <metadata name="folderDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>183, 16</value>
   </metadata>
+  <data name="folderDialog.Description" xml:space="preserve">
+    <value>Please select a folder...</value>
+  </data>
   <metadata name="updateChecker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>294, 20</value>
   </metadata>
-  <metadata name="helpTooltip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>428, 20</value>
+  <data name="realtimeCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="realtimeCheckBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="realtimeCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 444</value>
+  </data>
+  <data name="realtimeCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="realtimeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
+  </data>
+  <data name="realtimeCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="realtimeCheckBox.Text" xml:space="preserve">
+    <value>Realtime Mode</value>
+  </data>
+  <data name="realtimeCheckBox.ToolTip" xml:space="preserve">
+    <value>Realtime mode allows the utility to automatically save screenshots as the game creates them.</value>
+  </data>
+  <data name="&gt;&gt;realtimeCheckBox.Name" xml:space="preserve">
+    <value>realtimeCheckBox</value>
+  </data>
+  <data name="&gt;&gt;realtimeCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;realtimeCheckBox.Parent" xml:space="preserve">
+    <value>rightTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;realtimeCheckBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="saveAllTBtn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saveAllTBtn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="saveAllTBtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="saveAllTBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 19</value>
+  </data>
+  <data name="saveAllTBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="saveAllTBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 28</value>
+  </data>
+  <data name="saveAllTBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="saveAllTBtn.Text" xml:space="preserve">
+    <value>All (Turbo)</value>
+  </data>
+  <data name="saveAllTBtn.ToolTip" xml:space="preserve">
+    <value>This button saves all screenshots in the list to a chosen location.
+
+It does this in "Turbo" mode, which is very fast but doesn't
+show previews like the non-Turbo mode does.</value>
+  </data>
+  <data name="&gt;&gt;saveAllTBtn.Name" xml:space="preserve">
+    <value>saveAllTBtn</value>
+  </data>
+  <data name="&gt;&gt;saveAllTBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAllTBtn.Parent" xml:space="preserve">
+    <value>saveGroupBox</value>
+  </data>
+  <data name="&gt;&gt;saveAllTBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comradesCheckbox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comradesCheckbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="comradesCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 470</value>
+  </data>
+  <data name="comradesCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="comradesCheckbox.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="comradesCheckbox.Text" xml:space="preserve">
+    <value>Comrades Photos</value>
+  </data>
+  <data name="comradesCheckbox.ToolTip" xml:space="preserve">
+    <value>Quick switches you to Comrades photos (or base game photos)
+
+You can also achieve this by using 'Select' in the folder options.</value>
+  </data>
+  <data name="&gt;&gt;comradesCheckbox.Name" xml:space="preserve">
+    <value>comradesCheckbox</value>
+  </data>
+  <data name="&gt;&gt;comradesCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comradesCheckbox.Parent" xml:space="preserve">
+    <value>rightTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;comradesCheckbox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="saveGroupBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saveGroupBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="saveGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="saveGroupBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="saveGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 50</value>
+  </data>
+  <data name="saveGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="saveGroupBox.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;saveGroupBox.Name" xml:space="preserve">
+    <value>saveGroupBox</value>
+  </data>
+  <data name="&gt;&gt;saveGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveGroupBox.Parent" xml:space="preserve">
+    <value>lowerTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;saveGroupBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="folderGroupBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="folderRealtimeWarning.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="folderRealtimeWarning.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
+  <data name="folderRealtimeWarning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 14</value>
+  </data>
+  <data name="folderRealtimeWarning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 30</value>
+  </data>
+  <data name="folderRealtimeWarning.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="folderRealtimeWarning.Text" xml:space="preserve">
+    <value>Disable Realtime
+ to change folder</value>
+  </data>
+  <data name="folderRealtimeWarning.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;folderRealtimeWarning.Name" xml:space="preserve">
+    <value>folderRealtimeWarning</value>
+  </data>
+  <data name="&gt;&gt;folderRealtimeWarning.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;folderRealtimeWarning.Parent" xml:space="preserve">
+    <value>folderGroupBox</value>
+  </data>
+  <data name="&gt;&gt;folderRealtimeWarning.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="folderGroupBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="folderGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>634, 0</value>
+  </data>
+  <data name="folderGroupBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="folderGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 50</value>
+  </data>
+  <data name="folderGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="folderGroupBox.Text" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="&gt;&gt;folderGroupBox.Name" xml:space="preserve">
+    <value>folderGroupBox</value>
+  </data>
+  <data name="&gt;&gt;folderGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;folderGroupBox.Parent" xml:space="preserve">
+    <value>lowerTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;folderGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="screenshotTakenLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="screenshotTakenLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="screenshotTakenLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 0</value>
+  </data>
+  <data name="screenshotTakenLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 16</value>
+  </data>
+  <data name="screenshotTakenLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="screenshotTakenLabel.Text" xml:space="preserve">
+    <value>Snapshot Taken on (locale date format)</value>
+  </data>
+  <data name="screenshotTakenLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="&gt;&gt;screenshotTakenLabel.Name" xml:space="preserve">
+    <value>screenshotTakenLabel</value>
+  </data>
+  <data name="&gt;&gt;screenshotTakenLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;screenshotTakenLabel.Parent" xml:space="preserve">
+    <value>upperTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;screenshotTakenLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tooltipsCheckbox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tooltipsCheckbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tooltipsCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 418</value>
+  </data>
+  <data name="tooltipsCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="tooltipsCheckbox.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="tooltipsCheckbox.Text" xml:space="preserve">
+    <value>Enable Tooltips</value>
+  </data>
+  <data name="&gt;&gt;tooltipsCheckbox.Name" xml:space="preserve">
+    <value>tooltipsCheckbox</value>
+  </data>
+  <data name="&gt;&gt;tooltipsCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tooltipsCheckbox.Parent" xml:space="preserve">
+    <value>rightTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;tooltipsCheckbox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="upperTableLayoutPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="upperTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="upperTableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="upperTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="upperTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="upperTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>750, 16</value>
+  </data>
+  <data name="upperTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;upperTableLayoutPanel.Name" xml:space="preserve">
+    <value>upperTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;upperTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;upperTableLayoutPanel.Parent" xml:space="preserve">
+    <value>leftTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;upperTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="upperTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="previewLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="screenshotTakenLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="authVerLabel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="rightTableLayoutPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rightTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rightTableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="rightTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>765, 3</value>
+  </data>
+  <data name="rightTableLayoutPanel.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>130, 0</value>
+  </data>
+  <data name="rightTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="rightTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 493</value>
+  </data>
+  <data name="rightTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;rightTableLayoutPanel.Name" xml:space="preserve">
+    <value>rightTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;rightTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rightTableLayoutPanel.Parent" xml:space="preserve">
+    <value>outerTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;rightTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rightTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tooltipsCheckbox" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="realtimeCheckBox" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="screenshotLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="screenshotListBox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="comradesCheckbox" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="lowerTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lowerTableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lowerTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 440</value>
+  </data>
+  <data name="lowerTableLayoutPanel.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="lowerTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lowerTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>750, 50</value>
+  </data>
+  <data name="lowerTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;lowerTableLayoutPanel.Name" xml:space="preserve">
+    <value>lowerTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;lowerTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lowerTableLayoutPanel.Parent" xml:space="preserve">
+    <value>leftTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;lowerTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lowerTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="saveGroupBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="folderGroupBox" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="saveAllProgressbar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="leftTableLayoutPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="leftTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="leftTableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="leftTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="leftTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="leftTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>756, 493</value>
+  </data>
+  <data name="leftTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;leftTableLayoutPanel.Name" xml:space="preserve">
+    <value>leftTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;leftTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;leftTableLayoutPanel.Parent" xml:space="preserve">
+    <value>outerTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;leftTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="leftTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="upperTableLayoutPanel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lowerTableLayoutPanel" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="previewPictureBox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="outerTableLayoutPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="outerTableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="outerTableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="outerTableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="outerTableLayoutPanel.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="outerTableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>898, 499</value>
+  </data>
+  <data name="outerTableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;outerTableLayoutPanel.Name" xml:space="preserve">
+    <value>outerTableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;outerTableLayoutPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;outerTableLayoutPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;outerTableLayoutPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="outerTableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="leftTableLayoutPanel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="rightTableLayoutPanel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 16</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>898, 499</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9pt</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAEBAAAAEAIABoBAAAZgAAACAgAAABACAAqBAAAM4EAAAwMAAAAQAgAKglAAB2FQAAQEAAAAEA
@@ -3379,5 +4240,44 @@
         UJ47lS8fd/nJglFeWwDY8rzS9VjeZ3rfikjKp1lYP+vC+2lq/2/CZV4HOL5uUZne+8ve/zJg+PCzPuuY
         +nU3ozeRlP6+H/9/Dxh0bRVWiAUAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>914, 538</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Narod's FFXV Screenshot Grabber</value>
+  </data>
+  <data name="&gt;&gt;saveScreenshotDialog.Name" xml:space="preserve">
+    <value>saveScreenshotDialog</value>
+  </data>
+  <data name="&gt;&gt;saveScreenshotDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;folderDialog.Name" xml:space="preserve">
+    <value>folderDialog</value>
+  </data>
+  <data name="&gt;&gt;folderDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;updateChecker.Name" xml:space="preserve">
+    <value>updateChecker</value>
+  </data>
+  <data name="&gt;&gt;updateChecker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System.ComponentModel.EventBasedAsync, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;helpTooltip.Name" xml:space="preserve">
+    <value>helpTooltip</value>
+  </data>
+  <data name="&gt;&gt;helpTooltip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>mainWindow</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

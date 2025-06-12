@@ -1,4 +1,6 @@
-﻿namespace FFXV6_Screenshot_Grabber
+﻿using FFXV6_Screenshot_Grabber.Locale.Dialogs;
+
+namespace FFXV6_Screenshot_Grabber
 {
     /// <summary>
     /// Class for detecting the screenshot folder location on a range of <see cref="OperatingSystem"/>s.
@@ -25,38 +27,38 @@
         private static string failedAutoDirSearch(string positionToBrowse, OperatingSystem platform, bool isComrades) // runs when the detectFolder function fails
         {
             folderDialog.SelectedPath = ""; // reset the selected path to nothing, as it might be set from 'Save All' prompt
-            folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
+            folderDialog.Description = Dialogs.Body_Info_SelectFFXVScreenshotFolder;
             folderDialog.UseDescriptionForTitle = true;
             folderDialog.InitialDirectory = positionToBrowse;
             if (platform == OperatingSystem.Windows || platform == OperatingSystem.Mac || platform == OperatingSystem.LegacyWindows)
             {
                 if (isComrades)
                 {
-                    MessageBox.Show("Unable to automatically detect FFXV Comrades folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\multiplayer\\snapshot)"); // message to user
+                    MessageBox.Show($"{Dialogs.Body_Error_UnableDetectComrades} (Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\multiplayer\\snapshot)", Dialogs.Title_Error_UnableDetectComrades); // message to user
                 } else
                 {
-                    MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)"); // message to user
+                    MessageBox.Show($"{Dialogs.Body_Error_UnableDetectBase} (Documents\\My Games\\FINAL FANTASY XV\\Steam\\(some numbers)\\savestorage\\snapshot)", Dialogs.Title_Error_UnableDetectBase); // message to user
                 }
             } else if (platform == OperatingSystem.Linux)
             {
                 if (isComrades)
                 {
-                    MessageBox.Show("Unable to automatically detect FFXV Comrades folder! Please manually search for it! (usually {steam-library-dir}/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/multiplayer/snapshot"); // message to user
+                    MessageBox.Show($"{Dialogs.Body_Error_UnableDetectComrades} ([steam-library-dir]/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/multiplayer/snapshot", Dialogs.Title_Error_UnableDetectComrades); // message to user
                 } else
                 {
-                    MessageBox.Show("Unable to automatically detect FFXV folder! Please manually search for it! (usually {steam-library-dir}/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/snapshot"); // message to user
+                    MessageBox.Show($"{Dialogs.Body_Error_UnableDetectBase} ([steam-library-dir]/steamapps/compatdata/637650/pfx/dosdevices/c:/users/steamuser/Documents/My Games/Final Fantasy XV/Steam/(some numbers)/savestorage/snapshot", Dialogs.Title_Error_UnableDetectBase); // message to user
                 }
             }
             folderDialog.ShowDialog(); // show the dialog to prompt the user to select screenshot dir
             if (folderDialog.SelectedPath == null || folderDialog.SelectedPath == "") // if they click cancel or otherwise don't select a directory
             {
-                MessageBox.Show("No valid screenshot folder provided. You must select a folder! Closing..."); // message to user
+                MessageBox.Show(Dialogs.Body_Error_NoScreenshotFolder, Dialogs.Title_Error_InvalidScreenshotFolder); // message to user
                 Application.Exit(); // safely exit
                 return ""; // prevent any extra checks running
             }
             if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory specified does not exist
             {
-                MessageBox.Show("Screenshot folder given does not exist, or not enough permissions to access! Closing..."); // message to user
+                MessageBox.Show(Dialogs.Body_Error_InvalidScreenshotFolder, Dialogs.Title_Error_InvalidScreenshotFolder); // message to user
                 Application.Exit(); // safely exit
                 return ""; // prevent any extra checks running
             }
