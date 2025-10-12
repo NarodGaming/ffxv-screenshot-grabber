@@ -1,6 +1,3 @@
-using FFXV6_Screenshot_Grabber.Locale.Dialogs;
-using FFXV6_Screenshot_Grabber.Locale.DynamicLabels;
-using Microsoft.VisualBasic;
 using Microsoft.Win32;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -35,7 +32,7 @@ namespace FFXV6_Screenshot_Grabber
 
             folderLocation = FolderDetector.detectFolder(platform, isComrades); // look for the screenshot folder in the default location
 
-            authVerLabel.Text = $"{DynamicLabels.Main_AuthorLabel} (V{Assembly.GetExecutingAssembly().GetName().Version})"; // set the version label text to show the current version of the program
+            authVerLabel.Text = $"by Narod (V{Assembly.GetExecutingAssembly().GetName().Version})"; // set the version label text to show the current version of the program
 
             scanScreenshots(); // scan for screenshots
 
@@ -45,7 +42,7 @@ namespace FFXV6_Screenshot_Grabber
 
             screenshotTakenLabel.Text = ""; // blank out this label, it will be set when selecting a screenshot
 
-            helpTooltip.SetToolTip(authVerLabel, $"{DynamicLabels.Main_UpdateAvailable} {isUpdateAvailable}{Environment.NewLine}{DynamicLabels.Main_Platform} {platform}{Environment.NewLine}{DynamicLabels.Main_Commit} {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}{DynamicLabels.Main_FFXVSG} (v{Assembly.GetExecutingAssembly().GetName().Version})");
+            helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
         }
 
         /// <summary>
@@ -100,7 +97,7 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         private void updateListBoxCounter() // update the counter with how many items are in the screenshot list box
         {
-            screenshotLabel.Text = $"{DynamicLabels.Main_Screenshots} {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
+            screenshotLabel.Text = $"Screenshots: {screenshotListBox.Items.Count}"; // change the label to show the total amount of detected screenshot files
         }
 
         /// <summary>
@@ -139,7 +136,7 @@ namespace FFXV6_Screenshot_Grabber
             currentImage = ScreenshotWriter.returnImageScreenshot(returnFullPath()); // set current image to the image that was just selected
             previewPictureBox.BackgroundImage = currentImage; // set up the preview image to this new current image
             previewWindow.retrieveScreenshot(currentImage); // pass the new preview image to the preview window
-            screenshotTakenLabel.Text = $"{DynamicLabels.Main_SnapshotTakenOn} {File.GetCreationTime(returnFullPath())}";
+            screenshotTakenLabel.Text = $"Snapshot Taken On {File.GetCreationTime(returnFullPath())}";
         }
 
         /// <summary>
@@ -150,7 +147,7 @@ namespace FFXV6_Screenshot_Grabber
             MouseEventArgs mouseEvent = (MouseEventArgs)e;
             if (screenshotListBox.SelectedIndex == -1) // if the preview image is not set
             {
-                MessageBox.Show(Dialogs.Body_Warn_SelectPreviewScreenshot, Dialogs.Title_Warn_SelectPreviewScreenshot, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a screenshot to preview first!", "Please select a screenshot!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return; // then theres nothing to show, return
             }
             if (mouseEvent.Button == MouseButtons.Right)
@@ -161,9 +158,9 @@ namespace FFXV6_Screenshot_Grabber
             if (platform == OperatingSystem.Windows || platform == OperatingSystem.LegacyWindows) // if we're on Windows, open the default image viewer instead
             {
                 // write the image to disk, then open it with the default image viewer
-                string tempPath = Path.GetTempPath() + $"\\NFFXVSG_{DynamicLabels.Main_Temp}";
+                string tempPath = Path.GetTempPath() + "\\NFFXVSG_temp";
                 Directory.CreateDirectory(tempPath);
-                tempPath += $"\\{screenshotListBox.SelectedItem}_{DynamicLabels.Main_Temp}.jpg";
+                tempPath += $"\\{screenshotListBox.SelectedItem}_temp.jpg";
                 ScreenshotWriter.writeScreenshot(returnFullPath(), tempPath);
                 Process p = new Process();
                 p.StartInfo = new ProcessStartInfo
@@ -191,12 +188,12 @@ namespace FFXV6_Screenshot_Grabber
             saveScreenshotDialog.FileName = ""; // reset any previous dialog prompts that may have shown before
             if (screenshotListBox.SelectedIndex == -1 && !isAllSave)
             {
-                MessageBox.Show(Dialogs.Body_Error_UnableToSaveSingle, Dialogs.Title_Error_UnableToSaveSingle);
+                MessageBox.Show("Unable to save screenshot. Please select a screen to preview first.");
                 return false; // if there's no selected image, and save one was chosen, return false
             }
             else if (screenshotListBox.Items.Count == 0 && isAllSave)
             {
-                MessageBox.Show(Dialogs.Body_Error_UnableToSaveMulti, Dialogs.Title_Error_UnableToSaveMulti);
+                MessageBox.Show("Unable to save screenshots. Please select a folder with some screenshots in to save.");
                 return false; // if save all was chosen, but there's no items to save, return false
             }
             if (isAllSave)
@@ -294,7 +291,7 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         private void selectFolderBtn_Click(object sender, EventArgs e) // opens a folder selector, runs when user clicks 'Select Folder'
         {
-            folderDialog.Description = Dialogs.Body_Info_SelectFFXVScreenshotFolder;
+            folderDialog.Description = "Please select the folder containing your FFXV screenshots...";
             folderDialog.UseDescriptionForTitle = true;
             folderDialog.SelectedPath = ""; // reset any saved folder name, as could be set during set-up or previous folder search
             folderDialog.ShowDialog(); // show the folder selector dialog
@@ -304,7 +301,7 @@ namespace FFXV6_Screenshot_Grabber
             }
             if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
             {
-                MessageBox.Show(Dialogs.Body_Error_InvalidScreenshotFolder, Dialogs.Title_Error_InvalidScreenshotFolder); // show user message
+                MessageBox.Show("FFXV screenshot folder given does not exist, or not enough permissions to access!"); // show user message
                 return; // then return, as we can't change folder
             }
             folderLocation = folderDialog.SelectedPath + "\\"; // set folder location to new specified folder
@@ -333,10 +330,10 @@ namespace FFXV6_Screenshot_Grabber
         /// </summary>
         private void updateChecker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            helpTooltip.SetToolTip(authVerLabel, $"{DynamicLabels.Main_UpdateAvailable} {isUpdateAvailable}{Environment.NewLine}{DynamicLabels.Main_Platform} {platform}{Environment.NewLine}{DynamicLabels.Main_Commit} {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}{DynamicLabels.Main_FFXVSG} (v{Assembly.GetExecutingAssembly().GetName().Version})");
+            helpTooltip.SetToolTip(authVerLabel, $"Update Available: {isUpdateAvailable}{Environment.NewLine}Platform: {platform}{Environment.NewLine}Commit: {Application.ProductVersion.Split("+")[1]}{Environment.NewLine}{Environment.NewLine}Narod's FFXV Screenshot Grabber (v{Assembly.GetExecutingAssembly().GetName().Version})");
             if (isUpdateAvailable) // if there is an update
             {
-                DialogResult shouldGetUpdate = MessageBox.Show(Dialogs.Body_Info_UpdateAvailable, Dialogs.Title_Info_UpdateAvailable, MessageBoxButtons.YesNo); // show dialog to user
+                DialogResult shouldGetUpdate = MessageBox.Show("An update to Narod's FFXV Screenshot Grabber is available, do you wish to download the update?", "Narod's FFXV Screenshot Grabber - Update Available", MessageBoxButtons.YesNo); // show dialog to user
                 if (shouldGetUpdate == DialogResult.Yes) // if they want to upgrade
                 {
                     Process.Start(new ProcessStartInfo() // open their default browser, with the URL to download the latest version
@@ -356,7 +353,7 @@ namespace FFXV6_Screenshot_Grabber
         {
             if (realtimeCheckBox.Checked == true) // if the box has been checked
             {
-                folderDialog.Description = Dialogs.Body_Info_SelectRealtimeFolder;
+                folderDialog.Description = "Please select the folder you wish to watch for screenshots...";
                 folderDialog.UseDescriptionForTitle = true;
                 folderDialog.SelectedPath = ""; // reset any saved folder name, as could be set during set-up or previous folder search
                 folderDialog.ShowDialog(); // show the folder selector dialog
@@ -367,14 +364,14 @@ namespace FFXV6_Screenshot_Grabber
                 }
                 if (Directory.Exists(folderDialog.SelectedPath) == false) // if the directory chosen does not exist
                 {
-                    MessageBox.Show(Dialogs.Body_Error_InvalidScreenshotFolder); // show user message
+                    MessageBox.Show("Folder given does not exist, or not enough permissions to access!"); // show user message
                     realtimeCheckBox.Checked = false; // disable the checkbox as it wasn't turned on
                     return; // then return, as we can't use that folder
                 }
                 realtimeObject = new(this, folderDialog.SelectedPath); // create the new realtime watcher object
                 screenshotListBox.Items.Clear(); // clear the items in this listbox, as realtime folder may be different to current directory
-                helpTooltip.SetToolTip(selectFolderBtn, DynamicLabels.Main_DisableRealtimeWarning); // tooltips don't actually work on disabled buttons
-                helpTooltip.SetToolTip(detectFolderBtn, DynamicLabels.Main_DisableRealtimeWarning); // tooltips don't actually work on disabled buttons
+                helpTooltip.SetToolTip(selectFolderBtn, "You must disable Realtime mode to change the folder location."); // tooltips don't actually work on disabled buttons
+                helpTooltip.SetToolTip(detectFolderBtn, "You must disable Realtime mode to change the folder location."); // tooltips don't actually work on disabled buttons
                 selectFolderBtn.Enabled = false;
                 detectFolderBtn.Enabled = false;
                 selectFolderBtn.Visible = false;
@@ -385,8 +382,8 @@ namespace FFXV6_Screenshot_Grabber
             else // if checkbox is unchecked
             {
                 realtimeObject?.safeStop(); // safely stop the realtime watcher 
-                helpTooltip.SetToolTip(selectFolderBtn, DynamicLabels.Main_SelectFolderTooltip);
-                helpTooltip.SetToolTip(detectFolderBtn, $"{DynamicLabels.Main_DetectFolderTooltip} \\r\\n\\r\\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
+                helpTooltip.SetToolTip(selectFolderBtn, "This button allows you to change the current screenshot directory.");
+                helpTooltip.SetToolTip(detectFolderBtn, "This button attempts to automatically locate your screenshot folder.\r\n\r\nTypically this is \"My Games/FINAL FANTASY XV/Steam/.../savestorage/snapshot\"");
                 selectFolderBtn.Enabled = true;
                 detectFolderBtn.Enabled = true;
                 selectFolderBtn.Visible = true;
@@ -431,9 +428,9 @@ namespace FFXV6_Screenshot_Grabber
         {
             if (platform == OperatingSystem.Windows || platform == OperatingSystem.LegacyWindows)
             {
-                if (Directory.Exists(Path.GetTempPath() + $"\\NFFXVSG_{DynamicLabels.Main_Temp}"))
+                if (Directory.Exists(Path.GetTempPath() + "\\NFFXVSG_temp"))
                 {
-                    Directory.Delete(Path.GetTempPath() + $"\\NFFXVSG_{DynamicLabels.Main_Temp}", true);
+                    Directory.Delete(Path.GetTempPath() + "\\NFFXVSG_temp", true);
                 }
             }
         }
@@ -444,13 +441,13 @@ namespace FFXV6_Screenshot_Grabber
             {
                 // switch to comrades mode
                 isComrades = true;
-                this.Text = DynamicLabels.Main_ComradesTitle;
+                this.Text = "Narod's FFXV (Comrades) Screenshot Grabber";
             }
             else
             {
                 // switch out of comrades mode
                 isComrades = false;
-                this.Text = DynamicLabels.Main_Title;
+                this.Text = "Narod's FFXV Screenshot Grabber";
             }
 
             folderLocation = FolderDetector.detectFolder(platform, isComrades);
